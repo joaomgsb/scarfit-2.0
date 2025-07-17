@@ -174,16 +174,7 @@ const Faq: React.FC = () => {
               <Sparkles className="w-5 h-5 text-primary" />
             </div>
             
-            <h2 className="text-gradient mb-6">
-              Tudo o que você
-              <br />
-              <span className="text-primary">precisa saber</span>
-            </h2>
-            
-            <p className="text-xl md:text-2xl text-light-muted max-w-3xl mx-auto leading-relaxed">
-              Respondemos às perguntas mais comuns para que você possa tomar a melhor decisão 
-              para sua transformação com total confiança.
-            </p>
+
           </motion.div>
         </motion.div>
 
