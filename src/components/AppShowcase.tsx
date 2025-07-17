@@ -30,22 +30,22 @@ const AppShowcase: React.FC = () => {
           animate={inView ? "visible" : "hidden"}
           className="flex flex-col items-center justify-center"
         >
+          <div className="text-center max-w-3xl mx-auto mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient mb-4">
+              TUDO ISTO NO SEU CELULAR
+            </h2>
+            <p className="text-lg md:text-xl text-light-muted leading-relaxed mb-6">
+              Acompanhe sua evolução, receba treinos personalizados e tenha acesso a todo o conteúdo exclusivo diretamente do seu smartphone.
+              Transforme seu corpo com a tecnologia a seu favor.
+            </p>
+          </div>
+          
           <div className="w-full max-w-3xl mx-auto">
             <img 
               src="/images/efeitos/celular.png" 
               alt="Aplicativo ScarFit" 
               className="w-full h-auto block mx-auto"
             />
-          </div>
-          
-          <div className="text-center mt-12 max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient mb-6">
-              TUDO ISTO NO SEU CELULAR
-            </h2>
-            <p className="text-lg md:text-xl text-light-muted leading-relaxed">
-              Acompanhe sua evolução, receba treinos personalizados e tenha acesso a todo o conteúdo exclusivo diretamente do seu smartphone.
-              Transforme seu corpo com a tecnologia a seu favor.
-            </p>
           </div>
         </motion.div>
       </div>
