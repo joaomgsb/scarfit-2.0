@@ -198,21 +198,7 @@ const ResultsGallery: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Stats */}
-          <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">1200+</div>
-              <div className="text-light-muted">Clientes Transformados</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">9.4t</div>
-              <div className="text-light-muted">Gordura Eliminada</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">98%</div>
-              <div className="text-light-muted">Taxa de Sucesso</div>
-            </div>
-          </motion.div>
+
         </motion.div>
       </div>
     </section>

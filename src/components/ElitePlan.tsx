@@ -51,6 +51,30 @@ const ElitePlan: React.FC = () => {
     },
   };
 
+  // Variantes para o efeito 3D no hover
+  const card3DHover = {
+    initial: { rotateX: 0, rotateY: 0, scale: 1 },
+    hover: (custom: { x: number, y: number }) => ({
+      rotateX: custom.y * 5,
+      rotateY: custom.x * 5,
+      scale: 1.02,
+      transition: { type: 'spring', stiffness: 300, damping: 15 }
+    })
+  };
+
+  // Variantes para elementos de urgência
+  const pulseVariants = {
+    initial: { scale: 1 },
+    animate: {
+      scale: [1, 1.05, 1],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        repeatType: 'reverse' as const
+      }
+    }
+  };
+
   const floatingVariants = {
     animate: {
       y: [-5, 5, -5],
@@ -59,6 +83,56 @@ const ElitePlan: React.FC = () => {
         repeat: Infinity,
         ease: "easeInOut"
       }
+    }
+  };
+
+  // Estados para animações
+  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
+  const [timeLeft, setTimeLeft] = React.useState({
+    hours: 23,
+    minutes: 59,
+    seconds: 59
+  });
+  const cardRef = React.useRef<HTMLDivElement>(null);
+
+  // Efeito para o contador regressivo
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prevTime => {
+        const newTime = { ...prevTime };
+        
+        if (newTime.seconds > 0) {
+          newTime.seconds--;
+        } else {
+          newTime.seconds = 59;
+          if (newTime.minutes > 0) {
+            newTime.minutes--;
+          } else {
+            newTime.minutes = 59;
+            if (newTime.hours > 0) {
+              newTime.hours--;
+            } else {
+              // Reset do contador quando chegar a zero
+              newTime.hours = 23;
+              newTime.minutes = 59;
+              newTime.seconds = 59;
+            }
+          }
+        }
+        
+        return newTime;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (cardRef.current) {
+      const rect = cardRef.current.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      setMousePosition({ x, y });
     }
   };
 
@@ -149,10 +223,89 @@ const ElitePlan: React.FC = () => {
             </p>
 
             {/* Pricing Section */}
-            <motion.div variants={itemVariants} className="mb-8">
-              <div className="glass-effect rounded-3xl p-6 md:p-8 border border-neutral-800 max-w-md mx-auto">
-                <div className="text-center">
+            <motion.div 
+              variants={itemVariants} 
+              className="mb-8 relative"
+            >
+              {/* Elemento de urgência - Contador */}
+              <motion.div 
+                variants={pulseVariants}
+                initial="initial"
+                animate="animate"
+                className="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap z-10"
+              >
+                ⚡ ÚLTIMAS 5 VAGAS DISPONÍVEIS
+              </motion.div>
+              
+              <motion.div 
+                className="glass-effect rounded-3xl p-6 md:p-8 border border-neutral-800 max-w-md mx-auto relative overflow-hidden"
+                ref={cardRef}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
+                custom={mousePosition}
+                variants={card3DHover}
+                initial="initial"
+                whileHover="hover"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  transform: 'perspective(1000px)'
+                }}
+              >
+                {/* Efeito de brilho no hover */}
+                <div 
+                  className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  style={{
+                    transform: `translate(${mousePosition.x * 50}px, ${mousePosition.y * 50}px)`,
+                  }}
+                />
+                
+                <div className="relative z-10">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <span className="text-light-muted line-through text-lg">R$240/mês</span>
+                    <span className="bg-green-900/30 text-green-400 text-xs font-bold px-2 py-0.5 rounded-full">
+                      50% OFF
+                    </span>
+                  </div>
                   <div className="text-3xl md:text-5xl font-bold text-primary mb-6">R$120/mês</div>
+                  
+                  {/* Contador de tempo restante */}
+                  <motion.div 
+                    className="bg-neutral-800/50 rounded-lg p-3 mb-6"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <div className="text-xs text-light-muted mb-1">Oferta termina em:</div>
+                    <div className="flex items-center justify-center gap-1 text-lg font-mono">
+                      <motion.span 
+                        key={`hours-${timeLeft.hours}`}
+                        className="bg-neutral-900 px-2 py-1 rounded min-w-[32px] text-center"
+                        initial={{ y: -10, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: 10, opacity: 0 }}
+                      >
+                        {timeLeft.hours.toString().padStart(2, '0')}
+                      </motion.span>:
+                      <motion.span 
+                        key={`minutes-${timeLeft.minutes}`}
+                        className="bg-neutral-900 px-2 py-1 rounded min-w-[32px] text-center"
+                        initial={{ y: -10, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: 10, opacity: 0 }}
+                      >
+                        {timeLeft.minutes.toString().padStart(2, '0')}
+                      </motion.span>:
+                      <motion.span 
+                        key={`seconds-${timeLeft.seconds}`}
+                        className="bg-neutral-900 px-2 py-1 rounded min-w-[32px] text-center"
+                        initial={{ y: -10, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: 10, opacity: 0 }}
+                      >
+                        {timeLeft.seconds.toString().padStart(2, '0')}
+                      </motion.span>
+                    </div>
+                  </motion.div>
                   
                   {/* Payment Methods */}
                   <div className="flex items-center justify-center gap-4 mb-6">
@@ -178,7 +331,7 @@ const ElitePlan: React.FC = () => {
                     <ArrowRight className="w-5 md:w-6 h-5 md:h-6 ml-3 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </motion.div>
 

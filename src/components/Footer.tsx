@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-scroll';
-import { Instagram, MessageSquare, Mail, Phone, MapPin } from 'lucide-react';
+import { Instagram, MessageSquare, Mail, Phone, MapPin, Twitter } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -31,10 +31,19 @@ const Footer: React.FC = () => {
                 href="https://www.instagram.com/scarfitbr/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-dark-accent rounded-lg flex items-center justify-center text-light-muted hover:text-primary hover:bg-primary/10 transition-colors"
+                className="w-10 h-10 bg-dark-accent rounded-lg flex items-center justify-center text-light-muted hover:text-pink-500 hover:bg-pink-500/10 transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://x.com/joaoscar_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-dark-accent rounded-lg flex items-center justify-center text-light-muted hover:text-black hover:bg-white transition-colors"
+                aria-label="Twitter"
+              >
+                <Twitter className="w-5 h-5" />
               </a>
             </div>
           </div>

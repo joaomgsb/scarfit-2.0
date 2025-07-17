@@ -48,7 +48,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/calculadora-imc" element={<ImcPage />} />
         <Route path="/planos-personalizados" element={<PlanosPersonalizadosPage />} />
-        <Route path="/entenda-sua-situacao" element={<EntendaSituacaoPage />} />
+        <Route path="/seu-diagnostico-inicial" element={<EntendaSituacaoPage />} />
         <Route path="/calculadoras-individuais" element={<CalculadorasIndividuaisPage />} />
         <Route path="/artigos" element={<ArtigosPage />} />
         <Route path="/estudos" element={<EstudosPage />} />

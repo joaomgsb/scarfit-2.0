@@ -55,7 +55,7 @@ const PlanosPersonalizadosPage: React.FC = () => {
     const origem = urlParams.get('origem');
     
     if (origem === 'entenda-situacao') {
-      // Vem da página "Entenda sua Situação"
+      // Vem da página "Seu Diagnóstico Inicial"
       const dadosCompletos = localStorage.getItem('dadosCompletos');
       if (dadosCompletos) {
         const dadosCompletosParseados = JSON.parse(dadosCompletos);
