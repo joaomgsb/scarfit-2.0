@@ -40,7 +40,7 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
       >
         <div className="flex items-start gap-6 mb-4">
           {/* Photo */}
-          <div className="w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0 bg-dark/50 shadow-lg">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden flex-shrink-0 bg-dark/50 shadow-lg">
             <img
               src={member.image}
               alt={member.name}
@@ -62,7 +62,7 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
           </div>
           
           {/* Animation */}
-          <div className="w-20 h-20 flex-shrink-0">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0">
             <Lottie 
               animationData={member.animationData} 
               className="w-full h-full"
@@ -70,7 +70,7 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
             />
           </div>
         </div>
-        <p className="text-light-muted leading-relaxed flex-grow">
+        <p className="text-light-muted text-sm sm:text-base leading-relaxed flex-grow">
           {member.description}
         </p>
       </motion.div>
@@ -132,7 +132,7 @@ const TeamExpertise: React.FC = () => {
 
   return (
     <section className="section-padding section-transition" ref={ref}>
-      <div className="container-custom">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -156,7 +156,7 @@ const TeamExpertise: React.FC = () => {
 
           {/* Team grid */}
           <motion.div 
-            className="grid md:grid-cols-2 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8"
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
@@ -173,15 +173,15 @@ const TeamExpertise: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="mt-20"
           >
-            <div className="glass-effect rounded-3xl p-8 lg:p-12 text-center">
-              <h3 className="text-2xl font-semibold text-light mb-6">
+            <div className="glass-effect rounded-3xl p-6 sm:p-8 lg:p-12 text-center">
+              <h3 className="text-xl sm:text-2xl font-semibold text-light mb-4 sm:mb-6">
                 Nossa Filosofia
               </h3>
-              <blockquote className="text-xl text-light-muted italic leading-relaxed max-w-4xl mx-auto">
+              <blockquote className="text-base sm:text-lg lg:text-xl text-light-muted italic leading-relaxed max-w-4xl mx-auto">
                 "Nessa jornada, o seu objetivo é o único destino que aceito. 
                 Aqui, você não conta com sorte, conta comigo e com toda nossa equipe."
               </blockquote>
-              <cite className="text-primary font-semibold mt-4 block">
+              <cite className="text-primary font-semibold mt-3 sm:mt-4 block text-sm sm:text-base">
                 — João Scar, Fundador
               </cite>
             </div>
