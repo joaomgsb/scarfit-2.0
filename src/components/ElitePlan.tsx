@@ -86,6 +86,32 @@ const ElitePlan: React.FC = () => {
     }
   };
 
+  // Nova variante para flutuação mais intensa do card principal
+  const premiumFloatingVariants = {
+    animate: {
+      y: [-8, 8, -8],
+      rotateZ: [-1, 1, -1],
+      transition: {
+        duration: 6,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  // Variante para partículas flutuantes de fundo
+  const particleVariants = {
+    animate: {
+      y: [-20, 20, -20],
+      x: [-10, 10, -10],
+      opacity: [0.3, 0.7, 0.3],
+      transition: {
+        duration: 8,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
   // Estados para animações
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
   const [timeLeft, setTimeLeft] = React.useState({
@@ -192,13 +218,47 @@ const ElitePlan: React.FC = () => {
   ];
 
   return (
-    <section id="elite-plan" className="section-padding section-transition" ref={ref}>
+    <section id="elite-plan" className="relative py-20 md:py-32 overflow-hidden" ref={ref}>
+      {/* Background Premium Effects */}
+      <div className="absolute inset-0">
+        {/* Gradiente de fundo mais intenso */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-dark to-primary/10" />
+        
+        {/* Spotlight effect central */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-primary/20 via-primary/5 to-transparent rounded-full blur-3xl" />
+        
+        {/* Partículas flutuantes */}
+        <motion.div 
+          variants={particleVariants}
+          animate="animate"
+          className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/10 rounded-full blur-2xl"
+        />
+        <motion.div 
+          variants={particleVariants}
+          animate="animate"
+          className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-primary/8 rounded-full blur-3xl"
+          style={{ animationDelay: '2s' }}
+        />
+        <motion.div 
+          variants={particleVariants}
+          animate="animate"
+          className="absolute top-1/2 right-1/3 w-24 h-24 bg-primary/12 rounded-full blur-xl"
+          style={{ animationDelay: '4s' }}
+        />
+        
+        {/* Linhas de energia */}
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+          <div className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        </div>
+      </div>
+      
       <div className="container-custom">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="max-w-7xl mx-auto"
+          className="max-w-7xl mx-auto relative z-10"
         >
           {/* Header Premium */}
           <motion.div variants={itemVariants} className="text-center mb-12">
@@ -232,13 +292,22 @@ const ElitePlan: React.FC = () => {
                 variants={pulseVariants}
                 initial="initial"
                 animate="animate"
-                className="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap z-10"
+                className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-primary-dark text-dark text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full whitespace-nowrap z-10 shadow-lg shadow-primary/50 max-w-[90vw] sm:max-w-none overflow-hidden"
               >
-                ⚡ ÚLTIMAS 5 VAGAS DISPONÍVEIS
+                <span className="inline-block">
+                  ⚡ ÚLTIMAS VAGAS DISPONÍVEIS
+                </span>
               </motion.div>
               
               <motion.div 
-                className="glass-effect rounded-3xl p-6 md:p-8 border border-neutral-800 max-w-md mx-auto relative overflow-hidden"
+                className="relative max-w-md mx-auto"
+                variants={premiumFloatingVariants}
+                animate="animate"
+              >
+                {/* Glow effect externo */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/20 to-primary/30 rounded-3xl blur-2xl scale-110" />
+                
+                <div className="relative glass-effect rounded-3xl p-6 md:p-8 border-2 border-primary/40 overflow-hidden shadow-2xl shadow-primary/30"
                 ref={cardRef}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
@@ -253,7 +322,7 @@ const ElitePlan: React.FC = () => {
               >
                 {/* Efeito de brilho no hover */}
                 <div 
-                  className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  className="absolute inset-0 bg-gradient-to-br from-primary/40 to-transparent opacity-0 group-hover:opacity-90 transition-all duration-500 pointer-events-none blur-sm"
                   style={{
                     transform: `translate(${mousePosition.x * 50}px, ${mousePosition.y * 50}px)`,
                   }}
@@ -262,7 +331,7 @@ const ElitePlan: React.FC = () => {
                 <div className="relative z-10">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <span className="text-light-muted line-through text-lg">R$240/mês</span>
-                    <span className="bg-green-900/30 text-green-400 text-xs font-bold px-2 py-0.5 rounded-full">
+                    <span className="bg-primary/20 text-primary text-xs font-bold px-3 py-1 rounded-full border border-primary/30">
                       50% OFF
                     </span>
                   </div>
@@ -270,7 +339,7 @@ const ElitePlan: React.FC = () => {
                   
                   {/* Contador de tempo restante */}
                   <motion.div 
-                    className="bg-neutral-800/50 rounded-lg p-3 mb-6"
+                    className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-3 mb-6"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
@@ -279,7 +348,7 @@ const ElitePlan: React.FC = () => {
                     <div className="flex items-center justify-center gap-1 text-lg font-mono">
                       <motion.span 
                         key={`hours-${timeLeft.hours}`}
-                        className="bg-neutral-900 px-2 py-1 rounded min-w-[32px] text-center"
+                        className="bg-dark border border-primary/30 px-2 py-1 rounded min-w-[32px] text-center text-primary font-bold"
                         initial={{ y: -10, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: 10, opacity: 0 }}
@@ -288,7 +357,7 @@ const ElitePlan: React.FC = () => {
                       </motion.span>:
                       <motion.span 
                         key={`minutes-${timeLeft.minutes}`}
-                        className="bg-neutral-900 px-2 py-1 rounded min-w-[32px] text-center"
+                        className="bg-dark border border-primary/30 px-2 py-1 rounded min-w-[32px] text-center text-primary font-bold"
                         initial={{ y: -10, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: 10, opacity: 0 }}
@@ -297,7 +366,7 @@ const ElitePlan: React.FC = () => {
                       </motion.span>:
                       <motion.span 
                         key={`seconds-${timeLeft.seconds}`}
-                        className="bg-neutral-900 px-2 py-1 rounded min-w-[32px] text-center"
+                        className="bg-dark border border-primary/30 px-2 py-1 rounded min-w-[32px] text-center text-primary font-bold"
                         initial={{ y: -10, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: 10, opacity: 0 }}
@@ -331,6 +400,7 @@ const ElitePlan: React.FC = () => {
                     <ArrowRight className="w-5 md:w-6 h-5 md:h-6 ml-3 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </div>
+              </div>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -340,7 +410,10 @@ const ElitePlan: React.FC = () => {
             
             {/* Right Side - Bioimpedance Scale (Mobile First) */}
             <motion.div variants={itemVariants} className="relative flex flex-col order-1 xl:order-2">
-              <div className="glass-effect rounded-3xl p-6 md:p-8 border border-neutral-800 overflow-hidden flex-1">
+              <div className="relative bg-gradient-to-br from-dark-lighter/95 to-dark/95 backdrop-blur-xl rounded-3xl p-6 md:p-8 border-2 border-primary/40 overflow-hidden flex-1 shadow-2xl shadow-primary/30">
+                {/* Glow interno */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 rounded-3xl" />
+                
                 <div className="relative z-10">
                   <div className="text-center mb-6">
                     <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 md:px-6 py-2 mb-4 md:mb-6">
@@ -360,7 +433,7 @@ const ElitePlan: React.FC = () => {
                     <motion.div 
                       variants={floatingVariants}
                       animate="animate"
-                      className="relative glass-effect rounded-2xl p-6 md:p-8 border border-neutral-800"
+                      className="relative glass-effect rounded-2xl p-6 md:p-8 border border-primary/20 shadow-xl shadow-primary/10"
                     >
                       <img
                         src="/images/balanca.png"
@@ -396,7 +469,7 @@ const ElitePlan: React.FC = () => {
                   </div>
 
                   {/* Metrics List */}
-                  <div className="glass-effect rounded-2xl p-4 md:p-6 border border-neutral-800">
+                  <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-4 md:p-6 border border-primary/20">
                     <h4 className="text-lg md:text-xl font-bold text-center mb-3 md:mb-4 text-light">
                       Obtenha leitura avançada de +17 métricas:
                     </h4>
@@ -455,7 +528,10 @@ const ElitePlan: React.FC = () => {
             {/* Left Side - Benefits (Mobile Second) */}
             <motion.div variants={itemVariants} className="space-y-6 order-2 xl:order-1">
               <div className="relative">
-                <div className="glass-effect rounded-3xl p-6 md:p-8 border border-neutral-800">
+                <div className="bg-gradient-to-br from-dark-lighter/95 to-dark/95 backdrop-blur-xl rounded-3xl p-6 md:p-8 border-2 border-primary/30 shadow-2xl shadow-primary/20">
+                  {/* Glow interno */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 rounded-3xl" />
+                  
                   <div className="flex items-center gap-3 mb-6">
                     <div className="p-2 md:p-3 bg-primary rounded-xl">
                       <Shield className="h-6 md:h-8 w-6 md:w-8 text-dark" />
@@ -468,7 +544,7 @@ const ElitePlan: React.FC = () => {
                       <motion.div
                         key={index} 
                         variants={itemVariants}
-                        className="group flex items-start gap-3 p-3 rounded-xl hover:bg-neutral-800/30 transition-all duration-300"
+                        className="group flex items-start gap-3 p-3 rounded-xl hover:bg-primary/10 transition-all duration-300 border border-transparent hover:border-primary/20"
                       >
                         <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center">
                           <Lottie 
@@ -494,7 +570,10 @@ const ElitePlan: React.FC = () => {
 
               {/* Team Section */}
               <motion.div variants={itemVariants} className="relative">
-                <div className="glass-effect rounded-3xl p-6 md:p-8 border border-neutral-800">
+                <div className="bg-gradient-to-br from-dark-lighter/95 to-dark/95 backdrop-blur-xl rounded-3xl p-6 md:p-8 border-2 border-primary/30 shadow-2xl shadow-primary/20">
+                  {/* Glow interno */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 rounded-3xl" />
+                  
                   <h4 className="text-xl md:text-2xl font-bold text-center mb-6 text-light">
                     Sua Equipe de Especialistas
                   </h4>
