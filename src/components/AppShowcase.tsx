@@ -30,17 +30,12 @@ const AppShowcase: React.FC = () => {
           animate={inView ? "visible" : "hidden"}
           className="flex flex-col items-center justify-center"
         >
-          <div className="relative w-full max-w-4xl mx-auto">
-            <div className="relative z-10">
-              <img 
-                src="/images/efeitos/celular.png" 
-                alt="Aplicativo ScarFit" 
-                className="w-full h-auto rounded-2xl shadow-2xl transform scale-102 md:scale-105"
-              />
-            </div>
-            
-            {/* Efeito de brilho */}
-            <div className="absolute -inset-8 bg-gradient-to-r from-primary/20 to-transparent rounded-3xl blur-3xl -z-10"></div>
+          <div className="w-full max-w-3xl mx-auto">
+            <img 
+              src="/images/efeitos/celular.png" 
+              alt="Aplicativo ScarFit" 
+              className="w-full h-auto block mx-auto"
+            />
           </div>
           
           <div className="text-center mt-12 max-w-3xl mx-auto">

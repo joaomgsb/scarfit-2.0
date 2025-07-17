@@ -267,6 +267,34 @@ const ElitePlan: React.FC = () => {
                       ))}
                     </div>
                   </div>
+
+                  {/* Other Plans Section */}
+                  <div className="mt-8">
+                    <div className="flex flex-col items-center justify-center gap-4 mb-4 text-center">
+                      <div className="flex items-center gap-2">
+                        <Star className="w-5 md:w-6 h-5 md:h-6 text-primary" />
+                        <span className="text-primary font-semibold text-sm md:text-base">OUTROS PLANOS DISPONÍVEIS</span>
+                        <Star className="w-5 md:w-6 h-5 md:h-6 text-primary" />
+                      </div>
+                    </div>
+                    
+                    <p className="text-light-muted leading-relaxed mb-4 text-sm md:text-base text-center">
+                      Temos outros planos que podem se adequar melhor ao seu perfil.
+                    </p>
+                    
+                    <div className="text-center">
+                      <a
+                        href="https://wa.me/5541984961012?text=Olá! Gostaria de conhecer todos os planos disponíveis da ScarFit. Quero saber qual se adequa melhor ao meu perfil e orçamento."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-secondary text-sm md:text-base inline-flex items-center justify-center w-full md:w-auto"
+                      >
+                        <MessageSquare className="w-4 md:w-5 h-4 md:h-5 mr-2" />
+                        Conhecer Todos os Planos
+                        <ArrowRight className="w-4 md:w-5 h-4 md:h-5 ml-2" />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -342,36 +370,7 @@ const ElitePlan: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Bottom CTA */}
-          <motion.div variants={itemVariants} className="text-center mt-12">
-            <div className="glass-effect rounded-2xl p-6 md:p-8 border border-neutral-800 max-w-4xl mx-auto">
-              <div className="flex flex-col items-center justify-center gap-4 mb-4 text-center">
-                <div className="flex items-center gap-2">
-                  <Star className="w-5 md:w-6 h-5 md:h-6 text-primary" />
-                  <span className="text-primary font-semibold text-sm md:text-base">OUTROS PLANOS DISPONÍVEIS</span>
-                  <Star className="w-5 md:w-6 h-5 md:h-6 text-primary" />
-                </div>
-              </div>
-              
-              <p className="text-light-muted leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
-                O Plano Elite é nossa opção principal, mas temos outros planos personalizados 
-                que podem se adequar melhor ao seu perfil e orçamento.
-              </p>
-              
-              <div className="text-center">
-                <a
-                  href="https://wa.me/5541984961012?text=Olá! Gostaria de conhecer todos os planos disponíveis da ScarFit. Quero saber qual se adequa melhor ao meu perfil e orçamento."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary text-sm md:text-base"
-                >
-                  <MessageSquare className="w-4 md:w-5 h-4 md:h-5 mr-2" />
-                  Conhecer Todos os Planos
-                  <ArrowRight className="w-4 md:w-5 h-4 md:h-5 ml-2" />
-                </a>
-              </div>
-            </div>
-          </motion.div>
+          {/* Bottom CTA Removed - Moved to Technology Card */}
         </motion.div>
       </div>
     </section>

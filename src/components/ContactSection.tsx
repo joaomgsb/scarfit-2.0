@@ -76,8 +76,19 @@ const ContactSection: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            
+          {/* Mockup do Notebook */}
+          <motion.div 
+            variants={itemVariants} 
+            className="relative max-w-4xl mx-auto mb-16"
+          >
+            <img 
+              src="/images/efeitos/notebook.png" 
+              alt="Notebook mostrando depoimento de transformação"
+              className="w-full h-auto block mx-auto"
+            />
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Contact info */}
             <motion.div variants={itemVariants}>
               <div className="space-y-6">
