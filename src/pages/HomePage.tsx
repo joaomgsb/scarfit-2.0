@@ -12,6 +12,7 @@ import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import Feedbacks from '../components/Feedbacks';
 import AppShowcase from '../components/AppShowcase';
+import OurClients from '../components/OurClients';
 
 const HomePage: React.FC = () => {
   return (
@@ -38,6 +39,10 @@ const HomePage: React.FC = () => {
       
       <div id="feedbacks">
         <Feedbacks />
+      </div>
+      
+      <div id="clients">
+        <OurClients />
       </div>
       
       <div id="team">
