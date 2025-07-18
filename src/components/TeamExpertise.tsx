@@ -3,11 +3,8 @@ import { useInView } from 'react-intersection-observer';
 import Lottie, { LottieRefCurrentProps } from 'lottie-react';
 import { useRef, useEffect, useState } from 'react';
 
-// Import Lottie animations from arrastar folder
-import scarAnimation from '../animations/arrastar/scar.json';
-import gabrielaAnimation from '../animations/arrastar/gabriela.json';
-import luizAnimation from '../animations/arrastar/luiz.json';
-import danielAnimation from '../animations/arrastar/daniel.json';
+// Import da nova animação da equipe
+import teamAnimation from '../animations/arrastar/team.json';
 
 interface TeamMember {
   name: string;
@@ -15,7 +12,6 @@ interface TeamMember {
   image: string;
   credentials: string;
   description: string;
-  animationData: object;
 }
 
 // Interactive Lottie component with drag functionality
@@ -163,11 +159,11 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
       initial={false}
     >
       <motion.div 
-        className="glass-effect rounded-3xl p-8 h-full flex flex-col overflow-visible"
+        className="glass-effect rounded-3xl p-8 h-full flex flex-col"
         whileHover={{ scale: 1.03 }}
         transition={{ duration: 0.2, ease: "easeOut" }}
       >
-        <div className="flex items-start gap-6 mb-4 relative">
+        <div className="flex items-start gap-6 mb-4">
           {/* Photo */}
           <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden flex-shrink-0 bg-dark/50 shadow-lg">
             <img
@@ -178,7 +174,7 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
           </div>
 
           {/* Info */}
-          <div className="flex-1 pr-4 sm:pr-24 md:pr-28 lg:pr-32 xl:pr-36">
+          <div className="flex-1">
             <h3 className="text-xl font-semibold text-light mb-1">
               {member.name}
             </h3>
@@ -189,14 +185,6 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
               {member.credentials}
             </div>
           </div>
-          
-          {/* Interactive Animation - Desktop only */}
-          <div className="hidden sm:block absolute -right-72 -top-20 w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-112 xl:h-112">
-            <InteractiveLottie 
-              animationData={member.animationData}
-              className="w-full h-full"
-            />
-          </div>
         </div>
         <p className="text-light-muted text-sm sm:text-base leading-relaxed flex-grow">
           {member.description}
@@ -204,7 +192,7 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
       </motion.div>
     </motion.div>
   );
-};
+}
 
 // Main component for the team section
 const TeamExpertise: React.FC = () => {
@@ -229,32 +217,28 @@ const TeamExpertise: React.FC = () => {
       role: "Fundador & Metodologista",
       image: "images/joao.jpeg",
       credentials: "Certificado Enade Uruguay",
-      description: "Criador da metodologia ScarFit, com mais de 7 anos transformando vidas através da ciência aplicada.",
-      animationData: scarAnimation
+      description: "Criador da metodologia ScarFit, com mais de 7 anos transformando vidas através da ciência aplicada."
     },
     {
       name: "Gabriela Trindade",
       role: "Nutricionista Esportiva",
       image: "images/gabrielasemfundo.png",
       credentials: "CRN 1426",
-      description: "Especialista em nutrição estratégica para transformação corporal e performance otimizada.",
-      animationData: gabrielaAnimation
+      description: "Especialista em nutrição estratégica para transformação corporal e performance otimizada."
     },
     {
       name: "Luiz Camargo",
       role: "Responsável Técnico",
       image: "images/Luiz.jpeg",
       credentials: "CREF 083338-G/SP",
-      description: "Mais de 20 anos de experiência garantindo a excelência técnica de todos os protocolos.",
-      animationData: luizAnimation
+      description: "Mais de 20 anos de experiência garantindo a excelência técnica de todos os protocolos."
     },
     {
       name: "Daniel França",
       role: "Especialista em Emagrecimento",
       image: "images/daniel.jpeg",
       credentials: "CREF 153464-G/SP",
-      description: "Foco em resultados sustentáveis e protocolos altamente individualizados para queima de gordura.",
-      animationData: danielAnimation
+      description: "Foco em resultados sustentáveis e protocolos altamente individualizados para queima de gordura."
     }
   ];
 
@@ -265,7 +249,7 @@ const TeamExpertise: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="max-w-6xl mx-auto overflow-visible"
+          className="max-w-6xl mx-auto"
         >
           {/* Header */}
           <motion.div
@@ -282,27 +266,31 @@ const TeamExpertise: React.FC = () => {
             </p>
           </motion.div>
 
-          {/* Team grid */}
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 gap-y-16 sm:gap-y-20 lg:gap-y-24 xl:gap-y-32 gap-x-32 sm:gap-x-40 lg:gap-x-48 xl:gap-x-56"
-            variants={containerVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-          >
-            {team.map((member) => (
-              <div key={member.name} className="flex flex-col">
-                <TeamMemberCard member={member} />
-                {/* Interactive Animation - Mobile only - Below the card */}
-                <div className="flex justify-center mt-6 sm:hidden">
-                  <div className="w-96 h-96">
-                    <InteractiveLottie 
-                      animationData={member.animationData}
-                      className="w-full h-full"
-                    />
-                  </div>
-                </div>
-              </div>
+          {/* Team grid com animação central */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            {team.map((member, index) => (
+              <TeamMemberCard key={member.name} member={member} />
             ))}
+          </div>
+
+          {/* Animação central da equipe */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex justify-center mb-16"
+          >
+            <div className="w-full max-w-2xl lg:max-w-3xl xl:max-w-4xl">
+              <InteractiveLottie 
+                animationData={teamAnimation}
+                className="w-full h-auto aspect-square"
+              />
+              <div className="text-center mt-6">
+                <p className="text-light-muted italic text-sm sm:text-base">
+                  Arraste para conhecer nossa equipe
+                </p>
+              </div>
+            </div>
           </motion.div>
 
           {/* Philosophy */}
