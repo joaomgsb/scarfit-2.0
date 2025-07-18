@@ -63,9 +63,9 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-1 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight"
           >
-            Desbloqueie Sua
+            ScarFit: A Ciência da
             <br />
-            Melhor Versão
+            Sua Transformação
           </motion.h1>
           
           {/* Country Flags */}
@@ -82,8 +82,7 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="text-lg sm:text-xl md:text-2xl text-light-muted mb-8 max-w-3xl mx-auto leading-relaxed px-4"
           >
-            Metodologia científica personalizada que transforma seu corpo e seus hábitos. 
-            Resultados reais, acompanhamento premium, transformação garantida.
+            Metodologia científica personalizada que transforma seu corpo e seus hábitos. Resultados reais, acompanhamento premium, transformação garantida.
           </motion.p>
           
           {/* CTAs */}
@@ -96,7 +95,7 @@ const Hero: React.FC = () => {
               duration={500}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-primary text-dark font-bold py-4 px-6 md:px-8 rounded-xl text-base md:text-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/30 group"
             >
-              Iniciar Transformação
+              Comece Sua Transformação Agora!
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             
@@ -109,7 +108,7 @@ const Hero: React.FC = () => {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 border-2 border-primary text-primary hover:bg-primary hover:text-dark font-bold py-4 px-6 md:px-8 rounded-xl text-base md:text-lg transition-all duration-300 group"
             >
               <Play className="w-5 h-5" />
-              Ver Transformações
+              Inspire-se: Veja Nossas Transformações
             </Link>
           </motion.div>
           

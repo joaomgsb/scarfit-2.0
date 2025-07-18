@@ -80,8 +80,7 @@ const TransformationJourney: React.FC = () => {
               Por Que Outros Métodos Falham
             </h2>
             <p className="text-xl text-light-muted max-w-3xl mx-auto">
-              Entendemos suas frustrações porque já estivemos lá. 
-              A ScarFit nasceu para resolver os problemas que outros ignoram.
+              Você já tentou de tudo e não viu resultados? Nós entendemos. Diferente dos métodos tradicionais que te deixam na mão, a ScarFit foi criada para preencher as lacunas e entregar a transformação que você realmente busca.
             </p>
           </motion.div>
 

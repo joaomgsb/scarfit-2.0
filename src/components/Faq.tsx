@@ -110,7 +110,7 @@ const Faq: React.FC = () => {
   const faqItems = [
     {
       question: "Nunca fiz consultoria, é para mim?",
-      answer: "Absolutamente! A ScarFit foi criada justamente para quem busca uma primeira experiência de alto nível com consultoria fitness. Nossa metodologia é acessível para iniciantes, mas sofisticada o suficiente para atender mesmo quem já tem experiência com treinos e dietas."
+      answer: "Sim, absolutamente! A ScarFit foi desenhada para todos que buscam resultados reais e duradouros, independentemente do seu nível de experiência. Nossa metodologia é intuitiva para iniciantes e robusta o suficiente para atletas experientes. Com acompanhamento premium e uma equipe dedicada, você terá todo o suporte para iniciar e manter sua jornada de transformação com confiança."
     },
     {
       question: "E se eu não conseguir seguir o plano por causa da rotina?",
@@ -225,7 +225,7 @@ const Faq: React.FC = () => {
                 className="inline-flex items-center gap-3 bg-primary text-dark font-bold py-4 px-8 rounded-xl text-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/30"
               >
                 <HelpCircle className="w-6 h-6" />
-                Tirar Minhas Dúvidas
+                Converse Conosco: Sua Jornada Começa Aqui
                 <Sparkles className="w-6 h-6" />
               </a>
             </div>

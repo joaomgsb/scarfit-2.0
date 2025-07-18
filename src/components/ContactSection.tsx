@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { MessageSquare, ArrowRight, Sparkles, Crown, CheckCircle } from 'lucide-react';
 
 const ContactSection: React.FC = () => {
   const [ref, inView] = useInView({
@@ -48,13 +49,48 @@ const ContactSection: React.FC = () => {
               </p>
             </div>
             
-            <div className="relative max-w-4xl mx-auto">
+            <div className="relative max-w-4xl mx-auto mb-12">
+              {/* Imagem para Desktop */}
               <img 
                 src="/images/efeitos/notebook.png" 
                 alt="Notebook mostrando depoimento de transformação"
-                className="w-full h-auto block mx-auto"
+                className="w-full h-auto block mx-auto hidden md:block"
+              />
+              
+              {/* Imagem para Mobile */}
+              <img 
+                src="/images/efeitos/celularmockup.png" 
+                alt="Celular mostrando depoimento de transformação"
+                className="w-full h-auto block mx-auto md:hidden"
               />
             </div>
+
+            {/* Card de Conversão Simples */}
+            <motion.div 
+              variants={itemVariants} 
+              className="max-w-2xl mx-auto"
+            >
+              <div className="glass-effect rounded-2xl p-6 md:p-8 border border-primary/30 text-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-light mb-4">
+                  Comece Sua Transformação Hoje
+                </h3>
+                
+                <p className="text-light-muted mb-6">
+                  Junte-se a mais de 1200 pessoas que já transformaram suas vidas
+                </p>
+
+                <a
+                  href="https://wa.me/5541984961012?text=Olá! Quero começar minha transformação com a ScarFit. Gostaria de conhecer os planos disponíveis."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-primary text-dark font-bold py-4 px-6 rounded-xl text-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/30"
+                >
+                  <MessageSquare className="w-5 h-5" />
+                  Falar com Especialista
+                  <ArrowRight className="w-5 h-5" />
+                </a>
+              </div>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

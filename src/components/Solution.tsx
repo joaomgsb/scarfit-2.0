@@ -65,7 +65,6 @@ const Solution: React.FC = () => {
                 {/* Vídeo de fundo */}
                 <video
                   src="/videos/videosite.mp4"
-                  type="video/mp4"
                   autoPlay
                   loop
                   muted
@@ -127,7 +126,7 @@ const Solution: React.FC = () => {
                 className="btn-primary text-center inline-flex items-center gap-3 text-lg px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/30"
               >
                 <Sparkles className="w-6 h-6" />
-                Quero Conhecer a ScarFit
+                Quero Minha Melhor Versão!
               </Link>
             </motion.div>
           </div>

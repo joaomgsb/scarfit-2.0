@@ -103,25 +103,25 @@ const MethodologyShowcase: React.FC = () => {
     {
       animationData: etapa1Animation,
       title: "Análise Profunda",
-      description: "Avaliação completa do seu perfil físico, rotina e objetivos para criar uma base sólida.",
-      details: ["Bioimpedância profissional", "Análise de rotina", "Definição de metas"]
+      description: "Avaliação completa do seu perfil físico, rotina e objetivos. Dados precisos para criar um plano único e eficaz.",
+      details: ["Bioimpedância profissional", "Análise de rotina personalizada", "Definição de metas claras"]
     },
     {
       animationData: etapa2Animation,
       title: "Protocolo Personalizado",
-      description: "Criação de treinos e nutrição 100% adaptados ao seu biotipo e estilo de vida.",
+      description: "Treinos e nutrição 100% adaptados ao seu biotipo e estilo de vida. Estratégico, eficaz e sustentável.",
       details: ["Treinos sob medida", "Plano nutricional flexível", "Suplementação estratégica"]
     },
     {
       animationData: etapa3Animation,
       title: "Acompanhamento Diário",
-      description: "Suporte contínuo da equipe multidisciplinar via WhatsApp para garantir sua evolução.",
+      description: "Suporte contínuo da equipe multidisciplinar via WhatsApp. Ajustes em tempo real para garantir sua evolução.",
       details: ["Suporte 24/7", "Ajustes em tempo real", "Motivação constante"]
     },
     {
       animationData: etapa4Animation,
       title: "Evolução Constante",
-      description: "Monitoramento de resultados e otimização contínua para máxima eficiência.",
+      description: "Monitoramento de resultados e otimização contínua. Transformações duradouras que se mantêm para sempre.",
       details: ["Métricas precisas", "Ajustes estratégicos", "Resultados sustentáveis"]
     }
   ];
@@ -197,21 +197,7 @@ const MethodologyShowcase: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom CTA */}
-          <motion.div variants={itemVariants} className="text-center mt-12 sm:mt-16 lg:mt-20">
-            <div className="glass-effect rounded-xl sm:rounded-2xl p-6 sm:p-8 max-w-2xl mx-auto mx-4 sm:mx-auto">
-              <h3 className="text-xl sm:text-2xl font-semibold text-light mb-3 sm:mb-4">
-                Pronto para Começar Sua Jornada?
-              </h3>
-              <p className="text-sm sm:text-base text-light-muted mb-4 sm:mb-6 px-2">
-                Nossa metodologia já transformou mais de 1200 vidas. Você pode ser o próximo.
-              </p>
-              <button className="btn-primary text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3">
-                Iniciar Minha Transformação
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
-              </button>
-            </div>
-          </motion.div>
+
         </motion.div>
       </div>
     </section>

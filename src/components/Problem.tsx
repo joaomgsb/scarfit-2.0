@@ -84,11 +84,11 @@ const Problem: React.FC = () => {
             </div>
             
             <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight">
-              Cansado de promessas vazias e treinos que não se encaixam na sua vida?
+              Chega de Ciclos Viciosos: Por Que a ScarFit é Diferente
             </motion.h2>
             
             <motion.p variants={itemVariants} className="text-lg md:text-xl text-light-gray max-w-3xl mx-auto leading-relaxed">
-              A maioria das pessoas passa anos tentando transformar seu corpo com métodos que simplesmente não funcionam para seu estilo de vida.
+              Você já se sentiu invisível em academias lotadas? Já seguiu dietas restritivas que não duraram? Nós entendemos. A indústria fitness está cheia de promessas vazias e soluções genéricas. Mas a ScarFit veio para mudar esse jogo.
             </motion.p>
           </motion.div>
         </motion.div>

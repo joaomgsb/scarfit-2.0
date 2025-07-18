@@ -147,12 +147,11 @@ const Results: React.FC = () => {
             </div>
             
             <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight">
-              Resultados que Falam por Si: Veja as Transformações
+              Transformações Reais. Histórias de Sucesso Que Inspiram.
             </motion.h2>
             
             <motion.p variants={itemVariants} className="text-lg md:text-xl text-light-gray max-w-3xl mx-auto leading-relaxed">
-              O físico que você sempre quis, guiado pela estratégia certa. Confira algumas das transformações 
-              que nossos clientes conquistaram seguindo a metodologia ScarFit.
+              Mais do que números, a ScarFit transforma vidas. Conheça as histórias inspiradoras de pessoas reais que, assim como você, buscaram uma mudança e encontraram na nossa metodologia o caminho para o sucesso. Se eles conseguiram, você também pode!
             </motion.p>
           </motion.div>
         </motion.div>

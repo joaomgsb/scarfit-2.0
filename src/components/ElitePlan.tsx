@@ -12,18 +12,18 @@ import {
   Crown,
   CheckCircle
 } from 'lucide-react';
-import Lottie from 'lottie-react';
-
-// Import Lottie animations
-import brainAnimation from '../animations/beneficios/Brain.json';
-import appAnimation from '../animations/beneficios/App.json';
-import ajustesAnimation from '../animations/beneficios/ajustes.json';
-import healthAnimation from '../animations/beneficios/Health.json';
-import checkAnimation from '../animations/beneficios/Check.json';
-import suporteAnimation from '../animations/beneficios/suporte.json';
-import targetAnimation from '../animations/beneficios/treino.json';
-import foodAnimation from '../animations/beneficios/plano.json';
-import awardAnimation from '../animations/beneficios/revisao.json';
+// Emojis dos benefícios
+const beneficioEmojis = {
+  engenharia: "/images/plano/engenharia.png",
+  app: "/images/plano/app.png",
+  ajustes: "/images/plano/ajustes.png",
+  check: "/images/plano/check.png",
+  suporte: "/images/plano/suporte.png",
+  balanca: "/images/plano/balanca.png",
+  treino: "/images/plano/treino.png",
+  plano: "/images/plano/plano.png",
+  revisao: "/images/plano/revisao.png"
+};
 
 const ElitePlan: React.FC = () => {
   const [ref, inView] = useInView({
@@ -164,47 +164,47 @@ const ElitePlan: React.FC = () => {
 
   const beneficios = [
     {
-      animation: brainAnimation,
+      emoji: beneficioEmojis.engenharia,
       titulo: "Engenharia de performance com base científica",
       descricao: "Protocolos baseados em estudos científicos para máxima eficiência"
     },
     {
-      animation: appAnimation,
+      emoji: beneficioEmojis.app,
       titulo: "App integrado para treinos e alimentação",
       descricao: "Tecnologia de ponta para acompanhar sua evolução em tempo real"
     },
     {
-      animation: ajustesAnimation,
+      emoji: beneficioEmojis.ajustes,
       titulo: "Ajustes quinzenais de treino e dieta",
       descricao: "Adaptação constante para resultados acelerados e sustentáveis"
     },
     {
-      animation: checkAnimation,
+      emoji: beneficioEmojis.check,
       titulo: "Check-ins com métricas reais",
       descricao: "Acompanhamento preciso da sua composição corporal"
     },
     {
-      animation: suporteAnimation,
+      emoji: beneficioEmojis.suporte,
       titulo: "Suporte via WhatsApp (resposta em até 2h)",
       descricao: "Atendimento prioritário quando você mais precisar"
     },
     {
-      animation: healthAnimation,
+      emoji: beneficioEmojis.balanca,
       titulo: "Balança de bioimpedância enviada para casa",
       descricao: "Tecnologia profissional para monitoramento preciso"
     },
     {
-      animation: targetAnimation,
+      emoji: beneficioEmojis.treino,
       titulo: "Treino 100% individualizado",
       descricao: "Protocolo único criado especificamente para você"
     },
     {
-      animation: foodAnimation,
+      emoji: beneficioEmojis.plano,
       titulo: "Plano alimentar sob medida",
       descricao: "Nutrição estratégica adaptada ao seu estilo de vida"
     },
     {
-      animation: awardAnimation,
+      emoji: beneficioEmojis.revisao,
       titulo: "Revisão estratégica com João Scar",
       descricao: "Mentoria direta com o fundador da metodologia"
     }
@@ -307,19 +307,20 @@ const ElitePlan: React.FC = () => {
                 {/* Glow effect externo */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/20 to-primary/30 rounded-3xl blur-2xl scale-110" />
                 
-                <div className="relative glass-effect rounded-3xl p-6 md:p-8 border-2 border-primary/40 overflow-hidden shadow-2xl shadow-primary/30"
-                ref={cardRef}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
-                custom={mousePosition}
-                variants={card3DHover}
-                initial="initial"
-                whileHover="hover"
-                style={{
-                  transformStyle: 'preserve-3d',
-                  transform: 'perspective(1000px)'
-                }}
-              >
+                <motion.div 
+                  className="relative glass-effect rounded-3xl p-6 md:p-8 border-2 border-primary/40 overflow-hidden shadow-2xl shadow-primary/30"
+                  ref={cardRef}
+                  onMouseMove={handleMouseMove}
+                  onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
+                  custom={mousePosition}
+                  variants={card3DHover}
+                  initial="initial"
+                  whileHover="hover"
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    transform: 'perspective(1000px)'
+                  }}
+                >
                 {/* Efeito de brilho no hover */}
                 <div 
                   className="absolute inset-0 bg-gradient-to-br from-primary/40 to-transparent opacity-0 group-hover:opacity-90 transition-all duration-500 pointer-events-none blur-sm"
@@ -400,7 +401,7 @@ const ElitePlan: React.FC = () => {
                     <ArrowRight className="w-5 md:w-6 h-5 md:h-6 ml-3 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </div>
-              </div>
+              </motion.div>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -412,7 +413,7 @@ const ElitePlan: React.FC = () => {
             <motion.div variants={itemVariants} className="relative flex flex-col order-1 xl:order-2">
               <div className="relative bg-gradient-to-br from-dark-lighter/95 to-dark/95 backdrop-blur-xl rounded-3xl p-6 md:p-8 border-2 border-primary/40 overflow-hidden flex-1 shadow-2xl shadow-primary/30">
                 {/* Glow interno */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 rounded-3xl" />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 rounded-3xl pointer-events-none" />
                 
                 <div className="relative z-10">
                   <div className="text-center mb-6">
@@ -423,7 +424,7 @@ const ElitePlan: React.FC = () => {
                       </span>
                     </div>
                     
-                    <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 text-gradient">
+                    <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 text-gradient select-text">
                       Receba a inteligência do seu corpo direto na sua casa
                     </h3>
                   </div>
@@ -470,7 +471,7 @@ const ElitePlan: React.FC = () => {
 
                   {/* Metrics List */}
                   <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-4 md:p-6 border border-primary/20">
-                    <h4 className="text-lg md:text-xl font-bold text-center mb-3 md:mb-4 text-light">
+                    <h4 className="text-lg md:text-xl font-bold text-center mb-3 md:mb-4 text-light select-text">
                       Obtenha leitura avançada de +17 métricas:
                     </h4>
                     
@@ -488,7 +489,7 @@ const ElitePlan: React.FC = () => {
                           className="flex items-center gap-2 text-light-muted"
                         >
                           <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-primary rounded-full" />
-                          <span>{metrica}</span>
+                          <span className="select-text">{metrica}</span>
                         </motion.div>
                       ))}
                     </div>
@@ -530,38 +531,38 @@ const ElitePlan: React.FC = () => {
               <div className="relative">
                 <div className="bg-gradient-to-br from-dark-lighter/95 to-dark/95 backdrop-blur-xl rounded-3xl p-6 md:p-8 border-2 border-primary/30 shadow-2xl shadow-primary/20">
                   {/* Glow interno */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 rounded-3xl" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 rounded-3xl pointer-events-none" />
                   
-                  <div className="flex items-center gap-3 mb-6">
+                  <div className="flex items-center gap-3 mb-6 relative z-10">
                     <div className="p-2 md:p-3 bg-primary rounded-xl">
                       <Shield className="h-6 md:h-8 w-6 md:w-8 text-dark" />
                     </div>
-                    <h4 className="text-xl md:text-2xl font-bold text-light">O que está incluído</h4>
+                    <h4 className="text-xl md:text-2xl font-bold text-light select-text">O que está incluído</h4>
                   </div>
                   
-                  <div className="grid grid-cols-1 gap-4">
+                  <div className="grid grid-cols-1 gap-4 relative z-10">
                     {beneficios.map((beneficio, index) => (
                       <motion.div
                         key={index} 
                         variants={itemVariants}
-                        className="group flex items-start gap-3 p-3 rounded-xl hover:bg-primary/10 transition-all duration-300 border border-transparent hover:border-primary/20"
+                        className="group relative flex items-start gap-3 p-3 rounded-xl hover:bg-primary/10 transition-all duration-300 border border-transparent hover:border-primary/20 cursor-pointer"
                       >
-                        <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center">
-                          <Lottie 
-                            animationData={beneficio.animation} 
-                            loop={true}
-                            style={{ width: 40, height: 40 }}
+                        <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center relative z-10">
+                          <img 
+                            src={beneficio.emoji} 
+                            alt={beneficio.titulo}
+                            className="w-8 h-8"
                           />
                         </div>
-                        <div className="flex-1">
-                          <h5 className="font-bold text-light mb-1 group-hover:text-primary transition-colors text-sm md:text-base">
+                        <div className="flex-1 relative z-10">
+                          <h5 className="font-bold text-light mb-1 group-hover:text-primary transition-colors text-sm md:text-base select-text">
                             {beneficio.titulo}
                           </h5>
-                          <p className="text-xs md:text-sm text-light-muted leading-relaxed">
+                          <p className="text-xs md:text-sm text-light-muted leading-relaxed select-text">
                             {beneficio.descricao}
                           </p>
                         </div>
-                        <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity relative z-10" />
                       </motion.div>
                     ))}
                   </div>
@@ -572,13 +573,13 @@ const ElitePlan: React.FC = () => {
               <motion.div variants={itemVariants} className="relative">
                 <div className="bg-gradient-to-br from-dark-lighter/95 to-dark/95 backdrop-blur-xl rounded-3xl p-6 md:p-8 border-2 border-primary/30 shadow-2xl shadow-primary/20">
                   {/* Glow interno */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 rounded-3xl" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 rounded-3xl pointer-events-none" />
                   
-                  <h4 className="text-xl md:text-2xl font-bold text-center mb-6 text-light">
+                  <h4 className="text-xl md:text-2xl font-bold text-center mb-6 text-light select-text relative z-10">
                     Sua Equipe de Especialistas
                   </h4>
                   
-                  <div className="flex justify-center items-center gap-4 md:gap-6 flex-wrap">
+                  <div className="flex justify-center items-center gap-4 md:gap-6 flex-wrap relative z-10">
                     {equipe.map((membro, index) => (
                       <motion.div
                         key={index}
@@ -592,8 +593,8 @@ const ElitePlan: React.FC = () => {
                             className="relative w-16 h-16 rounded-full object-cover mx-auto border-2 border-neutral-700 group-hover:border-primary transition-colors"
                           />
                         </div>
-                        <h5 className="font-bold text-light text-xs md:text-sm mb-1">{membro.nome}</h5>
-                        <p className="text-light-muted text-xs">{membro.cargo}</p>
+                        <h5 className="font-bold text-light text-xs md:text-sm mb-1 select-text">{membro.nome}</h5>
+                        <p className="text-light-muted text-xs select-text">{membro.cargo}</p>
                       </motion.div>
                     ))}
                   </div>

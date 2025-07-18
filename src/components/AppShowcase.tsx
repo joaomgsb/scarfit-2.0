@@ -32,10 +32,10 @@ const AppShowcase: React.FC = () => {
         >
           <div className="text-center max-w-3xl mx-auto mb-6">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient mb-4">
-              TUDO ISTO NO SEU CELULAR
+              A ScarFit no Seu Bolso
             </h2>
             <p className="text-lg md:text-xl text-light-muted leading-relaxed mb-6">
-              Acompanhe sua evolução, receba treinos personalizados e tenha acesso a todo o conteúdo exclusivo diretamente do seu smartphone.
+              Sua transformação na palma da mão. Acompanhe sua evolução, receba treinos personalizados e tenha acesso a todo o conteúdo exclusivo diretamente do seu smartphone.
               Transforme seu corpo com a tecnologia a seu favor.
             </p>
           </div>
