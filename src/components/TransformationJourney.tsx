@@ -76,11 +76,24 @@ const TransformationJourney: React.FC = () => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center mb-20">
-            <h2 className="text-gradient mb-6">
+            {/* Título Desktop */}
+            <h2 className="hidden md:block text-gradient mb-6">
               Por Que Outros Métodos Falham
             </h2>
-            <p className="text-xl text-light-muted max-w-3xl mx-auto">
+            
+            {/* Título Mobile (Compacto) */}
+            <h2 className="md:hidden text-gradient mb-6">
+              Por Que Outros Falham
+            </h2>
+            
+            {/* Descrição Desktop */}
+            <p className="hidden md:block text-xl text-light-muted max-w-3xl mx-auto">
               Você já tentou de tudo e não viu resultados? Nós entendemos. Diferente dos métodos tradicionais que te deixam na mão, a ScarFit foi criada para preencher as lacunas e entregar a transformação que você realmente busca.
+            </p>
+            
+            {/* Descrição Mobile (Compacta) */}
+            <p className="md:hidden text-base text-light-muted max-w-xl mx-auto">
+              Você já tentou de tudo e não viu resultados? Diferente dos métodos tradicionais, a ScarFit foi criada para entregar a transformação que você realmente busca.
             </p>
           </motion.div>
 

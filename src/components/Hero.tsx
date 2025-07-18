@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
           {/* Headline principal */}
           <motion.h1 
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-1 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-1 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight"
           >
             ScarFit: A Ciência da
             <br />
@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
           </motion.h1>
           
           {/* Country Flags */}
-          <motion.div variants={itemVariants} className="flex justify-center items-center gap-1 mb-4">
+          <motion.div variants={itemVariants} className="flex justify-center items-center gap-1 mb-3 md:mb-4">
             <img src="/svg/brasil.svg" alt="Brasil" className="w-5 h-4 opacity-80 hover:opacity-100 transition-opacity" />
             <img src="/svg/uruguai.svg" alt="Uruguai" className="w-5 h-4 opacity-80 hover:opacity-100 transition-opacity" />
             <img src="/svg/chile.svg" alt="Chile" className="w-5 h-4 opacity-80 hover:opacity-100 transition-opacity" />
@@ -77,26 +77,34 @@ const Hero: React.FC = () => {
             <img src="/svg/portugal.svg" alt="Portugal" className="w-5 h-4 opacity-80 hover:opacity-100 transition-opacity" />
           </motion.div>
           
-          {/* Subtítulo */}
+          {/* Subtítulo Desktop */}
           <motion.p 
             variants={itemVariants}
-            className="text-lg sm:text-xl md:text-2xl text-light-muted mb-8 max-w-3xl mx-auto leading-relaxed px-4"
+            className="hidden md:block text-lg sm:text-xl md:text-2xl text-light-muted mb-8 max-w-3xl mx-auto leading-relaxed px-4"
           >
             Metodologia científica personalizada que transforma seu corpo e seus hábitos. Resultados reais, acompanhamento premium, transformação garantida.
           </motion.p>
+
+          {/* Subtítulo Mobile (Compacto) */}
+          <motion.p 
+            variants={itemVariants}
+            className="md:hidden text-base text-light-muted mb-6 max-w-2xl mx-auto leading-relaxed px-4"
+          >
+            Metodologia científica personalizada para transformar seu corpo e seus hábitos. Resultados reais garantidos.
+          </motion.p>
           
           {/* CTAs */}
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center mb-12 md:mb-16 px-4">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 md:gap-6 justify-center items-center mb-8 md:mb-16 px-4">
             <Link
               to="contact"
               spy={true}
               smooth={true}
               offset={-100}
               duration={500}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-primary text-dark font-bold py-4 px-6 md:px-8 rounded-xl text-base md:text-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/30 group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 md:gap-3 bg-primary text-dark font-bold py-3 px-4 md:py-4 md:px-8 rounded-xl text-sm md:text-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/30 group"
             >
               Comece Sua Transformação Agora!
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             
             <Link
@@ -105,25 +113,25 @@ const Hero: React.FC = () => {
               smooth={true}
               offset={-100}
               duration={500}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 border-2 border-primary text-primary hover:bg-primary hover:text-dark font-bold py-4 px-6 md:px-8 rounded-xl text-base md:text-lg transition-all duration-300 group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 md:gap-3 border-2 border-primary text-primary hover:bg-primary hover:text-dark font-bold py-3 px-4 md:py-4 md:px-8 rounded-xl text-sm md:text-lg transition-all duration-300 group"
             >
-              <Play className="w-5 h-5" />
+              <Play className="w-4 h-4 md:w-5 md:h-5" />
               Inspire-se: Veja Nossas Transformações
             </Link>
           </motion.div>
           
           {/* Indicadores de qualidade */}
-          <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 max-w-3xl mx-auto px-4">
+          <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8 max-w-3xl mx-auto px-4">
             <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-primary mb-2">1200+</div>
+              <div className="text-xl md:text-3xl font-bold text-primary mb-1">1200+</div>
               <div className="text-sm md:text-base text-light-muted">Vidas Transformadas</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-primary mb-2">9.4t</div>
+              <div className="text-xl md:text-3xl font-bold text-primary mb-1">9.4t</div>
               <div className="text-sm md:text-base text-light-muted">Gordura Eliminada</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-primary mb-2">98%</div>
+              <div className="text-xl md:text-3xl font-bold text-primary mb-1">98%</div>
               <div className="text-sm md:text-base text-light-muted">Taxa de Sucesso</div>
             </div>
           </motion.div>

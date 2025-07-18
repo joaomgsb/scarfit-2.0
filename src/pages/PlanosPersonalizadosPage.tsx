@@ -327,15 +327,16 @@ const PlanosPersonalizadosPage: React.FC = () => {
       </section>
 
       {/* Diferenciais */}
-      <section className="py-16 bg-light-off">
-        <div className="container mx-auto px-4">
+      <section className="py-16 bg-gradient-to-br from-light-off to-light-off/80 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             className="text-center mb-12"
           >
-            <motion.h2 variants={itemVariants} className="text-3xl font-bold mb-6 text-black">
+            <motion.h2 variants={itemVariants} className="text-3xl font-bold mb-6 text-primary">
               Por que a ScarFit é Diferente?
             </motion.h2>
             <motion.p variants={itemVariants} className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -354,13 +355,17 @@ const PlanosPersonalizadosPage: React.FC = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300"
+                className="relative group"
               >
-                <div className="flex justify-center mb-4">
-                  {item.icon}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300" />
+                
+                <div className="relative bg-gradient-to-br from-white/95 to-white/90 rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-primary/20 hover:border-primary/40 group-hover:scale-105">
+                  <div className="flex justify-center mb-4">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-primary">{item.titulo}</h3>
+                  <p className="text-gray-600">{item.descricao}</p>
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-black">{item.titulo}</h3>
-                <p className="text-gray-600">{item.descricao}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -404,7 +409,7 @@ const PlanosPersonalizadosPage: React.FC = () => {
                 } hover:scale-105 transition-all duration-300 flex flex-col h-full`}
               >
                 {plano.destaque && (
-                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-primary text-black px-4 py-2 rounded-full font-bold text-sm z-10">
+                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-primary text-dark px-4 py-2 rounded-full font-bold text-sm z-10">
                     ⭐ {plano.selo}
                   </div>
                 )}
@@ -443,10 +448,10 @@ const PlanosPersonalizadosPage: React.FC = () => {
                   rel="noopener noreferrer"
                   className={`w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg font-semibold transition-all duration-300 ${
                     plano.destaque
-                      ? 'bg-primary text-black hover:bg-primary-dark'
+                      ? 'bg-primary text-dark hover:bg-primary-dark'
                       : plano.premium
                       ? 'bg-purple-600 text-white hover:bg-purple-700'
-                      : 'bg-dark border border-primary text-primary hover:bg-primary hover:text-black'
+                      : 'bg-dark border border-primary text-primary hover:bg-primary hover:text-dark'
                   }`}
                 >
                   <MessageSquare className="w-5 h-5" />
