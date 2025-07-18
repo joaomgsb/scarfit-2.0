@@ -15,7 +15,7 @@ interface TeamMember {
   image: string;
   credentials: string;
   description: string;
-  animationData: any;
+  animationData: object;
 }
 
 // Interactive Lottie component with drag functionality
@@ -55,18 +55,24 @@ const InteractiveLottie = ({ animationData, className = "" }: { animationData: o
 
     const dx = e.clientX - dragStartX.current;
     const containerWidth = containerRef.current.offsetWidth;
-    const maxDragDistance = containerWidth * 2; // 2× largura
+    
+    // Ajustar a sensibilidade para um meio termo
+    const isMobile = window.innerWidth <= 768;
+    const multiplier = isMobile ? 0.3 : 2; // Meio termo para mobile
+    const maxDragDistance = containerWidth * multiplier;
 
     const delta = dx / maxDragDistance;
     const newProgress = Math.max(0, Math.min(1, baseDragProgress.current + delta));
-    setDragProgress(newProgress);
+    
+    // Só atualizar se houver mudança significativa
+    if (Math.abs(newProgress - dragProgress) > 0.01) {
+      setDragProgress(newProgress);
 
-    // CORRIGIDO: usar getDuration(true) em vez de totalFrames
-    const totalFrames = lottieRef.current.getDuration(true);
-    if (totalFrames && totalFrames > 0) {
-      const targetFrame = Math.floor(newProgress * (totalFrames - 1));
-      console.log('Target frame:', targetFrame, 'Total frames:', totalFrames); // Debug
-      lottieRef.current.goToAndStop(targetFrame, true);
+      const totalFrames = lottieRef.current.getDuration(true);
+      if (totalFrames && totalFrames > 0) {
+        const targetFrame = Math.floor(newProgress * (totalFrames - 1));
+        lottieRef.current.goToAndStop(targetFrame, true);
+      }
     }
   };
 
@@ -78,6 +84,45 @@ const InteractiveLottie = ({ animationData, className = "" }: { animationData: o
     containerRef.current.releasePointerCapture(e.pointerId);
   };
 
+  // Touch events para mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!containerRef.current) return;
+    dragStartX.current = e.touches[0].clientX;
+    baseDragProgress.current = dragProgress;
+    setIsDragging(true);
+    containerRef.current.style.cursor = 'grabbing';
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !containerRef.current || !lottieRef.current) return;
+
+    const dx = e.touches[0].clientX - dragStartX.current;
+    const containerWidth = containerRef.current.offsetWidth;
+    
+    // Mesma sensibilidade dos pointer events para consistência
+    const maxDragDistance = containerWidth * 0.3;
+    const delta = dx / maxDragDistance;
+    const newProgress = Math.max(0, Math.min(1, baseDragProgress.current + delta));
+    
+    // Só atualizar se houver mudança significativa
+    if (Math.abs(newProgress - dragProgress) > 0.01) {
+      setDragProgress(newProgress);
+
+      const totalFrames = lottieRef.current.getDuration(true);
+      if (totalFrames && totalFrames > 0) {
+        const targetFrame = Math.floor(newProgress * (totalFrames - 1));
+        lottieRef.current.goToAndStop(targetFrame, true);
+      }
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (!containerRef.current) return;
+    setIsDragging(false);
+    baseDragProgress.current = dragProgress;
+    containerRef.current.style.cursor = 'grab';
+  };
+
   return (
     <div 
       ref={containerRef}
@@ -86,6 +131,9 @@ const InteractiveLottie = ({ animationData, className = "" }: { animationData: o
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <Lottie 
         lottieRef={lottieRef}
