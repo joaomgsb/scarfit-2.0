@@ -33,16 +33,16 @@ const HomePage: React.FC = () => {
         <MethodologyShowcase />
       </div>
       
+      <div id="clients">
+        <OurClients />
+      </div>
+      
       <div id="results">
         <ResultsGallery />
       </div>
       
       <div id="feedbacks">
         <Feedbacks />
-      </div>
-      
-      <div id="clients">
-        <OurClients />
       </div>
       
       <div id="team">

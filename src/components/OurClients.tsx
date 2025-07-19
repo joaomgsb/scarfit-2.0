@@ -20,20 +20,6 @@ const OurClients: React.FC = () => {
 
   const clients: Client[] = [
     {
-      name: "Daniel Scott",
-      description: "Consultor, Palestrante, Conselheiro",
-      image: "/images/clientes/scot.png",
-      feedback: "Transformação incrível! O João me ajudou a alcançar o shape dos meus sonhos de forma sustentável e eficiente.",
-      instagram: "@odanielscott"
-    },
-    {
-      name: "Felippe Hermes",
-      description: "Co-founder Blocktrendsbr",
-      image: "/images/clientes/felippe.png",
-      feedback: "Método revolucionário! Consegui resultados que nunca imaginei possível com a orientação do João.",
-      instagram: "@Felippe_Hermes"
-    },
-    {
       name: "Avelino Morganti",
       description: "Empresário e youtuber",
       image: "/images/clientes/avelino.png",
@@ -41,11 +27,25 @@ const OurClients: React.FC = () => {
       twitter: "@avelinomorganti"
     },
     {
+      name: "Daniel Scott",
+      description: "Consultor, Palestrante, Conselheiro",
+      image: "/images/clientes/scot.png",
+      feedback: "Transformação incrível! O João me ajudou a alcançar o shape dos meus sonhos de forma sustentável e eficiente.",
+      instagram: "@odanielscott"
+    },
+    {
       name: "Peter Jordan",
       description: "Youtuber e empresário",
       image: "/images/peter.png",
       feedback: "Parceria incrível! A metodologia da Scarfit é única e os resultados falam por si só.",
       instagram: "@petjordan"
+    },
+    {
+      name: "Felippe Hermes",
+      description: "Co-founder Blocktrendsbr",
+      image: "/images/clientes/felippe.png",
+      feedback: "Método revolucionário! Consegui resultados que nunca imaginei possível com a orientação do João.",
+      instagram: "@Felippe_Hermes"
     }
   ];
 
