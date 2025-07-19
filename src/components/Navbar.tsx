@@ -58,7 +58,6 @@ const Navbar: React.FC = () => {
         { name: 'Calculadora IMC Premium', to: '/calculadora-imc', type: 'router' },
         { name: 'Calculadoras Individuais', to: '/calculadoras-individuais', type: 'router' },
         { name: 'Seu Diagnóstico Inicial', to: '/seu-diagnostico-inicial', type: 'router' },
-        { name: 'Planos Personalizados', to: '/planos-personalizados', type: 'router' },
       ],
     },
     {
