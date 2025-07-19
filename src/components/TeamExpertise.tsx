@@ -216,9 +216,9 @@ const DetailedTeamCard = ({ member }: { member: TeamMember }) => {
       
       {/* Main content */}
       <div className="relative glass-effect rounded-3xl p-6 sm:p-8 lg:p-12 border border-white/25 shadow-2xl shadow-primary/15 backdrop-blur-sm">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start min-h-[50rem] sm:min-h-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start min-h-[40rem] sm:min-h-auto">
           {/* Left side - Info */}
-          <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-4 sm:space-y-6">
             {/* Header section */}
             <div className="flex items-start gap-4 sm:gap-6">
               {/* Photo with premium border */}
@@ -338,7 +338,7 @@ const DetailedTeamCard = ({ member }: { member: TeamMember }) => {
             </div>
 
             {/* Main description */}
-            <div className="text-light-muted text-sm sm:text-base lg:text-lg leading-relaxed space-y-3 sm:space-y-4">
+            <div className="text-light-muted text-sm sm:text-base lg:text-lg leading-relaxed space-y-2 sm:space-y-3">
               {member.description.split('\n\n').map((paragraph, index) => (
                 <p key={index} className={`text-justify ${index === 0 ? 'text-base sm:text-lg lg:text-xl font-medium' : 'text-sm sm:text-base lg:text-lg'}`}>
                   {paragraph}
@@ -463,7 +463,7 @@ const TeamExpertise: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <h2 className="text-gradient mb-6">
               Equipe de Especialistas
@@ -475,7 +475,7 @@ const TeamExpertise: React.FC = () => {
 
           {/* Compact team cards */}
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-12"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8"
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
@@ -500,7 +500,7 @@ const TeamExpertise: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="mb-16"
+                className="mb-8"
               >
                 <DetailedTeamCard member={selectedMember} />
               </motion.div>
