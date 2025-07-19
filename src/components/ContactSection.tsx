@@ -1,9 +1,55 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { MessageSquare, ArrowRight, Sparkles, Crown, CheckCircle } from 'lucide-react';
+import { MessageSquare, ArrowRight, X, Play } from 'lucide-react';
+
+const YouTubeModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+      >
+        <motion.div 
+          className="relative w-full max-w-4xl bg-dark rounded-2xl overflow-hidden shadow-2xl"
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button 
+            onClick={onClose}
+            className="absolute right-4 top-4 z-10 text-white hover:text-primary transition-colors"
+            aria-label="Fechar vídeo"
+          >
+            <X className="w-8 h-8" />
+          </button>
+          <div className="aspect-video w-full">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/bm688keuKL8?si=AeX2WbsZmUCYlMVa"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
 
 const ContactSection: React.FC = () => {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -51,18 +97,32 @@ const ContactSection: React.FC = () => {
             
             <div className="relative max-w-4xl mx-auto mb-12">
               {/* Imagem para Desktop */}
-              <img 
-                src="/images/efeitos/notebook.png" 
-                alt="Notebook mostrando depoimento de transformação"
-                className="w-full h-auto block mx-auto hidden md:block"
-              />
+              <div className="relative w-full max-w-4xl mx-auto hidden md:block">
+                <img 
+                  src="/images/efeitos/notebook.png" 
+                  alt="Notebook mostrando depoimento de transformação"
+                  className="w-full h-auto block mx-auto"
+                />
+                <button 
+                  onClick={() => setIsVideoOpen(true)}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  aria-label="Assistir vídeo"
+                />
+              </div>
               
               {/* Imagem para Mobile */}
-              <img 
-                src="/images/efeitos/celularmockup.png" 
-                alt="Celular mostrando depoimento de transformação"
-                className="w-full h-auto block mx-auto md:hidden"
-              />
+              <div className="relative w-full max-w-[280px] mx-auto md:hidden">
+                <img 
+                  src="/images/efeitos/celularmockup.png" 
+                  alt="Celular mostrando depoimento de transformação"
+                  className="w-full h-auto block mx-auto"
+                />
+                <button 
+                  onClick={() => setIsVideoOpen(true)}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  aria-label="Assistir vídeo"
+                />
+              </div>
             </div>
 
             {/* Card de Conversão Simples */}
@@ -94,6 +154,7 @@ const ContactSection: React.FC = () => {
           </motion.div>
         </motion.div>
       </div>
+      <YouTubeModal isOpen={isVideoOpen} onClose={() => setIsVideoOpen(false)} />
     </section>
   );
 };
