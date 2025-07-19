@@ -86,9 +86,9 @@ const ImcCalculator: React.FC = () => {
         <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-primary-dark rounded-2xl mb-6 shadow-lg">
           <Scale className="h-10 w-10 text-black" />
         </div>
-        <h2 className="text-3xl font-bold mb-4">Calculadora de IMC Inteligente</h2>
+        <h2 className="text-3xl font-bold mb-4">O Que Seu IMC Revela Sobre Você?</h2>
         <p className="text-light-gray">
-          O IMC é uma medida internacional usada para calcular se uma pessoa está no peso ideal, considerando também a idade.
+          O Índice de Massa Corporal é um indicador crucial para entender sua saúde geral e o ponto de partida para uma transformação verdadeiramente eficaz.
         </p>
       </div>
 
@@ -141,7 +141,7 @@ const ImcCalculator: React.FC = () => {
           className="w-full bg-gradient-to-r from-primary to-primary-dark text-black font-bold py-6 px-8 rounded-xl text-xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/30"
         >
           <Scale className="w-6 h-6 inline mr-2" />
-          Calcular Meu IMC
+          Calcular e Entender Meu Corpo
         </button>
       </div>
 
@@ -165,11 +165,11 @@ const ImcCalculator: React.FC = () => {
             <div className="bg-gradient-to-br from-primary/20 to-primary/5 p-6 rounded-2xl border border-primary/20 mb-8">
               <div className="flex items-center gap-2 mb-3">
                 <Sparkles className="w-6 h-6 text-primary" />
-                <span className="text-primary font-semibold">Próximo Passo Recomendado:</span>
+                <span className="text-primary font-semibold">Mas lembre-se: este é apenas o começo!</span>
               </div>
               <p className="text-light-gray">
-                Com base no seu perfil, você precisa de um plano ajustado ao seu metabolismo e rotina. 
-                Conheça como a ScarFit cria esse plano 100% sob medida.
+                Na ScarFit, acreditamos que a verdadeira transformação vai além de um único número. 
+                Faça sua análise premium gratuita e descubra seu potencial real.
               </p>
             </div>
             
@@ -178,7 +178,7 @@ const ImcCalculator: React.FC = () => {
               className="bg-gradient-to-r from-primary to-primary-dark text-black font-bold py-4 px-8 rounded-xl text-lg flex items-center justify-center gap-3 mx-auto hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/30"
             >
               <ArrowRight className="w-6 h-6" />
-              Entenda Minha Situação
+              Fazer Minha Análise Premium Gratuita
               <Sparkles className="w-6 h-6" />
             </button>
           </div>

@@ -242,20 +242,20 @@ const EntendaSituacaoPage: React.FC = () => {
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 rounded-full px-6 py-2 mb-6">
                 <Crown className="w-5 h-5 text-primary" />
                 <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-                  Análise Premium Gratuita
+                  Análise Gratuita e Personalizada
                 </span>
                 <Sparkles className="w-5 h-5 text-primary" />
               </div>
               
               <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight">
-                Descubra Seu
+                A Ciência por Trás da
                 <br />
-                <span className="text-primary">Potencial Real</span>
+                <span className="text-primary">Sua Melhor Versão</span>
               </h1>
               
               <p className="text-xl md:text-2xl text-light-gray max-w-4xl mx-auto leading-relaxed">
-                Calculadoras integradas + análise prévia do seu perfil físico para entender seus indicadores básicos.{' '}
-                <span className="text-primary font-semibold">Análise completa e personalizada</span> disponível nos nossos planos.
+                Desvende os segredos do seu corpo com nossa análise prévia exclusiva. 
+                <span className="text-primary font-semibold">Seu primeiro passo para a transformação.</span>
               </p>
             </motion.div>
           </motion.div>
@@ -270,16 +270,16 @@ const EntendaSituacaoPage: React.FC = () => {
             <motion.div variants={itemVariants} className="text-center">
               <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-6 border border-primary/20 h-full flex flex-col justify-center">
                 <Calculator className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2">Calculadoras Integradas</h3>
-                <p className="text-light-gray">IMC, TMB, Proteína e Hidratação em um só lugar</p>
+                <h3 className="text-xl font-bold mb-2">Precisão Científica</h3>
+                <p className="text-light-gray">Fórmulas validadas para dados confiáveis</p>
               </div>
             </motion.div>
             
             <motion.div variants={itemVariants} className="text-center">
               <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-6 border border-primary/20 h-full flex flex-col justify-center">
                 <Shield className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2">100% Científico</h3>
-                <p className="text-light-gray">Baseado em fórmulas validadas cientificamente</p>
+                <h3 className="text-xl font-bold mb-2">Visão Abrangente</h3>
+                <p className="text-light-gray">IMC, TMB, Proteína e Hidratação integrados</p>
               </div>
             </motion.div>
             
@@ -287,7 +287,7 @@ const EntendaSituacaoPage: React.FC = () => {
               <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-6 border border-primary/20 h-full flex flex-col justify-center">
                 <Brain className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-2">Análise Prévia</h3>
-                <p className="text-light-gray">Insights básicos do seu perfil atual</p>
+                <p className="text-light-gray">Panorama inicial do seu perfil físico</p>
               </div>
             </motion.div>
           </motion.div>
@@ -309,10 +309,10 @@ const EntendaSituacaoPage: React.FC = () => {
                       <Calculator className="h-10 w-10 text-black" />
                     </div>
                     <h2 className="text-3xl font-bold mb-4">Calculadoras + Análise Prévia</h2>
-                    <p className="text-light-gray">Calcule seus indicadores básicos e receba uma análise prévia do seu perfil</p>
+                    <p className="text-light-gray">Mapeie seus indicadores básicos e receba insights do seu perfil atual</p>
                     <div className="bg-primary/10 border border-primary/20 rounded-lg p-3 mt-4">
                       <p className="text-white text-sm font-semibold !text-white">
-                        💡 Esta é uma análise superficial. Análise completa e plano detalhado disponível nos nossos planos.
+                        💡 <strong>Seu Potencial Ilimitado Começa Aqui:</strong> Esta análise é a porta de entrada para o autoconhecimento. Para desvendar seu potencial máximo, explore nossos programas premium.
                       </p>
                     </div>
                   </div>
@@ -469,7 +469,7 @@ const EntendaSituacaoPage: React.FC = () => {
                         ) : (
                           <>
                             <Brain className="w-6 h-6" />
-                            Calcular Indicadores + Análise Prévia
+                            Descobrir Meus Indicadores e Potencial
                             <Sparkles className="w-6 h-6" />
                           </>
                         )}

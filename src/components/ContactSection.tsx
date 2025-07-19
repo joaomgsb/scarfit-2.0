@@ -33,7 +33,7 @@ const YouTubeModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
             <iframe
               width="100%"
               height="100%"
-              src="https://www.youtube.com/embed/bm688keuKL8?si=AeX2WbsZmUCYlMVa"
+              src="https://www.youtube.com/embed/XoWsLsvPSzo?si=CAzHcN9kCvLUleUr"
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

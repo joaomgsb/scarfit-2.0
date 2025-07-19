@@ -65,20 +65,19 @@ const ImcPage: React.FC = () => {
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 rounded-full px-6 py-2 mb-6">
                 <Scale className="w-5 h-5 text-primary" />
                 <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-                  Calculadora Premium
+                  Primeiro Passo Científico
                 </span>
                 <Sparkles className="w-5 h-5 text-primary" />
               </div>
               
               <h1 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight">
-                Calculadora de
+                Calcule Seu IMC:
                 <br />
-                <span className="text-primary">IMC Premium</span>
+                <span className="text-primary">O Primeiro Passo para Sua Transformação</span>
               </h1>
               
               <p className="text-xl md:text-2xl text-light-gray max-w-3xl mx-auto leading-relaxed">
-                Descubra seu Índice de Massa Corporal com precisão científica e receba 
-                recomendações personalizadas para sua transformação
+                Descubra onde você se encontra hoje e prepare-se para a transformação que só a metodologia ScarFit pode oferecer
               </p>
             </motion.div>
           </motion.div>
@@ -93,24 +92,24 @@ const ImcPage: React.FC = () => {
             <motion.div variants={itemVariants} className="text-center">
               <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-6 border border-primary/20 h-full flex flex-col justify-center">
                 <Brain className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2">Análise Inteligente</h3>
-                <p className="text-light-gray">Cálculo preciso considerando idade e biotipo</p>
+                <h3 className="text-xl font-bold mb-2">Diagnóstico Preciso</h3>
+                <p className="text-light-gray">Cálculo científico para entender seu ponto de partida</p>
               </div>
             </motion.div>
             
             <motion.div variants={itemVariants} className="text-center">
               <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-6 border border-primary/20 h-full flex flex-col justify-center">
                 <Shield className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2">100% Científico</h3>
-                <p className="text-light-gray">Baseado em padrões internacionais de saúde</p>
+                <h3 className="text-xl font-bold mb-2">Metodologia ScarFit</h3>
+                <p className="text-light-gray">Baseado na ciência da transformação corporal</p>
               </div>
             </motion.div>
             
             <motion.div variants={itemVariants} className="text-center">
               <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-6 border border-primary/20 h-full flex flex-col justify-center">
                 <Zap className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2">Recomendações Personalizadas</h3>
-                <p className="text-light-gray">Próximos passos baseados no seu resultado</p>
+                <h3 className="text-xl font-bold mb-2">Próximos Passos</h3>
+                <p className="text-light-gray">Direcionamento para sua análise completa</p>
               </div>
             </motion.div>
           </motion.div>
