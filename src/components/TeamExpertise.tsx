@@ -124,24 +124,43 @@ const InteractiveLottie = ({ animationData, className = "" }: { animationData: o
   };
 
   return (
-    <div 
-      ref={containerRef}
-      className={`${className} select-none`}
-      style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-    >
-      <Lottie 
-        lottieRef={lottieRef}
-        animationData={animationData}
-        loop={false}
-        autoplay={false}
-        className="w-full h-full pointer-events-none"
+    <div className="relative w-full h-full" style={{ pointerEvents: 'none' }}>
+      <div 
+        ref={containerRef}
+        className="absolute inset-0 m-auto"
+        style={{
+          width: 'calc(100% / 1.5)',
+          height: 'calc(100% / 1.5)',
+          touchAction: 'none',
+          pointerEvents: 'auto',
+          cursor: isDragging ? 'grabbing' : 'grab',
+          zIndex: 10
+        }}
+        onPointerDown={(e) => {
+          e.stopPropagation();
+          handlePointerDown(e);
+        }}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+        onTouchStart={(e) => {
+          e.stopPropagation();
+          handleTouchStart(e);
+        }}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
+        onClick={(e) => e.stopPropagation()}
       />
+      <div className={`${className} w-full h-full`} style={{ pointerEvents: 'none' }}>
+        <Lottie 
+          lottieRef={lottieRef}
+          animationData={animationData}
+          loop={false}
+          autoplay={false}
+          className="w-full h-full pointer-events-none"
+        />
+      </div>
     </div>
   );
 };
@@ -365,13 +384,19 @@ const DetailedTeamCard = ({ member }: { member: TeamMember }) => {
           </div>
 
           {/* Right side - Animation */}
-          <div className="flex justify-center lg:justify-end items-center">
-            <div className="w-[40rem] h-[40rem] sm:w-[32rem] sm:h-[32rem] lg:w-[36rem] lg:h-[36rem] xl:w-[40rem] xl:h-[40rem] 2xl:w-[44rem] 2xl:h-[44rem] mt-8 sm:mt-0">
+          <div className="flex justify-center lg:justify-end items-center lg:relative">
+            <div className="w-[28rem] h-[28rem] sm:w-[32rem] sm:h-[32rem] lg:w-[36rem] lg:h-[36rem] xl:w-[40rem] xl:h-[40rem] 2xl:w-[44rem] 2xl:h-[44rem] mt-4 lg:mt-0">
               <InteractiveLottie 
                 animationData={member.animationData}
                 className="w-full h-full scale-150 sm:scale-115 lg:scale-120 xl:scale-125 2xl:scale-130"
               />
             </div>
+          </div>
+          <div className="flex items-center justify-center gap-2 mt-4 lg:hidden text-yellow-400/80 text-sm sm:text-base font-medium">
+            <span>Arraste para mudar o tema</span>
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
           </div>
         </div>
       </div>

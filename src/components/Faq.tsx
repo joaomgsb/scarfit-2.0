@@ -65,12 +65,12 @@ const FaqItem: React.FC<FaqItemProps> = ({ question, answer, isOpen, toggle, ind
         
         <div
           className={`overflow-hidden transition-all duration-500 ease-in-out ${
-            isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+            isOpen ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="px-6 md:px-8 pb-6 md:pb-8">
-            <div className="pl-12 border-l-2 border-primary/30">
-              <p className="text-light-muted leading-relaxed text-base md:text-lg">
+          <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8">
+            <div className="pl-8 md:pl-12 border-l-2 border-primary/30">
+              <p className="text-light-muted leading-relaxed text-base md:text-lg break-words">
                 {answer}
               </p>
             </div>
