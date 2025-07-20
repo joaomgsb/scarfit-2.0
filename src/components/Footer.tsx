@@ -124,6 +124,19 @@ const Footer: React.FC = () => {
                 CNPJ: 56.203.803/0001-06 | CREF 083338-G/SP
               </p>
             </div>
+            <div className="text-center">
+              <p className="text-light-muted text-sm">
+                Desenvolvido por{' '}
+                <a 
+                  href="https://inovajs.com.br" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-primary/80 transition-colors"
+                >
+                  Inova.js
+                </a>
+              </p>
+            </div>
             <div className="flex gap-6">
               <a href="#" className="text-light-muted hover:text-primary transition-colors text-sm">
                 Termos de Uso
