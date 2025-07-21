@@ -97,11 +97,11 @@ const Feedbacks: React.FC = () => {
             </div>
             
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight">
-              Transformações reais que inspiram
+              Quando o plano é único, o resultado também é único.
             </h2>
             
             <p className="text-lg md:text-xl text-light-muted max-w-3xl mx-auto leading-relaxed">
-              Conheça algumas das histórias de superação dos nossos alunos. Resultados reais de pessoas reais.
+              Veja os resultados de quem saiu dos métodos genéricos e transformou o corpo com estratégia, ciência e acompanhamento ScarFit.
             </p>
           </motion.div>
         </motion.div>

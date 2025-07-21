@@ -78,22 +78,22 @@ const TransformationJourney: React.FC = () => {
           <motion.div variants={itemVariants} className="text-center mb-20">
             {/* Título Desktop */}
             <h2 className="hidden md:block text-gradient mb-6">
-              Por Que Outros Métodos Falham
+              95% dos profissionais prescrevem o mesmo plano para corpos diferentes.
             </h2>
             
             {/* Título Mobile (Compacto) */}
             <h2 className="md:hidden text-gradient mb-6">
-              Por Que Outros Falham
+              95% dos profissionais prescrevem o mesmo plano para corpos diferentes.
             </h2>
             
             {/* Descrição Desktop */}
             <p className="hidden md:block text-xl text-light-muted max-w-3xl mx-auto">
-              Você já tentou de tudo e não viu resultados? Nós entendemos. Diferente dos métodos tradicionais que te deixam na mão, a ScarFit foi criada para preencher as lacunas e entregar a transformação que você realmente busca.
+              A ScarFit existe porque você não é genérico e seu plano também não deveria ser. Pela primeira vez, experimente um plano verdadeiramente único, acompanhamento diário com profissionais escolhidos a dedo, tecnologia de ponta e a ciência de quem entende a responsabilidade por trás da sua decisão de mudar.
             </p>
             
             {/* Descrição Mobile (Compacta) */}
             <p className="md:hidden text-base text-light-muted max-w-xl mx-auto">
-              Você já tentou de tudo e não viu resultados? Diferente dos métodos tradicionais, a ScarFit foi criada para entregar a transformação que você realmente busca.
+              A ScarFit existe porque você não é genérico e seu plano também não deveria ser. Pela primeira vez, experimente um plano verdadeiramente único, acompanhamento diário com profissionais escolhidos a dedo, tecnologia de ponta e a ciência de quem entende a responsabilidade por trás da sua decisão de mudar.
             </p>
           </motion.div>
 

@@ -90,8 +90,7 @@ const ContactSection: React.FC = () => {
                 Pronto Para Sua Transformação?
               </h2>
               <p className="text-xl text-light-muted max-w-3xl mx-auto">
-                Dê o primeiro passo rumo à sua melhor versão. Nossa equipe está pronta para criar 
-                seu plano personalizado e acompanhar cada etapa da sua jornada.
+                Nossa equipe está pronta para criar seu plano personalizado e acompanhar cada etapa da sua jornada.
               </p>
             </div>
             

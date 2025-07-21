@@ -88,7 +88,7 @@ const OurClients: React.FC = () => {
             </div>
             
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight">
-              Quem são nossos clientes?
+              Quem confiou em nós?
             </h2>
             
             <p className="text-light-muted text-base md:text-lg lg:text-xl leading-relaxed max-w-3xl mx-auto">

@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
       children: [
         { name: 'Início', to: 'hero', type: 'scroll' },
         { name: 'Nossa História', to: 'journey', type: 'scroll' },
-        { name: 'Equipe de Especialistas', to: 'team', type: 'scroll' },
+        { name: 'O time por trás do seu novo físico', to: 'team', type: 'scroll' },
       ],
     },
     {

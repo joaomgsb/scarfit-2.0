@@ -138,10 +138,10 @@ const MethodologyShowcase: React.FC = () => {
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16 lg:mb-20">
             <h2 className="text-gradient mb-4 sm:mb-6">
-              Nossa Metodologia Exclusiva
+              A Maneira ScarFit de Transformar
             </h2>
             <p className="text-lg sm:text-xl text-light-muted max-w-3xl mx-auto px-4">
-              Quatro pilares fundamentais que garantem sua transformação de forma científica e sustentável.
+              Os pilares do processo que aplicamos para garantir sua evolução e resultado.
             </p>
           </motion.div>
 

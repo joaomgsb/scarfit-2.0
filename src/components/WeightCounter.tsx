@@ -138,7 +138,7 @@ const WeightCounter: React.FC = () => {
                   </div>
                   
                   <h3 className="text-2xl font-bold text-white mb-2">
-                    Gordura Eliminada
+                    Peso Eliminado
                   </h3>
                   <p className="text-light-gray">
                     Resultado coletivo de nossa metodologia exclusiva

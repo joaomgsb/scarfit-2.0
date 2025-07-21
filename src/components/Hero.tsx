@@ -63,13 +63,11 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-1 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight"
           >
-            ScarFit: A Ciência da
-            <br />
-            Sua Transformação
+            Você é único. Seu plano também precisa ser.
           </motion.h1>
           
           {/* Country Flags */}
-          <motion.div variants={itemVariants} className="flex justify-center items-center gap-1 mb-3 md:mb-4">
+          <motion.div variants={itemVariants} className="flex justify-center items-center gap-1 mb-3 md:mb-4 mt-4">
             <img src="/svg/brasil.svg" alt="Brasil" className="w-5 h-4 opacity-80 hover:opacity-100 transition-opacity" />
             <img src="/svg/uruguai.svg" alt="Uruguai" className="w-5 h-4 opacity-80 hover:opacity-100 transition-opacity" />
             <img src="/svg/chile.svg" alt="Chile" className="w-5 h-4 opacity-80 hover:opacity-100 transition-opacity" />
@@ -82,7 +80,7 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="hidden md:block text-lg sm:text-xl md:text-2xl text-light-muted mb-8 max-w-3xl mx-auto leading-relaxed px-4"
           >
-            Metodologia científica personalizada que transforma seu corpo e seus hábitos. Resultados reais, acompanhamento premium, transformação garantida.
+            Você não falhou. O que faltava era um método feito para você. Transformar o corpo exige estratégia, ciência e apoio profissional diário. Bem-vindo à ScarFit.
           </motion.p>
 
           {/* Subtítulo Mobile (Compacto) */}
@@ -90,7 +88,7 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="md:hidden text-base text-light-muted mb-6 max-w-2xl mx-auto leading-relaxed px-4"
           >
-            Metodologia científica personalizada para transformar seu corpo e seus hábitos. Resultados reais garantidos.
+            Você não falhou. O que faltava era um método feito para você. Transformar o corpo exige estratégia, ciência e apoio profissional diário. Bem-vindo à ScarFit.
           </motion.p>
           
           {/* CTAs */}
@@ -127,8 +125,8 @@ const Hero: React.FC = () => {
               <div className="text-sm md:text-base text-light-muted">Vidas Transformadas</div>
             </div>
             <div className="text-center">
-              <div className="text-xl md:text-3xl font-bold text-primary mb-1">9.4t</div>
-              <div className="text-sm md:text-base text-light-muted">Gordura Eliminada</div>
+              <div className="text-xl md:text-3xl font-bold text-primary mb-1">9.492</div>
+              <div className="text-sm md:text-base text-light-muted">Peso Eliminado</div>
             </div>
             <div className="text-center">
               <div className="text-xl md:text-3xl font-bold text-primary mb-1">98%</div>

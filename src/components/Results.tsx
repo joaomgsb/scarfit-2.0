@@ -147,11 +147,11 @@ const Results: React.FC = () => {
             </div>
             
             <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight">
-              Transformações Reais. Histórias de Sucesso Que Inspiram.
+              Quando o plano é único, o resultado também é.
             </motion.h2>
             
             <motion.p variants={itemVariants} className="text-lg md:text-xl text-light-gray max-w-3xl mx-auto leading-relaxed">
-              Mais do que números, a ScarFit transforma vidas. Conheça as histórias inspiradoras de pessoas reais que, assim como você, buscaram uma mudança e encontraram na nossa metodologia o caminho para o sucesso. Se eles conseguiram, você também pode!
+              Veja os resultados de quem saiu do genérico e transformou o corpo com estratégia, ciência e acompanhamento ScarFit.
             </motion.p>
           </motion.div>
         </motion.div>

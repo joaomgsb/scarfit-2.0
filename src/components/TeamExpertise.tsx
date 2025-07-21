@@ -491,10 +491,10 @@ const TeamExpertise: React.FC = () => {
             className="text-center mb-12"
           >
             <h2 className="text-gradient mb-6">
-              Equipe de Especialistas
+              O time por trás do seu novo físico
             </h2>
             <p className="text-xl text-light-muted max-w-3xl mx-auto">
-              Profissionais certificados e experientes trabalhando em conjunto para sua transformação completa.
+              Especialistas escolhidos a dedo que aplicam ciência, atenção diária e estratégia no seu progresso. Aqui sua evolução não é solitária.
             </p>
           </motion.div>
 
