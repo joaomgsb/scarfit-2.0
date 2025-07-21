@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-scroll';
-import { CheckCircle, MessageSquare, Sparkles, LineChart, Clock, Zap, Heart, CalendarClock, Crown, Star, Shield } from 'lucide-react';
+import { CheckCircle, MessageSquare, Sparkles, LineChart, Clock, Zap, Heart, CalendarClock, Crown, Star, Shield, ArrowRight } from 'lucide-react';
 
 const ProPlus: React.FC = () => {
   const [ref, inView] = useInView({
@@ -28,17 +28,6 @@ const ProPlus: React.FC = () => {
       opacity: 1,
       transition: { duration: 0.5 },
     },
-  };
-
-  const floatingVariants = {
-    animate: {
-      y: [-8, 8, -8],
-      transition: {
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
   };
 
   const benefits = [
@@ -80,163 +69,155 @@ const ProPlus: React.FC = () => {
   ];
 
   return (
-    <section id="pro-plus" className="relative py-20 md:py-24 bg-gradient-to-br from-dark via-dark-lighter to-dark text-white overflow-hidden" ref={ref}>
-      {/* Background Effects Premium */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary/5 via-transparent to-primary/5" />
-        <div className="absolute top-1/4 left-1/4 w-72 md:w-96 h-72 md:h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-72 md:w-96 h-72 md:h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-gradient-radial from-primary/5 to-transparent rounded-full" />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="pro-plus" className="section-padding section-transition" ref={ref}>
+      <div className="container-custom">
+        {/* Header */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="max-w-7xl mx-auto"
+          className="text-center max-w-4xl mx-auto mb-16"
         >
-          {/* Header Premium */}
-          <motion.div variants={itemVariants} className="text-center mb-16 md:mb-20">
+          <motion.div variants={itemVariants} className="relative">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 rounded-full px-4 md:px-6 py-2 mb-4 md:mb-6">
               <Crown className="w-4 md:w-5 h-4 md:h-5 text-primary" />
               <span className="text-primary font-semibold text-xs md:text-sm uppercase tracking-wider">
-                Experiência Premium
+                EXPERIÊNCIA PREMIUM
               </span>
               <Sparkles className="w-4 md:w-5 h-4 md:h-5 text-primary" />
             </div>
             
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight">
               Eleve Sua Transformação
             </h2>
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6 md:mb-8">
-              Conheça o Plano PRO+
-            </h3>
             
-            <p className="text-lg md:text-xl text-light-gray max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-light-muted max-w-3xl mx-auto leading-relaxed">
               Experiência exclusiva com o mais alto nível de atendimento, personalização e resultados acelerados.
             </p>
           </motion.div>
+        </motion.div>
 
-          {/* Main Content Grid */}
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 md:gap-16 items-stretch">
-            
-            {/* Left Side - Benefits */}
-            <motion.div variants={itemVariants} className="space-y-8 order-2 xl:order-1">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-3xl blur-xl" />
-                
-                <div className="relative bg-gradient-to-br from-dark-lighter/90 to-dark/90 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-primary/20 hover:border-primary/40 transition-all duration-300">
-                  <div className="flex items-center gap-3 mb-6 md:mb-8">
-                    <div className="p-3 bg-gradient-to-br from-primary to-primary-dark rounded-xl shadow-lg">
-                      <Shield className="h-6 md:h-8 w-6 md:w-8 text-black" />
-                    </div>
-                    <h4 className="text-xl md:text-2xl font-bold text-white">Benefícios Exclusivos</h4>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 gap-4 md:gap-6">
-                    {benefits.map((benefit, index) => (
-                      <motion.div
-                        key={index}
-                        variants={itemVariants}
-                        className="group flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-xl hover:bg-primary/10 transition-all duration-300"
-                      >
-                        <div className="p-2 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300 flex-shrink-0">
-                          <div className="text-primary">
-                            {benefit.icon}
-                          </div>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h5 className="font-bold text-white mb-1 group-hover:text-primary transition-colors text-sm md:text-base">
-                            {benefit.title}
-                          </h5>
-                          <p className="text-xs md:text-sm leading-relaxed pro-plus-description">
-                            {benefit.description}
-                          </p>
-                        </div>
-                        <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right Side - Ana Fontes */}
-            <motion.div variants={itemVariants} className="relative flex flex-col order-1 xl:order-2">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-primary/20 to-primary/30 rounded-3xl blur-2xl" />
-              
-              <div className="relative bg-gradient-to-br from-dark-lighter/95 to-dark/95 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-primary/30 overflow-hidden flex-1 mt-4">
-                {/* Floating Elements */}
-                <motion.div 
-                  variants={floatingVariants}
-                  animate="animate"
-                  className="absolute top-6 right-6 w-12 h-12 bg-primary/20 rounded-full blur-xl"
-                />
-                <motion.div 
-                  variants={floatingVariants}
-                  animate="animate"
-                  className="absolute bottom-6 left-6 w-8 h-8 bg-primary/30 rounded-full blur-lg"
-                  style={{ animationDelay: '1s' }}
-                />
-
-                <div className="relative z-10 flex flex-col h-full">
+        {/* Main Content - Timeline Style */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          className="max-w-6xl mx-auto"
+        >
+          {/* Ana Spotlight */}
+          <motion.div variants={itemVariants} className="mb-16">
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent" />
+              <div className="relative p-8 md:p-12">
+                <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                   {/* Ana's Image */}
-                  <div className="text-center mb-6 md:mb-8">
-                    <div className="relative inline-block">
-                      <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-dark rounded-2xl blur opacity-75" />
+                  <div className="flex-shrink-0">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-dark rounded-2xl blur-lg opacity-50" />
                       <img
                         src="images/ana.png"
                         alt="Ana Fontes - Gerente Executiva PRO+"
-                        className="relative w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-2xl object-cover mx-auto shadow-2xl border-2 border-primary/40"
+                        className="relative w-48 h-48 md:w-56 md:h-56 rounded-2xl object-cover shadow-2xl border-2 border-primary/40"
                       />
-                      <div className="absolute -bottom-3 -right-3 bg-primary text-black py-2 px-3 rounded-lg shadow-lg">
-                        <p className="font-bold text-xs md:text-sm">Ana Fontes</p>
-                        <p className="text-xs">Gerente Executiva</p>
-                      </div>
+                                             <div className="absolute -bottom-3 -right-3 bg-primary py-2 px-3 rounded-lg shadow-lg">
+                         <p className="font-bold text-xs md:text-sm !text-black">Ana Fontes</p>
+                         <p className="text-xs !text-black">Gerente Executiva</p>
+                       </div>
                     </div>
                   </div>
                   
-                  {/* Content */}
-                  <div className="flex-1 flex flex-col justify-center">
-                    <h3 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center bg-gradient-to-r from-white to-primary bg-clip-text text-transparent">
+                  {/* Ana's Content */}
+                  <div className="flex-1 text-center lg:text-left">
+                    <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-white to-primary bg-clip-text text-transparent">
                       Sua Garantia de Excelência
                     </h3>
                     
-                    <p className="text-sm md:text-base text-light-gray mb-6 md:mb-8 text-center leading-relaxed">
+                    <p className="text-light-muted mb-6 leading-relaxed">
                       Ana garante que cada cliente PRO+ tenha uma experiência exclusiva e resultados excepcionais. 
                       Ela é seu ponto de conexão direta para atendimento prioritário.
                     </p>
                     
-                    <div className="bg-gradient-to-br from-primary/20 to-primary/5 p-4 md:p-6 rounded-2xl border border-primary/20 mb-6 md:mb-8">
-                      <div className="flex items-center gap-2 mb-3">
-                        <Star className="w-5 h-5 text-primary" />
-                        <span className="text-primary font-semibold text-sm">Compromisso Premium</span>
-                      </div>
-                      <p className="text-light-gray text-sm md:text-base italic leading-relaxed">
-                        "Meu trabalho é garantir que sua experiência seja impecável. 
-                        Do primeiro contato até seus resultados, estarei ao seu lado."
-                      </p>
-                      <p className="font-semibold text-primary text-sm mt-3">— Ana Fontes</p>
+                    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 rounded-full px-4 py-2">
+                      <Star className="w-4 h-4 text-primary" />
+                      <span className="text-primary font-semibold text-sm">Compromisso Premium</span>
                     </div>
                   </div>
-                  
-                  {/* CTA Button */}
                 </div>
               </div>
-            </motion.div>
-          </div>
-          
-          {/* Bottom CTA */}
-          <motion.div
-            variants={itemVariants}
-            className="text-center mt-16 md:mt-20"
-          >
-            <div className="relative inline-block">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-2xl blur-xl" />
+            </div>
+          </motion.div>
+
+          {/* Benefits Timeline */}
+          <motion.div variants={itemVariants} className="mb-16">
+            <div className="relative">
+              {/* Timeline Line */}
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-transparent hidden md:block" />
               
-              <div className="relative bg-gradient-to-br from-dark-lighter/90 to-dark/90 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-primary/20 max-w-3xl mx-auto">
-                <p className="text-lg md:text-xl text-light-gray italic mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed">
+              <div className="space-y-8">
+                {benefits.map((benefit, index) => (
+                  <motion.div
+                    key={index}
+                    variants={itemVariants}
+                    className="relative group"
+                  >
+                    {/* Timeline Dot */}
+                    <div className="absolute left-6 top-6 w-4 h-4 bg-primary rounded-full border-4 border-dark shadow-lg hidden md:block group-hover:scale-125 transition-transform duration-300" />
+                    
+                                         <div className="ml-0 md:ml-16">
+                       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-dark-accent/50 to-dark-accent/30 border border-primary/20 hover:border-primary/40 transition-all duration-300 group-hover:scale-105">
+                         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                         <div className="relative p-6 md:p-8">
+                           <div className="flex items-start gap-6">
+                             <div className="relative flex-shrink-0">
+                               <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-dark rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
+                               <div className="relative p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl border border-primary/30 group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
+                                 <div className="text-primary">
+                                   {benefit.icon}
+                                 </div>
+                               </div>
+                             </div>
+                             
+                             <div className="flex-1">
+                               <div className="flex items-center justify-between mb-3">
+                                 <h4 className="font-bold text-white group-hover:text-primary transition-colors text-lg md:text-xl">
+                                   {benefit.title}
+                                 </h4>
+                                 <div className="flex items-center gap-2">
+                                   <div className="w-2 h-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                   <CheckCircle className="h-5 w-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                 </div>
+                               </div>
+                               <p className="text-light-muted leading-relaxed text-sm md:text-base">
+                                 {benefit.description}
+                               </p>
+                               <div className="mt-4 pt-4 border-t border-primary/10">
+                                 <div className="flex items-center gap-2 text-primary/60 text-xs">
+                                   <div className="w-1 h-1 bg-primary/60 rounded-full" />
+                                   <span>Incluído no PRO+</span>
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* CTA Section */}
+          <motion.div variants={itemVariants} className="text-center">
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 p-8 md:p-12">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent" />
+              <div className="relative">
+                <div className="flex items-center justify-center gap-2 mb-6">
+                  <Shield className="w-6 h-6 text-primary" />
+                  <span className="text-primary font-semibold text-lg">Transformação Garantida</span>
+                </div>
+                
+                <p className="text-xl md:text-2xl text-light-muted italic mb-8 leading-relaxed max-w-3xl mx-auto">
                   "Você não está contratando um serviço. Está investindo em uma experiência que transformará 
                   seu corpo e sua relação com saúde para sempre."
                 </p>
@@ -247,10 +228,11 @@ const ProPlus: React.FC = () => {
                   smooth={true}
                   offset={-100}
                   duration={500}
-                  className="inline-flex items-center gap-3 bg-gradient-to-r from-primary to-primary-dark text-black font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl text-base md:text-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/30"
+                  className="btn-primary inline-flex items-center gap-2 md:gap-3 text-base md:text-lg px-6 md:px-8 py-3 md:py-4"
                 >
                   <Zap className="w-5 h-5 md:w-6 md:h-6" />
                   Iniciar Minha Transformação PRO+
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                 </Link>
               </div>
             </div>

@@ -6,6 +6,7 @@ import MethodologyShowcase from '../components/MethodologyShowcase';
 import ResultsGallery from '../components/ResultsGallery';
 import TeamExpertise from '../components/TeamExpertise';
 import ElitePlan from '../components/ElitePlan';
+import ProPlus from '../components/ProPlus';
 import Faq from '../components/Faq';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
@@ -51,6 +52,10 @@ const HomePage: React.FC = () => {
       
       <div id="plans">
         <ElitePlan />
+      </div>
+      
+      <div id="pro-plus">
+        <ProPlus />
       </div>
       
       <div id="app-showcase">

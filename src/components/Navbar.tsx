@@ -49,6 +49,7 @@ const Navbar: React.FC = () => {
         { name: 'Nossa Metodologia', to: 'methodology', type: 'scroll' },
         { name: 'Resultados Comprovados', to: 'results', type: 'scroll' },
         { name: 'Planos de Transformação', to: 'plans', type: 'scroll' },
+        { name: 'Plano PRO+', to: 'pro-plus', type: 'scroll' },
       ],
     },
     {

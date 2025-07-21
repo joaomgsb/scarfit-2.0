@@ -5,8 +5,6 @@ import {
   MessageSquare, 
   Zap, 
   ArrowRight,
-  CreditCard,
-  Smartphone as PhoneIcon,
   Shield,
   Star,
   Crown,
@@ -114,44 +112,7 @@ const ElitePlan: React.FC = () => {
   };
   // Estados para animações
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
-  const [timeLeft, setTimeLeft] = React.useState({
-    hours: 23,
-    minutes: 59,
-    seconds: 59
-  });
   const cardRef = React.useRef<HTMLDivElement>(null);
-
-  // Efeito para o contador regressivo
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prevTime => {
-        const newTime = { ...prevTime };
-        
-        if (newTime.seconds > 0) {
-          newTime.seconds--;
-        } else {
-          newTime.seconds = 59;
-          if (newTime.minutes > 0) {
-            newTime.minutes--;
-          } else {
-            newTime.minutes = 59;
-            if (newTime.hours > 0) {
-              newTime.hours--;
-            } else {
-              // Reset do contador quando chegar a zero
-              newTime.hours = 23;
-              newTime.minutes = 59;
-              newTime.seconds = 59;
-            }
-          }
-        }
-        
-        return newTime;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (cardRef.current) {
@@ -287,17 +248,7 @@ const ElitePlan: React.FC = () => {
               variants={itemVariants} 
               className="mb-8 relative"
             >
-              {/* Elemento de urgência - Contador */}
-              <motion.div 
-                variants={pulseVariants}
-                initial="initial"
-                animate="animate"
-                className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-primary-dark text-dark text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full whitespace-nowrap z-10 shadow-lg shadow-primary/50 max-w-[90vw] sm:max-w-none overflow-hidden"
-              >
-                <span className="inline-block">
-                  ⚡ ÚLTIMAS VAGAS DISPONÍVEIS
-                </span>
-              </motion.div>
+
               
               <motion.div 
                 className="relative max-w-md mx-auto"
@@ -330,65 +281,18 @@ const ElitePlan: React.FC = () => {
                 />
                 
                 <div className="relative z-10">
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <span className="text-light-muted line-through text-lg">R$240/mês</span>
-                    <span className="bg-primary/20 text-primary text-xs font-bold px-3 py-1 rounded-full border border-primary/30">
-                      50% OFF
-                    </span>
-                  </div>
-                  <div className="text-3xl md:text-5xl font-bold text-primary mb-6">R$120/mês</div>
-                  
-                  {/* Contador de tempo restante */}
-                  <motion.div 
-                    className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-3 mb-6"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                  >
-                    <div className="text-xs text-light-muted mb-1">Oferta termina em:</div>
-                    <div className="flex items-center justify-center gap-1 text-lg font-mono">
-                      <motion.span 
-                        key={`hours-${timeLeft.hours}`}
-                        className="bg-dark border border-primary/30 px-2 py-1 rounded min-w-[32px] text-center text-primary font-bold"
-                        initial={{ y: -10, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: 10, opacity: 0 }}
-                      >
-                        {timeLeft.hours.toString().padStart(2, '0')}
-                      </motion.span>:
-                      <motion.span 
-                        key={`minutes-${timeLeft.minutes}`}
-                        className="bg-dark border border-primary/30 px-2 py-1 rounded min-w-[32px] text-center text-primary font-bold"
-                        initial={{ y: -10, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: 10, opacity: 0 }}
-                      >
-                        {timeLeft.minutes.toString().padStart(2, '0')}
-                      </motion.span>:
-                      <motion.span 
-                        key={`seconds-${timeLeft.seconds}`}
-                        className="bg-dark border border-primary/30 px-2 py-1 rounded min-w-[32px] text-center text-primary font-bold"
-                        initial={{ y: -10, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: 10, opacity: 0 }}
-                      >
-                        {timeLeft.seconds.toString().padStart(2, '0')}
-                      </motion.span>
+                  <div className="text-center mb-6">
+                    <div className="text-2xl md:text-3xl font-bold text-primary mb-2">
+                      ÚLTIMAS VAGAS
                     </div>
-                  </motion.div>
-                  
-                  {/* Payment Methods */}
-                  <div className="flex items-center justify-center gap-4 mb-6">
-                    <div className="flex items-center gap-2 text-light-muted text-sm">
-                      <CreditCard className="w-4 h-4" />
-                      <span>Cartão</span>
-                    </div>
-                    <div className="w-1 h-1 bg-light-muted rounded-full"></div>
-                    <div className="flex items-center gap-2 text-light-muted text-sm">
-                      <PhoneIcon className="w-4 h-4" />
-                      <span>Pix</span>
+                    <div className="text-xl md:text-2xl font-bold text-primary">
+                      DISPONÍVEIS
                     </div>
                   </div>
+                  
+
+                  
+
 
                   <a
                     href="https://wa.me/5541984961012?text=Olá! Quero contratar o Plano ELITE - Transformação 360º da ScarFit. Estou interessado na experiência completa de 12 meses."
