@@ -25,25 +25,21 @@ const HomePage: React.FC = () => {
       <div id="hero">
         <Hero />
       </div>
-      
-      <div id="journey">
-        <TransformationJourney />
-      </div>
-      
-      <div id="methodology">
-        <MethodologyShowcase />
-      </div>
-      
-      <div id="clients">
-        <OurClients />
-      </div>
-      
+
       <div id="results">
         <ResultsGallery />
       </div>
       
+      <div id="journey">
+        <TransformationJourney />
+      </div>
+
       <div id="feedbacks">
         <Feedbacks />
+      </div>
+      
+      <div id="methodology">
+        <MethodologyShowcase />
       </div>
       
       <div id="team">
@@ -64,6 +60,10 @@ const HomePage: React.FC = () => {
       
       <div id="contact">
         <ContactSection />
+      </div>
+
+      <div id="clients">
+        <OurClients />
       </div>
 
       <div id="faq">
