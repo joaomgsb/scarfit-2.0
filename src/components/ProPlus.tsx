@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Link } from 'react-scroll';
+
 import { CheckCircle, MessageSquare, Sparkles, LineChart, Clock, Zap, Heart, CalendarClock, Crown, Star, Shield, ArrowRight } from 'lucide-react';
 
 const ProPlus: React.FC = () => {
@@ -61,11 +61,7 @@ const ProPlus: React.FC = () => {
       title: "Alinhamento Estratégico",
       description: "Estratégias exclusivas para seu biotipo"
     },
-    {
-      icon: <Zap className="h-5 w-5 text-primary" />,
-      title: "Experiência Elevada",
-      description: "Tratamento VIP em todos os aspectos"
-    },
+
   ];
 
   return (
@@ -150,20 +146,20 @@ const ProPlus: React.FC = () => {
           {/* Benefits Timeline */}
           <motion.div variants={itemVariants} className="mb-16">
             <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-transparent hidden md:block" />
+              {/* Timeline Line - Hidden on desktop since we have 2 columns */}
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-transparent hidden md:block lg:hidden" />
               
-              <div className="space-y-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
                 {benefits.map((benefit, index) => (
                   <motion.div
                     key={index}
                     variants={itemVariants}
                     className="relative group"
                   >
-                    {/* Timeline Dot */}
-                    <div className="absolute left-6 top-6 w-4 h-4 bg-primary rounded-full border-4 border-dark shadow-lg hidden md:block group-hover:scale-125 transition-transform duration-300" />
+                    {/* Timeline Dot - Hidden on desktop since we have 2 columns */}
+                    <div className="absolute left-6 top-6 w-4 h-4 bg-primary rounded-full border-4 border-dark shadow-lg hidden md:block lg:hidden group-hover:scale-125 transition-transform duration-300" />
                     
-                                         <div className="ml-0 md:ml-16">
+                                         <div className="ml-0 md:ml-16 lg:ml-0">
                        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-dark-accent/50 to-dark-accent/30 border border-primary/20 hover:border-primary/40 transition-all duration-300 group-hover:scale-105">
                          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                          <div className="relative p-6 md:p-8">
@@ -209,31 +205,29 @@ const ProPlus: React.FC = () => {
 
           {/* CTA Section */}
           <motion.div variants={itemVariants} className="text-center">
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 p-8 md:p-12">
+            <div className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 p-6 md:p-8">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent" />
               <div className="relative">
-                <div className="flex items-center justify-center gap-2 mb-6">
-                  <Shield className="w-6 h-6 text-primary" />
-                  <span className="text-primary font-semibold text-lg">Transformação Garantida</span>
+                <div className="flex items-center justify-center gap-2 mb-4 md:mb-6">
+                  <Shield className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+                  <span className="text-primary font-semibold text-base md:text-lg">Transformação Garantida</span>
                 </div>
                 
-                <p className="text-xl md:text-2xl text-light-muted italic mb-8 leading-relaxed max-w-3xl mx-auto">
+                <p className="text-base md:text-xl text-light-muted italic mb-6 md:mb-8 leading-relaxed max-w-3xl mx-auto">
                   "Você não está contratando um serviço. Está investindo em uma experiência que transformará 
                   seu corpo e sua relação com saúde para sempre."
                 </p>
                 
-                <Link
-                  to="contact"
-                  spy={true}
-                  smooth={true}
-                  offset={-100}
-                  duration={500}
-                  className="btn-primary inline-flex items-center gap-2 md:gap-3 text-base md:text-lg px-6 md:px-8 py-3 md:py-4"
+                <a
+                  href="https://wa.me/5541984961012?text=Olá! Quero contratar o Plano PRO+ - Experiência Premium da ScarFit. Estou interessado na experiência exclusiva com Ana Fontes e todos os benefícios premium."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary inline-flex items-center gap-2 md:gap-3 text-sm md:text-lg px-4 md:px-8 py-2.5 md:py-4"
                 >
-                  <Zap className="w-5 h-5 md:w-6 md:h-6" />
+                  <Zap className="w-4 h-4 md:w-6 md:h-6" />
                   Iniciar Minha Transformação PRO+
-                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-                </Link>
+                  <ArrowRight className="w-3 h-3 md:w-5 md:h-5" />
+                </a>
               </div>
             </div>
           </motion.div>
