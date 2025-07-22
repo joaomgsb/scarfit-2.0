@@ -89,7 +89,7 @@ const TransformationJourney: React.FC = () => {
           className="max-w-6xl mx-auto"
         >
           {/* Header */}
-          <motion.div variants={itemVariants} className="text-center mb-20">
+          <motion.div variants={itemVariants} className="text-center mb-8 md:mb-20">
             {/* Título Desktop */}
             <h2 className="hidden md:block text-gradient mb-6">
               95% dos profissionais prescrevem o mesmo plano para corpos diferentes.
@@ -115,7 +115,7 @@ const TransformationJourney: React.FC = () => {
           <div className="w-full">
             {/* Mobile Tabs */}
             <motion.div 
-              className="lg:hidden mb-8 overflow-hidden"
+              className="lg:hidden mb-4 md:mb-8 overflow-hidden"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
@@ -146,7 +146,20 @@ const TransformationJourney: React.FC = () => {
                       : 'text-neutral-400 hover:text-neutral-200'
                   }`}
                 >
-                  Metodologia ScarFit
+                  {/* Efeito de destaque quando não ativo */}
+                  {activeTab !== 'scarfit' && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-lg blur-sm animate-pulse" />
+                  )}
+                  
+                  {/* Efeito de brilho */}
+                  {activeTab !== 'scarfit' && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/30 to-transparent animate-pulse" />
+                  )}
+                  
+                  <span className="relative z-10">
+                    Metodologia ScarFit
+                  </span>
+                  
                   {activeTab === 'scarfit' && (
                     <motion.div 
                       className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
@@ -205,8 +218,31 @@ const TransformationJourney: React.FC = () => {
                 }}
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
-                className="lg:block w-full"
+                className="lg:block w-full relative"
               >
+                {/* Efeito de destaque para desktop quando não ativo */}
+                {!isMobile && activeTab !== 'scarfit' && (
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl blur-lg animate-pulse pointer-events-none" />
+                )}
+                
+                {/* Efeito sutil quando métodos tradicionais está ativo */}
+                {!isMobile && activeTab === 'traditional' && (
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl blur-md animate-pulse pointer-events-none" />
+                )}
+                
+                {/* Overlay clicável para desktop */}
+                {!isMobile && activeTab !== 'scarfit' && (
+                  <div 
+                    className="absolute inset-0 cursor-pointer z-10"
+                    onClick={() => setActiveTab('scarfit')}
+                  >
+                    <div className="absolute inset-0 bg-primary/5 hover:bg-primary/10 transition-colors duration-300 rounded-3xl" />
+                    <div className="absolute top-4 right-4 text-primary animate-bounce">
+                      <span className="text-xs bg-primary/20 px-2 py-1 rounded-full">Clique para ver ✨</span>
+                    </div>
+                  </div>
+                )}
+                
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-semibold text-primary mb-4">Metodologia ScarFit</h3>
                   <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
