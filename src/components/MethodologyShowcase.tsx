@@ -1,12 +1,16 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence, PanInfo } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Lottie from "lottie-react";
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import etapa1Animation from '../animations/etapa1.json';
 import etapa2Animation from '../animations/etapa2.json';
 import etapa3Animation from '../animations/etapa3.json';
 import etapa4Animation from '../animations/etapa4.json';
+import etapa1Mobile from '../animations/mobile/etapa1mobile.json';
+import etapa2Mobile from '../animations/mobile/etapa2mobile.json';
+import etapa3Mobile from '../animations/mobile/etapa3mobile.json';
+import etapa4Mobile from '../animations/mobile/etapa4mobile.json';
 
 // Componente para o caminho SVG
 const RoadmapPath = ({ inView }: { inView: boolean }) => (
@@ -78,6 +82,53 @@ const MethodologyShowcase: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+  
+  const [isMobile, setIsMobile] = useState(false);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
+  // Check if mobile on mount and window resize
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
+  const handleNext = () => {
+    setDirection(1);
+    setCurrentStep((prev) => (prev === steps.length - 1 ? 0 : prev + 1));
+  };
+
+  const handlePrev = () => {
+    setDirection(-1);
+    setCurrentStep((prev) => (prev === 0 ? steps.length - 1 : prev - 1));
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 50) {
+      // Swipe left
+      handleNext();
+    }
+
+    if (touchStart - touchEnd < -50) {
+      // Swipe right
+      handlePrev();
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -102,24 +153,28 @@ const MethodologyShowcase: React.FC = () => {
   const steps = [
     {
       animationData: etapa1Animation,
+      mobileAnimationData: etapa1Mobile,
       title: "Análise Profunda",
       description: "Avaliação completa do seu perfil físico, rotina e objetivos. Dados precisos para criar um plano único e eficaz.",
       details: ["Bioimpedância profissional", "Análise de rotina personalizada", "Definição de metas claras"]
     },
     {
       animationData: etapa2Animation,
+      mobileAnimationData: etapa2Mobile,
       title: "Protocolo Personalizado",
       description: "Treinos e nutrição 100% adaptados ao seu biotipo e estilo de vida. Estratégico, eficaz e sustentável.",
       details: ["Treinos sob medida", "Plano nutricional flexível", "Suplementação estratégica"]
     },
     {
       animationData: etapa3Animation,
+      mobileAnimationData: etapa3Mobile,
       title: "Acompanhamento Diário",
       description: "Suporte contínuo da equipe multidisciplinar via WhatsApp. Ajustes em tempo real para garantir sua evolução.",
       details: ["Suporte 24/7", "Ajustes em tempo real", "Motivação constante"]
     },
     {
       animationData: etapa4Animation,
+      mobileAnimationData: etapa4Mobile,
       title: "Evolução Constante",
       description: "Monitoramento de resultados e otimização contínua. Transformações duradouras que se mantêm para sempre.",
       details: ["Métricas precisas", "Ajustes estratégicos", "Resultados sustentáveis"]
@@ -148,10 +203,12 @@ const MethodologyShowcase: React.FC = () => {
           {/* Steps */}
           <div className="relative py-8 sm:py-12 lg:py-16">
             <RoadmapPath inView={inView} />
-            <div className="space-y-12 sm:space-y-16 lg:space-y-24">
+            
+            {/* Desktop View */}
+            <div className="hidden lg:block space-y-12 sm:space-y-16 lg:space-y-24">
               {steps.map((step, index) => (
                 <motion.div
-                  key={index}
+                  key={`desktop-${index}`}
                   variants={itemVariants}
                   className="group"
                 >
@@ -195,9 +252,92 @@ const MethodologyShowcase: React.FC = () => {
                 </motion.div>
               ))}
             </div>
+
+            {/* Mobile Carousel */}
+            <div className="lg:hidden relative">
+              <AnimatePresence initial={false} custom={direction} mode="wait">
+                <motion.div
+                  key={currentStep}
+                  custom={direction}
+                  initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                  className="w-full"
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                >
+                  <div className="px-4">
+                    <div className="mb-6">
+                      <div className="inline-block text-sm font-medium text-light bg-white/10 px-4 py-2 rounded-lg">
+                        Etapa {currentStep + 1} de {steps.length}
+                      </div>
+                    </div>
+
+                    <div className="w-full max-w-[360px] mx-auto mb-8">
+                      <Lottie
+                        animationData={steps[currentStep].mobileAnimationData}
+                        className="w-full h-auto aspect-square scale-125"
+                      />
+                    </div>
+
+                    <div className="text-center mb-8">
+                      <h3 className="text-2xl font-semibold text-light mb-3">
+                        {steps[currentStep].title}
+                      </h3>
+                      <p className="text-light-muted mb-6">
+                        {steps[currentStep].description}
+                      </p>
+                      <ul className="space-y-3 max-w-md mx-auto">
+                        {steps[currentStep].details.map((detail, index) => (
+                          <li key={index} className="flex items-center gap-3">
+                            <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
+                            <span className="text-light-muted">{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Navigation Arrows */}
+              <div className="flex justify-between items-center px-4 mt-6">
+                <button
+                  onClick={handlePrev}
+                  className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+                  aria-label="Anterior"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                
+                <div className="flex gap-2">
+                  {steps.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        setDirection(index > currentStep ? 1 : -1);
+                        setCurrentStep(index);
+                      }}
+                      className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                        index === currentStep ? 'bg-primary w-8' : 'bg-white/30'
+                      }`}
+                      aria-label={`Ir para etapa ${index + 1}`}
+                    />
+                  ))}
+                </div>
+                
+                <button
+                  onClick={handleNext}
+                  className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+                  aria-label="Próximo"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
           </div>
-
-
         </motion.div>
       </div>
     </section>

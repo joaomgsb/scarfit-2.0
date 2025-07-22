@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Star, Sparkles, Crown } from 'lucide-react';
@@ -17,6 +17,21 @@ const OurClients: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const [currentTranslate, setCurrentTranslate] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const clients: Client[] = [
     {
@@ -48,6 +63,39 @@ const OurClients: React.FC = () => {
       instagram: "@Felippe_Hermes"
     }
   ];
+
+  // Triplicar os clientes para criar o efeito infinito
+  const triplicatedClients = [...clients, ...clients, ...clients];
+
+  useEffect(() => {
+    if (!inView || !isMobile) return;
+
+    const itemWidth = 320 + 24; // w-80 (320px) + gap-6 (24px)
+    const totalWidth = clients.length * itemWidth;
+    const speed = 0.4; // pixels por frame
+
+    const animate = () => {
+      setCurrentTranslate(prev => {
+        const newTranslate = prev - speed;
+        
+        // Quando chegamos no final do primeiro conjunto, resetamos para o início do segundo
+        if (Math.abs(newTranslate) >= totalWidth) {
+          setTimeout(() => {
+            setIsTransitioning(true);
+            setCurrentTranslate(0);
+            setTimeout(() => setIsTransitioning(false), 50);
+          }, 0);
+          return newTranslate;
+        }
+        
+        return newTranslate;
+      });
+    };
+
+    const animationId = setInterval(animate, 16); // ~60fps
+
+    return () => clearInterval(animationId);
+  }, [inView, isMobile, clients.length]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -97,11 +145,12 @@ const OurClients: React.FC = () => {
           </motion.div>
         </motion.div>
 
+        {/* Desktop Layout - Grid estático */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+          className="hidden lg:grid lg:grid-cols-4 gap-6 md:gap-8"
         >
           {clients.map((client, index) => (
             <motion.div
@@ -166,6 +215,88 @@ const OurClients: React.FC = () => {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Mobile Layout - Looping infinito */}
+        <div className="lg:hidden">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            className="relative overflow-hidden"
+          >
+            <div 
+              ref={containerRef}
+              className="flex gap-6"
+              style={{
+                transform: `translateX(${currentTranslate}px)`,
+                transition: isTransitioning ? 'none' : 'transform 0.1s linear'
+              }}
+            >
+              {triplicatedClients.map((client, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="card card-hover text-center p-6 w-80 flex-shrink-0 group relative overflow-hidden"
+                >
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  {/* Profile image */}
+                  <div className="relative mb-6">
+                    <div className="w-20 h-20 mx-auto rounded-full overflow-hidden border-2 border-primary/30 group-hover:border-primary/60 transition-all duration-300 relative">
+                      <img 
+                        src={client.image} 
+                        alt={client.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300">
+                      {client.name}
+                    </h3>
+                    
+                    <p className="text-primary text-sm font-medium mb-3">
+                      {client.description}
+                    </p>
+                    
+                    {client.instagram && (
+                      <p className="text-light-muted text-xs mb-4 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                        {client.instagram}
+                      </p>
+                    )}
+                    {client.twitter && (
+                      <p className="text-light-muted text-xs mb-4 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                        {client.twitter}
+                      </p>
+                    )}
+                    
+                    {/* Stars */}
+                    <div className="flex justify-center mb-4">
+                      {[...Array(5)].map((_, i) => (
+                        <Star 
+                          key={i} 
+                          className="w-4 h-4 text-primary fill-current opacity-80 group-hover:opacity-100 transition-all duration-300"
+                          style={{
+                            animationDelay: `${i * 0.1}s`,
+                          }}
+                        />
+                      ))}
+                    </div>
+                    
+                    {/* Testimonial */}
+                    <blockquote className="text-light-muted text-sm italic leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                      "{client.feedback}"
+                    </blockquote>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
