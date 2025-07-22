@@ -235,15 +235,176 @@ const DetailedTeamCard = ({ member }: { member: TeamMember }) => {
       
       {/* Main content */}
       <div className="relative glass-effect rounded-3xl p-6 sm:p-8 lg:p-12 border border-white/25 shadow-2xl shadow-primary/15 backdrop-blur-sm">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start min-h-[40rem] sm:min-h-auto">
+        {/* Desktop Layout - Grid 2 colunas */}
+        <div className="hidden lg:grid grid-cols-2 gap-12 items-start min-h-[40rem]">
           {/* Left side - Info */}
+          <div className="space-y-6">
+            {/* Header section */}
+            <div className="flex items-start gap-6">
+              {/* Photo with premium border */}
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary to-yellow-400 rounded-2xl p-0.5 opacity-80"></div>
+                <div className="relative w-28 h-28 rounded-2xl overflow-hidden bg-dark/50">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Basic info */}
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold text-light mb-2">
+                  {member.name}
+                </h3>
+                <div className="text-primary font-semibold text-lg mb-3">
+                  {member.role}
+                </div>
+                <div className="text-sm text-light-muted font-mono bg-dark/50 px-4 py-2 rounded-xl border border-white/10 inline-block">
+                  {member.credentials}
+                </div>
+              </div>
+            </div>
+
+            {/* Expertise highlights */}
+            <div className="bg-gradient-to-br from-dark/50 via-dark/60 to-dark/45 border border-white/15 rounded-2xl p-6 shadow-lg shadow-primary/5">
+              <h4 className="text-primary font-semibold text-lg mb-4 flex items-center gap-2">
+                <span className="text-yellow-400">⭐</span>
+                Especialização
+              </h4>
+              <div className="grid grid-cols-2 gap-3">
+                {member.name === "João Scar" && (
+                  <>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">7 países visitados</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">Ex-atleta federado</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">Metodologia única</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">7+ anos de experiência</span>
+                    </div>
+                  </>
+                )}
+                {member.name === "Gabriela Trindade" && (
+                  <>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">Nutrição estratégica</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">Protocolos individualizados</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">Performance otimizada</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">Composição corporal</span>
+                    </div>
+                  </>
+                )}
+                {member.name === "Luiz Camargo" && (
+                  <>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">20+ anos de experiência</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">Formado desde 2000</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">Centenas de alunos</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">Excelência técnica</span>
+                    </div>
+                  </>
+                )}
+                {member.name === "Daniel França" && (
+                  <>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">Queima de gordura</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">Recomposição corporal</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">Resultados sustentáveis</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-light-muted">Protocolos individualizados</span>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+
+            {/* Main description */}
+            <div className="text-light-muted text-lg leading-relaxed space-y-3">
+              {member.description.split('\n\n').map((paragraph, index) => (
+                <p key={index} className={`text-justify ${index === 0 ? 'text-xl font-medium' : 'text-lg'}`}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+
+            {/* Personal quote */}
+            <div className="bg-gradient-to-r from-primary/15 via-primary/10 to-yellow-400/15 border border-primary/25 rounded-2xl p-6 shadow-lg shadow-primary/10">
+              <blockquote className="text-light-muted italic text-lg leading-relaxed mb-3 text-justify">
+                "{member.name === "João Scar" 
+                  ? "Nessa jornada, o seu objetivo é o único destino que aceito. Aqui, você não conta com sorte, conta comigo e com toda nossa equipe."
+                  : member.name === "Gabriela Trindade"
+                  ? "Minha missão é transformar sua alimentação em uma ferramenta poderosa de transformação, sem restrições extremas ou dietas insustentáveis."
+                  : member.name === "Luiz Camargo"
+                  ? "Com mais de 20 anos de experiência, minha missão é garantir que cada protocolo seja seguro, eficiente e adaptado às necessidades individuais."
+                  : "Meu compromisso é desenvolver treinos que maximizem seus resultados respeitando suas limitações e objetivos específicos."
+                }"
+              </blockquote>
+              <cite className="text-primary font-semibold">
+                — {member.name}
+              </cite>
+            </div>
+          </div>
+
+          {/* Right side - Animation */}
+          <div className="flex justify-end items-center">
+            <div className="w-[36rem] h-[36rem] xl:w-[40rem] xl:h-[40rem] 2xl:w-[44rem] 2xl:h-[44rem]">
+              <InteractiveLottie 
+                animationData={member.animationData}
+                className="w-full h-full scale-120 xl:scale-125 2xl:scale-130"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Layout - Sequência vertical */}
+        <div className="lg:hidden space-y-8">
+          {/* Card Info */}
           <div className="space-y-4 sm:space-y-6">
             {/* Header section */}
             <div className="flex items-start gap-4 sm:gap-6">
               {/* Photo with premium border */}
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary to-yellow-400 rounded-2xl p-0.5 opacity-80"></div>
-                <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-2xl overflow-hidden bg-dark/50">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-dark/50">
                   <img
                     src={member.image}
                     alt={member.name}
@@ -357,9 +518,9 @@ const DetailedTeamCard = ({ member }: { member: TeamMember }) => {
             </div>
 
             {/* Main description */}
-            <div className="text-light-muted text-sm sm:text-base lg:text-lg leading-relaxed space-y-2 sm:space-y-3">
+            <div className="text-light-muted text-sm sm:text-base leading-relaxed space-y-2 sm:space-y-3">
               {member.description.split('\n\n').map((paragraph, index) => (
-                <p key={index} className={`text-justify ${index === 0 ? 'text-base sm:text-lg lg:text-xl font-medium' : 'text-sm sm:text-base lg:text-lg'}`}>
+                <p key={index} className={`text-justify ${index === 0 ? 'text-base sm:text-lg font-medium' : 'text-sm sm:text-base'}`}>
                   {paragraph}
                 </p>
               ))}
@@ -367,7 +528,7 @@ const DetailedTeamCard = ({ member }: { member: TeamMember }) => {
 
             {/* Personal quote */}
             <div className="bg-gradient-to-r from-primary/15 via-primary/10 to-yellow-400/15 border border-primary/25 rounded-2xl p-4 sm:p-6 shadow-lg shadow-primary/10">
-              <blockquote className="text-light-muted italic text-sm sm:text-base lg:text-lg leading-relaxed mb-3 text-justify">
+              <blockquote className="text-light-muted italic text-sm sm:text-base leading-relaxed mb-3 text-justify">
                 "{member.name === "João Scar" 
                   ? "Nessa jornada, o seu objetivo é o único destino que aceito. Aqui, você não conta com sorte, conta comigo e com toda nossa equipe."
                   : member.name === "Gabriela Trindade"
@@ -383,16 +544,18 @@ const DetailedTeamCard = ({ member }: { member: TeamMember }) => {
             </div>
           </div>
 
-          {/* Right side - Animation */}
-          <div className="flex justify-center lg:justify-end items-center lg:relative">
-            <div className="w-[28rem] h-[28rem] sm:w-[32rem] sm:h-[32rem] lg:w-[36rem] lg:h-[36rem] xl:w-[40rem] xl:h-[40rem] 2xl:w-[44rem] 2xl:h-[44rem] mt-4 lg:mt-0">
+          {/* Animation - ENTRE o card e o texto */}
+          <div className="flex justify-center items-center">
+            <div className="w-[24rem] h-[24rem] sm:w-[28rem] sm:h-[28rem]">
               <InteractiveLottie 
                 animationData={member.animationData}
-                className="w-full h-full scale-150 sm:scale-115 lg:scale-120 xl:scale-125 2xl:scale-130"
+                className="w-full h-full scale-125 sm:scale-115"
               />
             </div>
           </div>
-          <div className="flex items-center justify-center gap-2 mt-4 lg:hidden text-yellow-400/80 text-sm sm:text-base font-medium">
+
+          {/* Texto "Arraste para mudar o tema" - ABAIXO da animação */}
+          <div className="flex items-center justify-center gap-2 text-yellow-400/80 text-sm sm:text-base font-medium">
             <span>Arraste para mudar o tema</span>
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
