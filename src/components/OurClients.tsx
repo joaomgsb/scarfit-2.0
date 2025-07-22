@@ -64,14 +64,24 @@ const OurClients: React.FC = () => {
     }
   ];
 
+  // Ordem específica para mobile: Peter, Daniel, Felippe, Avelino
+  const mobileClients: Client[] = [
+    clients[2], // Peter Jordan
+    clients[1], // Daniel Scott
+    clients[3], // Felippe Hermes
+    clients[0]  // Avelino Morganti
+  ];
+
   // Triplicar os clientes para criar o efeito infinito
-  const triplicatedClients = [...clients, ...clients, ...clients];
+  const triplicatedClients = isMobile 
+    ? [...mobileClients, ...mobileClients, ...mobileClients]
+    : [...clients, ...clients, ...clients];
 
   useEffect(() => {
     if (!inView || !isMobile) return;
 
     const itemWidth = 320 + 24; // w-80 (320px) + gap-6 (24px)
-    const totalWidth = clients.length * itemWidth;
+    const totalWidth = mobileClients.length * itemWidth;
     const speed = 0.4; // pixels por frame
 
     const animate = () => {
@@ -95,7 +105,7 @@ const OurClients: React.FC = () => {
     const animationId = setInterval(animate, 16); // ~60fps
 
     return () => clearInterval(animationId);
-  }, [inView, isMobile, clients.length]);
+  }, [inView, isMobile, mobileClients.length]);
 
   const containerVariants = {
     hidden: { opacity: 0 },

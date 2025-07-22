@@ -255,54 +255,57 @@ const MethodologyShowcase: React.FC = () => {
 
             {/* Mobile Carousel */}
             <div className="lg:hidden relative">
-              <AnimatePresence initial={false} custom={direction} mode="wait">
-                <motion.div
-                  key={currentStep}
-                  custom={direction}
-                  initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                  className="w-full"
-                  onTouchStart={handleTouchStart}
-                  onTouchMove={handleTouchMove}
-                  onTouchEnd={handleTouchEnd}
-                >
-                  <div className="px-4">
-                    <div className="mb-6">
-                      <div className="inline-block text-sm font-medium text-light bg-white/10 px-4 py-2 rounded-lg">
-                        Etapa {currentStep + 1} de {steps.length}
+              {/* Conteúdo Animado */}
+              <div className="min-h-[600px]">
+                <AnimatePresence initial={false} custom={direction} mode="wait">
+                  <motion.div
+                    key={currentStep}
+                    custom={direction}
+                    initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    className="w-full"
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                  >
+                    <div className="px-4">
+                      <div className="mb-6">
+                        <div className="inline-block text-sm font-medium text-light bg-white/10 px-4 py-2 rounded-lg">
+                          Etapa {currentStep + 1} de {steps.length}
+                        </div>
+                      </div>
+
+                      <div className="w-full max-w-[360px] mx-auto mb-8">
+                        <Lottie
+                          animationData={steps[currentStep].mobileAnimationData}
+                          className="w-full h-auto aspect-square scale-125"
+                        />
+                      </div>
+
+                      <div className="text-center mb-8">
+                        <h3 className="text-2xl font-semibold text-light mb-3">
+                          {steps[currentStep].title}
+                        </h3>
+                        <p className="text-light-muted mb-6">
+                          {steps[currentStep].description}
+                        </p>
+                        <ul className="space-y-3 max-w-md mx-auto">
+                          {steps[currentStep].details.map((detail, index) => (
+                            <li key={index} className="flex items-center gap-3">
+                              <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
+                              <span className="text-light-muted">{detail}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
-                    <div className="w-full max-w-[360px] mx-auto mb-8">
-                      <Lottie
-                        animationData={steps[currentStep].mobileAnimationData}
-                        className="w-full h-auto aspect-square scale-125"
-                      />
-                    </div>
-
-                    <div className="text-center mb-8">
-                      <h3 className="text-2xl font-semibold text-light mb-3">
-                        {steps[currentStep].title}
-                      </h3>
-                      <p className="text-light-muted mb-6">
-                        {steps[currentStep].description}
-                      </p>
-                      <ul className="space-y-3 max-w-md mx-auto">
-                        {steps[currentStep].details.map((detail, index) => (
-                          <li key={index} className="flex items-center gap-3">
-                            <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
-                            <span className="text-light-muted">{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Navigation Arrows */}
+              {/* Navigation Arrows - FIXAS */}
               <div className="flex justify-between items-center px-4 mt-6">
                 <button
                   onClick={handlePrev}
