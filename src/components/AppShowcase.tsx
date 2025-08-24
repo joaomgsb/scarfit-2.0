@@ -31,7 +31,7 @@ const AppShowcase: React.FC = () => {
           className="flex flex-col items-center justify-center"
         >
           <div className="text-center max-w-3xl mx-auto mb-6">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
               Tudo o que você precisa, no seu bolso.
             </h2>
             <p className="text-lg md:text-xl text-light-muted leading-relaxed mb-6">

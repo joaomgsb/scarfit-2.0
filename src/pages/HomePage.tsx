@@ -58,10 +58,6 @@ const HomePage: React.FC = () => {
         <AppShowcase />
       </div>
       
-      <div id="contact">
-        <ContactSection />
-      </div>
-
       <div id="clients">
         <OurClients />
       </div>

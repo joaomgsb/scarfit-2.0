@@ -653,7 +653,7 @@ const TeamExpertise: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-gradient mb-6">
+            <h2 className="text-primary mb-6">
               O time por trás do seu novo físico
             </h2>
             <p className="text-xl text-light-muted max-w-3xl mx-auto">

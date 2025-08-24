@@ -424,11 +424,7 @@ const PlanosPersonalizadosPage: React.FC = () => {
                 <div className="text-center mb-6 mt-2">
                   <h3 className="text-2xl font-bold mb-2">{plano.nome}</h3>
                   <p className="text-light-gray text-sm mb-3">{plano.duracao}</p>
-                  <div className="mb-2">
-                    <span className="text-3xl font-bold text-primary">{plano.preco}</span>
-                    <p className="text-light-gray text-sm">à vista</p>
-                  </div>
-                  <p className="text-light-gray text-sm">ou {plano.parcelas}</p>
+                  {/* Preços e parcelas removidos */}
                   <p className="text-sm text-light-gray mt-2 italic">{plano.ideal}</p>
                 </div>
 

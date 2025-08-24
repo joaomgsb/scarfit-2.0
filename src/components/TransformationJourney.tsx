@@ -91,12 +91,12 @@ const TransformationJourney: React.FC = () => {
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center mb-8 md:mb-20">
             {/* Título Desktop */}
-            <h2 className="hidden md:block text-gradient mb-6">
+            <h2 className="hidden md:block text-primary mb-6">
               95% dos profissionais prescrevem o mesmo plano para corpos diferentes.
             </h2>
 
             {/* Título Mobile (Compacto) */}
-            <h2 className="md:hidden text-gradient mb-6">
+            <h2 className="md:hidden text-primary mb-6">
               95% dos profissionais prescrevem o mesmo plano para corpos diferentes.
             </h2>
 
@@ -220,28 +220,6 @@ const TransformationJourney: React.FC = () => {
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
                 className="lg:block w-full relative"
               >
-                {/* Efeito de destaque para desktop quando não ativo */}
-                {!isMobile && activeTab !== 'scarfit' && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl blur-lg animate-pulse pointer-events-none" />
-                )}
-                
-                {/* Efeito sutil quando métodos tradicionais está ativo */}
-                {!isMobile && activeTab === 'traditional' && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl blur-md animate-pulse pointer-events-none" />
-                )}
-                
-                {/* Overlay clicável para desktop */}
-                {!isMobile && activeTab !== 'scarfit' && (
-                  <div 
-                    className="absolute inset-0 cursor-pointer z-10"
-                    onClick={() => setActiveTab('scarfit')}
-                  >
-                    <div className="absolute inset-0 bg-primary/5 hover:bg-primary/10 transition-colors duration-300 rounded-3xl" />
-                    <div className="absolute top-4 right-4 text-primary animate-bounce">
-                      <span className="text-xs bg-primary/20 px-2 py-1 rounded-full">Clique para ver ✨</span>
-                    </div>
-                  </div>
-                )}
                 
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-semibold text-primary mb-4">Metodologia ScarFit</h3>

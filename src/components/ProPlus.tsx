@@ -123,15 +123,9 @@ const ProPlus: React.FC = () => {
           className="text-center max-w-4xl mx-auto mb-16"
         >
           <motion.div variants={itemVariants} className="relative">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 rounded-full px-4 md:px-6 py-2 mb-4 md:mb-6">
-              <Crown className="w-4 md:w-5 h-4 md:h-5 text-primary" />
-              <span className="text-primary font-semibold text-xs md:text-sm uppercase tracking-wider">
-                EXPERIÊNCIA PREMIUM
-              </span>
-              <Sparkles className="w-4 md:w-5 h-4 md:h-5 text-primary" />
-            </div>
+            {/* Card "EXPERIÊNCIA PREMIUM" removido */}
             
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-primary leading-tight">
               Aqui sua mudança acontece com quem trata isso como prioridade.
             </h2>
             

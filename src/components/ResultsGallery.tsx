@@ -129,7 +129,7 @@ const ResultsGallery: React.FC = () => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center mb-20">
-            <h2 className="text-gradient mb-6">
+            <h2 className="text-primary mb-6">
               Transformações Reais
             </h2>
             <p className="text-xl text-light-muted max-w-3xl mx-auto">
