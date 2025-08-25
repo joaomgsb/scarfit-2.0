@@ -36,6 +36,16 @@ const HeroVideo: React.FC = () => {
     "ACOMPANHAMENTO"
   ];
 
+  const scrollToElitePlan = () => {
+    const element = document.getElementById('elite-plan');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section className="relative h-[80vh] overflow-hidden" ref={ref}>
       {/* Vídeo de fundo */}
@@ -96,7 +106,10 @@ const HeroVideo: React.FC = () => {
 
           {/* Call to Action */}
           <motion.div variants={itemVariants} className="mb-8">
-            <button className="bg-primary text-dark px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-light hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+            <button 
+              onClick={scrollToElitePlan}
+              className="bg-primary text-dark px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-light hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
+            >
               SABER MAIS
             </button>
           </motion.div>

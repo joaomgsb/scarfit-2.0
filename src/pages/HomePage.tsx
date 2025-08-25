@@ -32,13 +32,13 @@ const HomePage: React.FC = () => {
       <div id="journey">
         <TransformationJourney />
       </div>
-      
-      <div id="methodology">
-        <MethodologyShowcase />
-      </div>
 
       <div id="hero-video">
         <HeroVideo />
+      </div>
+
+      <div id="methodology">
+        <MethodologyShowcase />
       </div>
       
       <div id="plans">

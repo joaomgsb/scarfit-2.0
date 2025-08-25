@@ -242,76 +242,10 @@ const ElitePlan: React.FC = () => {
             <p className="text-lg md:text-xl text-light-muted max-w-4xl mx-auto leading-relaxed mb-6">
               12 meses de suporte científico com ajustes quinzenais e balança de bioimpedância profissional entregue em casa
             </p>
-
-            {/* Pricing Section */}
-            <motion.div 
-              variants={itemVariants} 
-              className="mb-8 relative"
-            >
-
-              
-              <motion.div 
-                className="relative max-w-md mx-auto"
-                variants={premiumFloatingVariants}
-                animate="animate"
-              >
-                {/* Glow effect externo */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/20 to-primary/30 rounded-3xl blur-2xl scale-110" />
-                
-                <motion.div 
-                  className="relative glass-effect rounded-3xl p-6 md:p-8 border-2 border-primary/40 overflow-hidden shadow-2xl shadow-primary/30"
-                  ref={cardRef}
-                  onMouseMove={handleMouseMove}
-                  onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
-                  custom={mousePosition}
-                  variants={card3DHover}
-                  initial="initial"
-                  whileHover="hover"
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    transform: 'perspective(1000px)'
-                  }}
-                >
-                {/* Efeito de brilho no hover */}
-                <div 
-                  className="absolute inset-0 bg-gradient-to-br from-primary/40 to-transparent opacity-0 group-hover:opacity-90 transition-all duration-500 pointer-events-none blur-sm"
-                  style={{
-                    transform: `translate(${mousePosition.x * 50}px, ${mousePosition.y * 50}px)`,
-                  }}
-                />
-                
-                <div className="relative z-10">
-                  <div className="text-center mb-6">
-                    <div className="text-2xl md:text-3xl font-bold text-primary mb-2">
-                      ÚLTIMAS VAGAS
-                    </div>
-                    <div className="text-xl md:text-2xl font-bold text-primary">
-                      DISPONÍVEIS
-                    </div>
-                  </div>
-                  
-
-                  
-
-
-                  <a
-                    href="https://wa.me/5541984961012?text=Olá! Quero contratar o Plano ELITE - Transformação 360º da ScarFit. Estou interessado na experiência completa de 12 meses."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary w-full text-lg group"
-                  >
-                    <MessageSquare className="w-5 md:w-6 h-5 md:h-6 mr-3" />
-                    QUERO O PLANO ELITE
-                    <ArrowRight className="w-5 md:w-6 h-5 md:h-6 ml-3 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </div>
-              </motion.div>
-              </motion.div>
-            </motion.div>
           </motion.div>
 
           {/* Main Content Grid */}
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-stretch">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-stretch mb-16">
             
             {/* Right Side - Bioimpedance Scale (Mobile First) */}
             <motion.div variants={itemVariants} className="relative flex flex-col order-1 xl:order-2">
@@ -507,7 +441,65 @@ const ElitePlan: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Bottom CTA Removed - Moved to Technology Card */}
+          {/* Card ÚLTIMAS VAGAS DISPONÍVEIS - Movido para baixo */}
+          <motion.div 
+            variants={itemVariants} 
+            className="text-center mb-8 relative"
+          >
+            <motion.div 
+              className="relative max-w-md mx-auto"
+              variants={premiumFloatingVariants}
+              animate="animate"
+            >
+              {/* Glow effect externo */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/20 to-primary/30 rounded-3xl blur-2xl scale-110" />
+              
+              <motion.div 
+                className="relative glass-effect rounded-3xl p-6 md:p-8 border-2 border-primary/40 overflow-hidden shadow-2xl shadow-primary/30"
+                ref={cardRef}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
+                custom={mousePosition}
+                variants={card3DHover}
+                initial="initial"
+                whileHover="hover"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  transform: 'perspective(1000px)'
+                }}
+              >
+              {/* Efeito de brilho no hover */}
+              <div 
+                className="absolute inset-0 bg-gradient-to-br from-primary/40 to-transparent opacity-0 group-hover:opacity-90 transition-all duration-500 pointer-events-none blur-sm"
+                style={{
+                  transform: `translate(${mousePosition.x * 50}px, ${mousePosition.y * 50}px)`,
+                }}
+              />
+              
+              <div className="relative z-10">
+                <div className="text-center mb-6">
+                  <div className="text-2xl md:text-3xl font-bold text-primary mb-2">
+                    ÚLTIMAS VAGAS
+                  </div>
+                  <div className="text-xl md:text-2xl font-bold text-primary">
+                    DISPONÍVEIS
+                  </div>
+                </div>
+                
+                <a
+                  href="https://wa.me/5541984961012?text=Olá! Quero contratar o Plano ELITE - Transformação 360º da ScarFit. Estou interessado na experiência completa de 12 meses."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary w-full text-lg group"
+                >
+                  <MessageSquare className="w-5 md:w-6 h-5 md:h-6 mr-3" />
+                  QUERO O PLANO ELITE
+                  <ArrowRight className="w-5 md:w-6 h-5 md:h-6 ml-3 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </motion.div>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
