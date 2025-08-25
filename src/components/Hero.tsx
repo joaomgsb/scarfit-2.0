@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
       <div className="absolute top-1/4 left-1/4 w-32 md:w-64 h-32 md:h-64 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-48 md:w-96 h-48 md:h-96 bg-primary/5 rounded-full blur-3xl" />
       
-      <div className="relative z-10 h-full flex items-center justify-start pl-20 md:pl-24 lg:pl-28">
+      <div className="relative z-10 h-full flex items-center justify-start px-4 md:pl-24 lg:pl-28">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
           {/* Headline principal */}
           <motion.h1 
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
           >
             <span className="text-white">Você é </span>
             <span className="text-yellow-400">único</span>
@@ -77,7 +77,7 @@ const Hero: React.FC = () => {
           {/* Subtítulo */}
           <motion.p 
             variants={itemVariants}
-            className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed"
+            className="text-base sm:text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed"
           >
             Você não falhou. O que faltava era um método feito para você. Transformar o corpo exige estratégia, ciência e apoio profissional diário. Bem-vindo à ScarX.
           </motion.p>
@@ -99,7 +99,7 @@ const Hero: React.FC = () => {
               smooth={true}
               offset={-100}
               duration={500}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 border-2 border-primary text-primary hover:scale-105 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 border-2 border-primary text-primary hover:scale-105 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl text-base sm:text-lg transition-all duration-300 group"
             >
               Comece Sua Transformação Agora!
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -107,18 +107,18 @@ const Hero: React.FC = () => {
           </motion.div>
           
           {/* Indicadores de qualidade - mais discretos */}
-          <motion.div variants={itemVariants} className="flex gap-8 text-white/80">
+          <motion.div variants={itemVariants} className="flex flex-row gap-2 sm:gap-8 text-white/80">
             <div>
-              <div className="text-2xl font-bold text-primary">1200+</div>
-              <div className="text-sm">Vidas Transformadas</div>
+              <div className="text-xl sm:text-2xl font-bold text-primary">1200+</div>
+              <div className="text-xs sm:text-sm">Vidas Transformadas</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-primary">10 anos</div>
-              <div className="text-sm">De Experiência</div>
+              <div className="text-xl sm:text-2xl font-bold text-primary">10 anos</div>
+              <div className="text-xs sm:text-sm">De Experiência</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-primary">98%</div>
-              <div className="text-sm">Taxa de Sucesso</div>
+              <div className="text-xl sm:text-2xl font-bold text-primary">98%</div>
+              <div className="text-xs sm:text-sm">Taxa de Sucesso</div>
             </div>
           </motion.div>
         </motion.div>

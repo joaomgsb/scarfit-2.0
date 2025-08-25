@@ -4,13 +4,14 @@ import Hero from '../components/Hero';
 import HeroVideo from '../components/HeroVideo';
 import TransformationJourney from '../components/TransformationJourney';
 import MethodologyShowcase from '../components/MethodologyShowcase';
+import ScarXForWho from '../components/ScarXForWho';
 import ResultsGallery from '../components/ResultsGallery';
 import ElitePlan from '../components/ElitePlan';
 import ProPlus from '../components/ProPlus';
 import Faq from '../components/Faq';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
-import Feedbacks from '../components/Feedbacks';
+
 import AppShowcase from '../components/AppShowcase';
 import OurClients from '../components/OurClients';
 
@@ -39,6 +40,10 @@ const HomePage: React.FC = () => {
 
       <div id="methodology">
         <MethodologyShowcase />
+      </div>
+      
+      <div id="scarx-for-who">
+        <ScarXForWho />
       </div>
       
       <div id="plans">
