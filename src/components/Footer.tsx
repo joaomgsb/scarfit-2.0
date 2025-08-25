@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           
           {/* Brand */}
           <div>
-            <img src="/images/logo.png" alt="ScarFit" className="h-10 mb-6" />
+            <img src="/images/logo.png" alt="ScarX" className="h-10 mb-6" />
             <p className="text-light-muted mb-6 leading-relaxed">
               Metodologia exclusiva de transformação corporal com base científica 
               e acompanhamento personalizado.
@@ -118,7 +118,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-center md:text-left">
               <p className="text-light-muted text-sm">
-                © {currentYear} ScarFit. Todos os direitos reservados.
+                © {currentYear} ScarX. Todos os direitos reservados.
               </p>
               <p className="text-light-muted text-sm">
                 CNPJ: 56.203.803/0001-06 | CREF 083338-G/SP

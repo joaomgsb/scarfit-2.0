@@ -193,7 +193,7 @@ const MethodologyShowcase: React.FC = () => {
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16 lg:mb-20">
             <h2 className="text-primary mb-4 sm:mb-6">
-              A Maneira ScarFit de Transformar
+              A Maneira ScarX de Transformar
             </h2>
             <p className="text-lg sm:text-xl text-light-muted max-w-3xl mx-auto px-4">
               Os pilares do processo que aplicamos para garantir sua evolução e resultado.

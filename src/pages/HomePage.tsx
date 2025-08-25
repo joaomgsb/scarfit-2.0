@@ -1,14 +1,13 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import HeroVideo from '../components/HeroVideo';
 import TransformationJourney from '../components/TransformationJourney';
 import MethodologyShowcase from '../components/MethodologyShowcase';
 import ResultsGallery from '../components/ResultsGallery';
-import TeamExpertise from '../components/TeamExpertise';
 import ElitePlan from '../components/ElitePlan';
 import ProPlus from '../components/ProPlus';
 import Faq from '../components/Faq';
-import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import Feedbacks from '../components/Feedbacks';
@@ -33,17 +32,13 @@ const HomePage: React.FC = () => {
       <div id="journey">
         <TransformationJourney />
       </div>
-
-      <div id="feedbacks">
-        <Feedbacks />
-      </div>
       
       <div id="methodology">
         <MethodologyShowcase />
       </div>
-      
-      <div id="team">
-        <TeamExpertise />
+
+      <div id="hero-video">
+        <HeroVideo />
       </div>
       
       <div id="plans">

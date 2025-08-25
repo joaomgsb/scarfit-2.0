@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [ref, inView] = useInView({
@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="text-left max-w-2xl pt-20 md:pt-32"
+          className="text-left max-w-2xl"
         >
           {/* Headline principal */}
           <motion.h1 
@@ -79,7 +79,7 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed"
           >
-            Você não falhou. O que faltava era um método feito para você. Transformar o corpo exige estratégia, ciência e apoio profissional diário.
+            Você não falhou. O que faltava era um método feito para você. Transformar o corpo exige estratégia, ciência e apoio profissional diário. Bem-vindo à ScarX.
           </motion.p>
 
           {/* Country Flags */}
@@ -94,27 +94,15 @@ const Hero: React.FC = () => {
           {/* CTAs */}
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 mb-8">
             <Link
-              to="contact"
+              to="plans"
               spy={true}
               smooth={true}
               offset={-100}
               duration={500}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-primary text-dark font-bold py-4 px-8 rounded-xl text-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/30 group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 border-2 border-primary text-primary hover:scale-105 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 group"
             >
               Comece Sua Transformação Agora!
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            
-            <Link
-              to="results"
-              spy={true}
-              smooth={true}
-              offset={-100}
-              duration={500}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 border-2 border-white text-white hover:bg-white hover:text-dark font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 group"
-            >
-              <Play className="w-5 h-5" />
-              Veja Nossas Transformações
             </Link>
           </motion.div>
           
@@ -125,8 +113,8 @@ const Hero: React.FC = () => {
               <div className="text-sm">Vidas Transformadas</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-primary">9.492</div>
-              <div className="text-sm">Peso Eliminado</div>
+              <div className="text-2xl font-bold text-primary">10 anos</div>
+              <div className="text-sm">De Experiência</div>
             </div>
             <div>
               <div className="text-2xl font-bold text-primary">98%</div>

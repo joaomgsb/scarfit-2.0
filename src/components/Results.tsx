@@ -16,7 +16,7 @@ const transformations = [
     before: "images/peterantes.png",
     after: "images/peterdepois.png",
     highlight: "TRANSFORMAÇÃO EM 90 DIAS",
-    testimonial: "Nunca pensei que conseguiria mudar tanto em tão pouco tempo! A ScarFit me provou que é possível."
+            testimonial: "Nunca pensei que conseguiria mudar tanto em tão pouco tempo! A ScarX me provou que é possível."
   },
   {
     name: "João Scar",
@@ -37,7 +37,7 @@ const transformations = [
     before: "images/antes/ricardoantes.jpeg",
     after: "images/antes/ricardodepois.jpeg",
     highlight: "TRANSFORMAÇÃO EM 6 MESES",
-    testimonial: "A metodologia da ScarFit é diferente de tudo que já experimentei. Os resultados são impressionantes!"
+            testimonial: "A metodologia da ScarX é diferente de tudo que já experimentei. Os resultados são impressionantes!"
   },
   {
     name: "Enzo",
@@ -51,7 +51,7 @@ const transformations = [
     before: "images/antes/antes1.jpeg",
     after: "images/antes/depois1.jpeg",
     highlight: "RESULTADO EM 6 MESES",
-    testimonial: "A metodologia da ScarFit mudou completamente minha vida. Os resultados falam por si!"
+            testimonial: "A metodologia da ScarX mudou completamente minha vida. Os resultados falam por si!"
   },
   {
     name: "João Simas",
@@ -151,7 +151,7 @@ const Results: React.FC = () => {
             </motion.h2>
             
             <motion.p variants={itemVariants} className="text-lg md:text-xl text-light-gray max-w-3xl mx-auto leading-relaxed">
-              Veja os resultados de quem saiu do genérico e transformou o corpo com estratégia, ciência e acompanhamento ScarFit.
+              Veja os resultados de quem saiu do genérico e transformou o corpo com estratégia, ciência e acompanhamento ScarX.
             </motion.p>
           </motion.div>
         </motion.div>
@@ -198,6 +198,7 @@ const Results: React.FC = () => {
                       <div className="absolute top-4 left-0 bg-gradient-to-r from-primary to-primary-dark text-black py-2 px-4 rounded-r-lg font-bold text-sm shadow-lg">
                         {item.highlight}
                       </div>
+
                     </div>
                     <div className="p-6 md:p-8">
                       <h4 className="text-xl md:text-2xl font-bold mb-3 text-white group-hover:text-primary transition-colors duration-300">{item.name}</h4>
@@ -230,4 +231,4 @@ const Results: React.FC = () => {
   );
 };
 
-export default Results;
+export default Results;export default Results;

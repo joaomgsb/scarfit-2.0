@@ -35,7 +35,7 @@ const UniqueMethodology: React.FC = () => {
     "Base Científica: Nível de eficiência que você não encontra no Brasil.",
     "Equipe Multidisciplinar: Personal Trainers, Nutricionistas, Fisioterapeutas e Psicólogos",
     "Ajustes Constantes: Adaptação sempre que precisar sem custo extra.",
-    "Aplicativo ScarFit PRO: treinos em vídeo, dieta detalhada e acompanhamento direto no seu celular.",
+            "Aplicativo ScarX PRO: treinos em vídeo, dieta detalhada e acompanhamento direto no seu celular.",
   ];
 
   const outrosProblemas = [
@@ -85,7 +85,7 @@ const UniqueMethodology: React.FC = () => {
             </motion.h2>
             
             <motion.p variants={itemVariants} className="text-base sm:text-lg md:text-xl text-light-gray max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
-              Veja lado a lado por que a ScarFit é a escolha certa para sua transformação
+              Veja lado a lado por que a ScarX é a escolha certa para sua transformação
             </motion.p>
           </motion.div>
         </motion.div>
@@ -125,7 +125,7 @@ const UniqueMethodology: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Coluna ScarFit */}
+          {/* Coluna ScarX */}
           <motion.div variants={itemVariants} className="relative group">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-300" />
             
@@ -134,7 +134,7 @@ const UniqueMethodology: React.FC = () => {
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 rounded-full px-6 py-2 mb-4">
                   <CheckCircle className="w-5 h-5 text-primary" />
                   <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-                    ScarFit
+                    ScarX
                   </span>
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2 methodology-text">Nossa Metodologia Única</h3>

@@ -101,7 +101,7 @@ const TechnicalTeam: React.FC = () => {
               </motion.h2>
               
               <motion.p variants={itemVariants} className="text-lg md:text-xl text-light-gray mb-6 leading-relaxed">
-                Gabriela Trindade traz um olhar técnico e estratégico para cada protocolo alimentar. Sua atuação na ScarFit é garantir que sua alimentação seja um verdadeiro motor de progresso físico. Cada ajuste é pensado com precisão, respeitando sua individualidade e otimizando sua performance e composição corporal.
+                Gabriela Trindade traz um olhar técnico e estratégico para cada protocolo alimentar. Sua atuação na ScarX é garantir que sua alimentação seja um verdadeiro motor de progresso físico. Cada ajuste é pensado com precisão, respeitando sua individualidade e otimizando sua performance e composição corporal.
               </motion.p>
               
               <motion.div variants={itemVariants} className="relative group">
@@ -157,7 +157,7 @@ const TechnicalTeam: React.FC = () => {
             
               <motion.p variants={itemVariants} className="text-lg md:text-xl text-light-gray mb-6 leading-relaxed">
                 Com mais de 20 anos dedicados ao desenvolvimento físico, Luiz Camargo traz sua vasta experiência 
-                para a equipe técnica da ScarFit. Sua expertise é fundamental para garantir a excelência técnica 
+                para a equipe técnica da ScarX. Sua expertise é fundamental para garantir a excelência técnica 
                 de todos os protocolos desenvolvidos.
               </motion.p>
             
@@ -178,7 +178,7 @@ const TechnicalTeam: React.FC = () => {
                 <div className="relative bg-gradient-to-br from-dark-lighter/90 to-dark/90 backdrop-blur-xl p-6 rounded-2xl border border-primary/20 hover:border-primary/40 transition-all duration-300 shadow-xl">
                   <p className="text-sm font-semibold text-primary mb-2">CREF 083338-G/SP</p>
                   <p className="text-light-gray">
-                    "Como Responsável Técnico da ScarFit, garanto que cada protocolo seja desenvolvido com o mais 
+                    "Como Responsável Técnico da ScarX, garanto que cada protocolo seja desenvolvido com o mais 
                     alto padrão técnico e científico, sempre visando a segurança e eficiência para nossos alunos."
                   </p>
                   <p className="font-semibold text-primary italic mt-4">— Luiz Camargo</p>
@@ -232,7 +232,7 @@ const TechnicalTeam: React.FC = () => {
                 </motion.h2>
               
                 <motion.p variants={itemVariants} className="text-lg md:text-xl text-light-gray mb-6 leading-relaxed">
-                  Daniel integra a equipe da ScarFit com foco em resultados sustentáveis e altamente individualizados. 
+                  Daniel integra a equipe da ScarX com foco em resultados sustentáveis e altamente individualizados. 
                   Especialista em treinos estratégicos para queima de gordura e recomposição corporal, ele desenvolve 
                   protocolos que maximizam seus resultados respeitando suas limitações e objetivos específicos.
                 </motion.p>

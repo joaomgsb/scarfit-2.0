@@ -73,7 +73,7 @@ const Target: React.FC = () => {
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 rounded-full px-6 py-2 mb-6">
               <Crown className="w-5 h-5 text-primary" />
               <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-                PARA QUEM É A SCARFIT?
+                PARA QUEM É A SCARX?
               </span>
               <Sparkles className="w-5 h-5 text-primary" />
             </div>
@@ -85,7 +85,7 @@ const Target: React.FC = () => {
             </h2>
             
             <p className="text-xl md:text-2xl text-light-gray max-w-3xl mx-auto leading-relaxed">
-              A ScarFit foi desenvolvida para atender pessoas exigentes, que valorizam exclusividade e resultados, 
+              A ScarX foi desenvolvida para atender pessoas exigentes, que valorizam exclusividade e resultados, 
               independentemente do seu estilo de vida ou rotina.
             </p>
           </motion.div>

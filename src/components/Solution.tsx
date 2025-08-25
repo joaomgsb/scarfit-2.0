@@ -96,11 +96,11 @@ const Solution: React.FC = () => {
             </motion.div>
             
             <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight">
-              A ScarFit é a Resposta Definitiva para Seus Desafios de Transformação
+              A ScarX é a Resposta Definitiva para Seus Desafios de Transformação
             </motion.h2>
             
             <motion.p variants={itemVariants} className="text-light-gray mb-8 text-lg leading-relaxed">
-              Cansado de métodos que não se encaixam na sua vida? A ScarFit oferece uma abordagem única, 
+              Cansado de métodos que não se encaixam na sua vida? A ScarX oferece uma abordagem única, 
               combinando ciência de ponta e personalização extrema para garantir que sua jornada de transformação 
               seja eficaz, sustentável e adaptada à sua realidade.
             </motion.p>

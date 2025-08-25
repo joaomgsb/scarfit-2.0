@@ -609,7 +609,7 @@ const TeamExpertise: React.FC = () => {
       role: "Nutricionista Esportiva",
       image: "images/gabrielasemfundo.png",
       credentials: "CRN 1426",
-      description: "Gabriela Trindade traz um olhar técnico e estratégico para cada protocolo alimentar. Sua atuação na ScarFit é garantir que sua alimentação seja um verdadeiro motor de progresso físico. Cada ajuste é pensado com precisão, respeitando sua individualidade e otimizando sua performance e composição corporal.",
+        description: "Gabriela Trindade traz um olhar técnico e estratégico para cada protocolo alimentar. Sua atuação na ScarX é garantir que sua alimentação seja um verdadeiro motor de progresso físico. Cada ajuste é pensado com precisão, respeitando sua individualidade e otimizando sua performance e composição corporal.",
       animationData: gabrielaAnimation
     },
     {
@@ -617,7 +617,7 @@ const TeamExpertise: React.FC = () => {
       role: "Responsável Técnico",
       image: "images/Luiz.jpeg",
       credentials: "CREF 083338-G/SP",
-      description: "Com mais de 20 anos dedicados ao desenvolvimento físico, Luiz Camargo traz sua vasta experiência para a equipe técnica da ScarFit. Sua expertise é fundamental para garantir a excelência técnica de todos os protocolos desenvolvidos.",
+      description: "Com mais de 20 anos dedicados ao desenvolvimento físico, Luiz Camargo traz sua vasta experiência para a equipe técnica da ScarX. Sua expertise é fundamental para garantir a excelência técnica de todos os protocolos desenvolvidos.",
       animationData: luizAnimation
     },
     {
@@ -625,7 +625,7 @@ const TeamExpertise: React.FC = () => {
       role: "Especialista em Emagrecimento",
       image: "images/daniel.jpeg",
       credentials: "CREF 153464-G/SP",
-      description: "Daniel integra a equipe da ScarFit com foco em resultados sustentáveis e altamente individualizados. Especialista em treinos estratégicos para queima de gordura e recomposição corporal, ele desenvolve protocolos que maximizam seus resultados respeitando suas limitações e objetivos específicos.",
+      description: "Daniel integra a equipe da ScarX com foco em resultados sustentáveis e altamente individualizados. Especialista em treinos estratégicos para queima de gordura e recomposição corporal, ele desenvolve protocolos que maximizam seus resultados respeitando suas limitações e objetivos específicos.",
       animationData: danielAnimation
     }
   ];

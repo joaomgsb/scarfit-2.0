@@ -25,7 +25,7 @@ const ResultsGallery: React.FC = () => {
       name: "Peter Jordan",
       before: "images/peterantes.png",
       after: "images/peterdepois.png",
-      testimonial: "Nunca pensei que conseguiria mudar tanto em tão pouco tempo! A ScarFit me provou que é possível."
+              testimonial: "Nunca pensei que conseguiria mudar tanto em tão pouco tempo! A ScarX me provou que é possível."
     },
     {
       name: "João Scar",
@@ -43,7 +43,7 @@ const ResultsGallery: React.FC = () => {
       name: "Ricardo",
       before: "images/antes/ricardoantes.jpeg",
       after: "images/antes/ricardodepois.jpeg",
-      testimonial: "A metodologia da ScarFit é diferente de tudo que já experimentei. Os resultados são impressionantes!"
+              testimonial: "A metodologia da ScarX é diferente de tudo que já experimentei. Os resultados são impressionantes!"
     },
     {
       name: "Enzo",
@@ -55,7 +55,7 @@ const ResultsGallery: React.FC = () => {
       name: "Gabriel Schmit",
       before: "images/antes/antes1.jpeg",
       after: "images/antes/depois1.jpeg",
-      testimonial: "A metodologia da ScarFit mudou completamente minha vida. Os resultados falam por si!"
+              testimonial: "A metodologia da ScarX mudou completamente minha vida. Os resultados falam por si!"
     },
     {
       name: "João Simas",

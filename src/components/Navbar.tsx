@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
 
   const navItems = [
     {
-      name: 'Conheça a ScarFit',
+              name: 'Conheça a ScarX',
       type: 'dropdown',
       children: [
         { name: 'Início', to: 'hero', type: 'scroll' },
@@ -91,11 +91,11 @@ const Navbar: React.FC = () => {
               offset={-100}
               duration={500}
               className="cursor-pointer"
-              aria-label="ScarFit - Ir para o início"
+              aria-label="ScarX - Ir para o início"
             >
               <img 
                 src="/images/logo.png" 
-                alt="ScarFit" 
+                alt="ScarX" 
                 className="h-8 md:h-10"
               />
             </ScrollLink>
@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
                 {item.type === 'dropdown' ? (
                   <>
                     <button
-                      className="text-light-muted hover:text-primary transition-colors cursor-pointer font-medium text-sm py-5 flex items-center gap-1"
+                      className="text-white hover:text-primary transition-colors cursor-pointer font-medium text-sm py-5 flex items-center gap-1"
                       onMouseEnter={() => setOpenDropdown(item.name)}
                       onMouseLeave={() => setOpenDropdown(null)}
                     >
@@ -135,7 +135,7 @@ const Navbar: React.FC = () => {
                                 smooth={true}
                                 offset={-100}
                                 duration={500}
-                                className="block px-4 py-3 text-sm text-light-muted hover:text-primary hover:bg-neutral-800/50 transition-all duration-200 cursor-pointer rounded-lg mx-2"
+                                className="block px-4 py-3 text-sm text-white hover:text-primary hover:bg-neutral-800/50 transition-all duration-200 cursor-pointer rounded-lg mx-2"
                                 onClick={closeMenu}
                               >
                                 {subItem.name}
@@ -144,7 +144,7 @@ const Navbar: React.FC = () => {
                               <RouterLink
                                 key={subItem.name}
                                 to={subItem.to}
-                                className="block px-4 py-3 text-sm text-light-muted hover:text-primary hover:bg-neutral-800/50 transition-all duration-200 cursor-pointer rounded-lg mx-2"
+                                className="block px-4 py-3 text-sm text-white hover:text-primary hover:bg-neutral-800/50 transition-all duration-200 cursor-pointer rounded-lg mx-2"
                                 onClick={closeMenu}
                               >
                                 {subItem.name}
@@ -162,7 +162,7 @@ const Navbar: React.FC = () => {
                     smooth={true}
                     offset={-100}
                     duration={500}
-                    className="text-light-muted hover:text-primary transition-colors cursor-pointer font-medium text-sm py-5"
+                    className="text-white hover:text-primary transition-colors cursor-pointer font-medium text-sm py-5"
                     onClick={closeMenu}
                   >
                     {item.name}
@@ -207,7 +207,7 @@ const Navbar: React.FC = () => {
                     {item.type === 'dropdown' ? (
                       <>
                         <button
-                          className="flex items-center justify-between w-full text-light-muted hover:text-primary transition-colors cursor-pointer font-medium py-3 px-4 rounded-lg hover:bg-neutral-800/50"
+                          className="flex items-center justify-between w-full text-white hover:text-primary transition-colors cursor-pointer font-medium py-3 px-4 rounded-lg hover:bg-neutral-800/50"
                           onClick={() => handleDropdownToggle(item.name)}
                         >
                           {item.name} 
@@ -231,7 +231,7 @@ const Navbar: React.FC = () => {
                                     smooth={true}
                                     offset={-100}
                                     duration={500}
-                                    className="block text-light-muted hover:text-primary transition-colors cursor-pointer text-sm py-2 px-3 rounded-lg hover:bg-neutral-800/30"
+                                    className="block text-white hover:text-primary transition-colors cursor-pointer text-sm py-2 px-3 rounded-lg hover:bg-neutral-800/30"
                                     onClick={closeMenu}
                                   >
                                     {subItem.name}
@@ -240,7 +240,7 @@ const Navbar: React.FC = () => {
                                   <RouterLink
                                     key={subItem.name}
                                     to={subItem.to}
-                                    className="block text-light-muted hover:text-primary transition-colors cursor-pointer text-sm py-2 px-3 rounded-lg hover:bg-neutral-800/30"
+                                    className="block text-white hover:text-primary transition-colors cursor-pointer text-sm py-2 px-3 rounded-lg hover:bg-neutral-800/30"
                                     onClick={closeMenu}
                                   >
                                     {subItem.name}
@@ -258,7 +258,7 @@ const Navbar: React.FC = () => {
                         smooth={true}
                         offset={-100}
                         duration={500}
-                        className="block text-light-muted hover:text-primary transition-colors cursor-pointer font-medium py-3 px-4 rounded-lg hover:bg-neutral-800/50"
+                        className="block text-white hover:text-primary transition-colors cursor-pointer font-medium py-3 px-4 rounded-lg hover:bg-neutral-800/50"
                         onClick={closeMenu}
                       >
                         {item.name}

@@ -104,7 +104,7 @@ const Story: React.FC = () => {
               <div className="relative w-full max-w-4xl mx-auto">
                 <img
                   src="/images/peterscarfit.jpg"
-                  alt="Peter Jordan - Transformação ScarFit"
+                  alt="Peter Jordan - Transformação ScarX"
                   className="w-full h-auto rounded-2xl md:rounded-3xl shadow-2xl border border-primary/40"
                 />
               </div>

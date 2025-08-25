@@ -640,7 +640,7 @@ const ImcCalculator: React.FC = () => {
         <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-primary-dark rounded-2xl mb-6 shadow-lg">
           <Scale className="h-10 w-10 text-black" />
         </div>
-        <h2 className="text-3xl font-bold mb-4">Análise Personalizada ScarFit</h2>
+        <h2 className="text-3xl font-bold mb-4">Análise Personalizada ScarX</h2>
         <p className="text-light-gray">
           Vamos criar uma análise completa baseada no seu perfil único para maximizar seus resultados
         </p>

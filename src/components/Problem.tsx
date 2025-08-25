@@ -29,7 +29,7 @@ const Problem: React.FC = () => {
     },
   };
 
-  // Problemas que a ScarFit NÃO faz (inimigos em comum)
+          // Problemas que a ScarX NÃO faz (inimigos em comum)
   const problemasQueNaoFazemos = [
     {
       icon: <X className="text-red-400 h-8 w-8 mb-4" />,
@@ -43,7 +43,7 @@ const Problem: React.FC = () => {
     },
   ];
 
-  // Problemas que o usuário enfrenta e a ScarFit resolve
+          // Problemas que o usuário enfrenta e a ScarX resolve
   const problemasDoUsuario = [
     {
       icon: <Clock className="text-primary h-8 w-8 mb-4" />,
@@ -84,11 +84,11 @@ const Problem: React.FC = () => {
             </div>
             
             <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent leading-tight">
-              Chega de Ciclos Viciosos: Por Que a ScarFit é Diferente
+              Chega de Ciclos Viciosos: Por Que a ScarX é Diferente
             </motion.h2>
             
             <motion.p variants={itemVariants} className="text-lg md:text-xl text-light-gray max-w-3xl mx-auto leading-relaxed">
-              Você já se sentiu invisível em academias lotadas? Já seguiu dietas restritivas que não duraram? Nós entendemos. A indústria fitness está cheia de promessas vazias e soluções genéricas. Mas a ScarFit veio para mudar esse jogo.
+              Você já se sentiu invisível em academias lotadas? Já seguiu dietas restritivas que não duraram? Nós entendemos. A indústria fitness está cheia de promessas vazias e soluções genéricas. Mas a ScarX veio para mudar esse jogo.
             </motion.p>
           </motion.div>
         </motion.div>

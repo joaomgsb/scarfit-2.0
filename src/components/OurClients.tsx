@@ -38,7 +38,7 @@ const OurClients: React.FC = () => {
       name: "Avelino Morganti",
       description: "Empresário e youtuber",
       image: "/images/clientes/avelino.png",
-      feedback: "Excelente profissional! A abordagem científica da Scarfit fez toda a diferença na minha transformação.",
+              feedback: "Excelente profissional! A abordagem científica da ScarX fez toda a diferença na minha transformação.",
       twitter: "@avelinomorganti"
     },
     {
@@ -52,7 +52,7 @@ const OurClients: React.FC = () => {
       name: "Peter Jordan",
       description: "Youtuber e empresário",
       image: "/images/peter.png",
-      feedback: "Parceria incrível! A metodologia da Scarfit é única e os resultados falam por si só.",
+              feedback: "Parceria incrível! A metodologia da ScarX é única e os resultados falam por si só.",
       instagram: "@petjordan"
     },
     {

@@ -95,7 +95,7 @@ const Feedbacks: React.FC = () => {
             </h2>
             
             <p className="text-lg md:text-xl text-light-muted max-w-3xl mx-auto leading-relaxed">
-              Veja os resultados de quem saiu dos métodos genéricos e transformou o corpo com estratégia, ciência e acompanhamento ScarFit.
+              Veja os resultados de quem saiu dos métodos genéricos e transformou o corpo com estratégia, ciência e acompanhamento ScarX.
             </p>
           </motion.div>
         </motion.div>

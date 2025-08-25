@@ -35,7 +35,7 @@ const AppShowcase: React.FC = () => {
               Tudo o que você precisa, no seu bolso.
             </h2>
             <p className="text-lg md:text-xl text-light-muted leading-relaxed mb-6">
-              Atualizações de protocolo, evolução acompanhada e suporte 24h da equipe ScarFit. Transforme seu corpo com toda a tecnologia a seu favor.
+              Atualizações de protocolo, evolução acompanhada e suporte 24h da equipe ScarX. Transforme seu corpo com toda a tecnologia a seu favor.
             </p>
           </div>
           

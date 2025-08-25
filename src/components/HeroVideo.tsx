@@ -1,0 +1,119 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+
+const HeroVideo: React.FC = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const features = [
+    "NUTRIÇÃO",
+    "EXERCÍCIOS", 
+    "SAÚDE",
+    "LIFESTYLE",
+    "ACOMPANHAMENTO"
+  ];
+
+  return (
+    <section className="relative h-[80vh] overflow-hidden" ref={ref}>
+      {/* Vídeo de fundo */}
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/video2.mp4" type="video/mp4" />
+          Seu navegador não suporta vídeos.
+        </video>
+        
+        {/* Overlay escuro para melhorar legibilidade */}
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
+
+      {/* Conteúdo sobre o vídeo */}
+      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          className="max-w-4xl mx-auto"
+        >
+          {/* Logo e Branding */}
+          <motion.div variants={itemVariants} className="mb-8">
+            <div className="mb-4">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary mb-2">
+                SCARX
+              </h1>
+              <p className="text-xl md:text-2xl text-light font-medium mb-2">
+                PERSONAL TRAINING
+              </p>
+              <p className="text-lg md:text-xl text-primary font-semibold">
+                THE EXECUTIVE FIT LIFESTYLE
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Lista de características */}
+          <motion.div variants={itemVariants} className="mb-12">
+            <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-light text-sm md:text-base font-medium">
+              {features.map((feature, index) => (
+                <React.Fragment key={feature}>
+                  <span className="hover:text-primary transition-colors duration-300 cursor-pointer">
+                    {feature}
+                  </span>
+                  {index < features.length - 1 && (
+                    <span className="text-primary">|</span>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Call to Action */}
+          <motion.div variants={itemVariants} className="mb-8">
+            <button className="bg-primary text-dark px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-light hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+              SABER MAIS
+            </button>
+          </motion.div>
+
+          {/* Textos de rodapé */}
+          <motion.div variants={itemVariants} className="absolute bottom-8 left-4 right-4 flex justify-between items-center text-light text-sm md:text-base font-medium">
+            <span className="hover:text-primary transition-colors duration-300 cursor-pointer">
+              VER NOSSOS RESULTADOS
+            </span>
+            <span className="hover:text-primary transition-colors duration-300 cursor-pointer">
+              TREINAMENTO PERSONALIZADO
+            </span>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroVideo; 

@@ -110,11 +110,11 @@ const Faq: React.FC = () => {
   const faqItems = [
     {
       question: "Nunca fiz consultoria, é para mim?",
-      answer: "Sim, absolutamente! A ScarFit foi desenhada para todos que buscam resultados reais e duradouros, independentemente do seu nível de experiência. Nossa metodologia é intuitiva para iniciantes e robusta o suficiente para atletas experientes. Com acompanhamento premium e uma equipe dedicada, você terá todo o suporte para iniciar e manter sua jornada de transformação com confiança."
+        answer: "Sim, absolutamente! A ScarX foi desenhada para todos que buscam resultados reais e duradouros, independentemente do seu nível de experiência. Nossa metodologia é intuitiva para iniciantes e robusta o suficiente para atletas experientes. Com acompanhamento premium e uma equipe dedicada, você terá todo o suporte para iniciar e manter sua jornada de transformação com confiança."
     },
     {
       question: "E se eu não conseguir seguir o plano por causa da rotina?",
-      answer: "Esse é exatamente o diferencial da ScarFit. Nós adaptamos completamente o protocolo à sua rotina, por mais imprevisível que ela seja. Trabalhamos com viajantes frequentes, empresários e pessoas com agendas extremamente ocupadas, garantindo que os protocolos se adaptem a você, e não o contrário."
+        answer: "Esse é exatamente o diferencial da ScarX. Nós adaptamos completamente o protocolo à sua rotina, por mais imprevisível que ela seja. Trabalhamos com viajantes frequentes, empresários e pessoas com agendas extremamente ocupadas, garantindo que os protocolos se adaptem a você, e não o contrário."
     },
     {
       question: "Como funciona o acompanhamento diário?",
@@ -137,7 +137,7 @@ const Faq: React.FC = () => {
       answer: "Após a contratação e preenchimento do questionário, seu plano personalizado é entregue em até 48 horas. No plano PRO+, esse prazo pode ser reduzido para 24 horas em casos de urgência."
     },
     {
-      question: "Qual é a diferença entre os planos da ScarFit?",
+              question: "Qual é a diferença entre os planos da ScarX?",
       answer: "Oferecemos diferentes níveis de serviço para atender diversas necessidades. O plano PRO+ é nossa experiência premium, com atendimento prioritário, acesso exclusivo à Gerente Executiva, suporte 24/7, ajustes imediatos e um nível de personalização sem precedentes."
     },
     {
