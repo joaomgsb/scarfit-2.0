@@ -219,10 +219,10 @@ const DetailedTeamCard = ({ member }: { member: TeamMember }) => {
     >
       {/* Premium background with enhanced gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-dark/75 via-dark/85 to-dark/80 rounded-3xl"></div>
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary/8 via-transparent to-yellow-400/8 rounded-3xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-tr from-primary/8 via-transparent to-primary/8 rounded-3xl"></div>
       <div className="absolute inset-0 bg-gradient-to-bl from-white/3 via-transparent to-primary/5 rounded-3xl"></div>
-      <div className="absolute inset-0 bg-gradient-to-tl from-yellow-400/3 via-transparent to-primary/4 rounded-3xl"></div>
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-transparent to-yellow-400/3 rounded-3xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-tl from-primary/3 via-transparent to-primary/4 rounded-3xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-transparent to-primary/3 rounded-3xl"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-white/2 via-transparent to-primary/2 rounded-3xl"></div>
       
       {/* Enhanced pattern overlay */}
@@ -243,7 +243,7 @@ const DetailedTeamCard = ({ member }: { member: TeamMember }) => {
             <div className="flex items-start gap-6">
               {/* Photo with premium border */}
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary to-yellow-400 rounded-2xl p-0.5 opacity-80"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary rounded-2xl p-0.5 opacity-80"></div>
                 <div className="relative w-28 h-28 rounded-2xl overflow-hidden bg-dark/50">
                   <img
                     src={member.image}
@@ -270,7 +270,7 @@ const DetailedTeamCard = ({ member }: { member: TeamMember }) => {
             {/* Expertise highlights */}
             <div className="bg-gradient-to-br from-dark/50 via-dark/60 to-dark/45 border border-white/15 rounded-2xl p-6 shadow-lg shadow-primary/5">
               <h4 className="text-primary font-semibold text-lg mb-4 flex items-center gap-2">
-                <span className="text-yellow-400">⭐</span>
+                <span className="text-primary">⭐</span>
                 Especialização
               </h4>
               <div className="grid grid-cols-2 gap-3">
@@ -367,7 +367,7 @@ const DetailedTeamCard = ({ member }: { member: TeamMember }) => {
             </div>
 
             {/* Personal quote */}
-            <div className="bg-gradient-to-r from-primary/15 via-primary/10 to-yellow-400/15 border border-primary/25 rounded-2xl p-6 shadow-lg shadow-primary/10">
+            <div className="bg-gradient-to-r from-primary/15 via-primary/10 to-primary/15 border border-primary/25 rounded-2xl p-6 shadow-lg shadow-primary/10">
               <blockquote className="text-light-muted italic text-lg leading-relaxed mb-3 text-justify">
                 "{member.name === "João Scar" 
                   ? "Nessa jornada, o seu objetivo é o único destino que aceito. Aqui, você não conta com sorte, conta comigo e com toda nossa equipe."
@@ -403,7 +403,7 @@ const DetailedTeamCard = ({ member }: { member: TeamMember }) => {
             <div className="flex items-start gap-4 sm:gap-6">
               {/* Photo with premium border */}
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary to-yellow-400 rounded-2xl p-0.5 opacity-80"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary rounded-2xl p-0.5 opacity-80"></div>
                 <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-dark/50">
                   <img
                     src={member.image}
@@ -430,7 +430,7 @@ const DetailedTeamCard = ({ member }: { member: TeamMember }) => {
             {/* Expertise highlights */}
             <div className="bg-gradient-to-br from-dark/50 via-dark/60 to-dark/45 border border-white/15 rounded-2xl p-4 sm:p-6 shadow-lg shadow-primary/5">
               <h4 className="text-primary font-semibold text-base sm:text-lg mb-3 sm:mb-4 flex items-center gap-2">
-                <span className="text-yellow-400">⭐</span>
+                                  <span className="text-primary">⭐</span>
                 Especialização
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
@@ -527,7 +527,7 @@ const DetailedTeamCard = ({ member }: { member: TeamMember }) => {
             </div>
 
             {/* Personal quote */}
-            <div className="bg-gradient-to-r from-primary/15 via-primary/10 to-yellow-400/15 border border-primary/25 rounded-2xl p-4 sm:p-6 shadow-lg shadow-primary/10">
+            <div className="bg-gradient-to-r from-primary/15 via-primary/10 to-primary/15 border border-primary/25 rounded-2xl p-4 sm:p-6 shadow-lg shadow-primary/10">
               <blockquote className="text-light-muted italic text-sm sm:text-base leading-relaxed mb-3 text-justify">
                 "{member.name === "João Scar" 
                   ? "Nessa jornada, o seu objetivo é o único destino que aceito. Aqui, você não conta com sorte, conta comigo e com toda nossa equipe."
@@ -555,7 +555,7 @@ const DetailedTeamCard = ({ member }: { member: TeamMember }) => {
           </div>
 
           {/* Texto "Arraste para mudar o tema" - ABAIXO da animação */}
-          <div className="flex items-center justify-center gap-2 text-yellow-400/80 text-sm sm:text-base font-medium">
+                      <div className="flex items-center justify-center gap-2 text-primary/80 text-sm sm:text-base font-medium">
             <span>Arraste para mudar o tema</span>
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />

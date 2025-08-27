@@ -4,24 +4,14 @@ import { useInView } from 'react-intersection-observer';
 import { 
   MessageSquare, 
   Zap, 
-  ArrowRight,
+  Crown,
   Shield,
   Star,
-  Crown,
-  CheckCircle
+  CheckCircle,
+  ArrowRight,
+  Users,
+  X
 } from 'lucide-react';
-// Emojis dos benefícios
-const beneficioEmojis = {
-  engenharia: "/images/plano/engenharia.png",
-  app: "/images/plano/app.png",
-  ajustes: "/images/plano/ajustes.png",
-  check: "/images/plano/check.png",
-  suporte: "/images/plano/suporte.png",
-  balanca: "/images/plano/balanca.png",
-  treino: "/images/plano/treino.png",
-  plano: "/images/plano/plano.png",
-  revisao: "/images/plano/revisao.png"
-};
 
 const ElitePlan: React.FC = () => {
   const [ref, inView] = useInView({
@@ -35,7 +25,7 @@ const ElitePlan: React.FC = () => {
       opacity: 1,
       transition: {
         delayChildren: 0.3,
-        staggerChildren: 0.1,
+        staggerChildren: 0.2,
       },
     },
   };
@@ -49,33 +39,9 @@ const ElitePlan: React.FC = () => {
     },
   };
 
-  // Variantes para o efeito 3D no hover
-  const card3DHover = {
-    initial: { rotateX: 0, rotateY: 0, scale: 1 },
-    hover: (custom: { x: number, y: number }) => ({
-      rotateX: custom.y * 5,
-      rotateY: custom.x * 5,
-      scale: 1.02,
-      transition: { type: 'spring', stiffness: 300, damping: 15 }
-    })
-  };
-
-  // Variantes para elementos de urgência
-  const pulseVariants = {
-    initial: { scale: 1 },
-    animate: {
-      scale: [1, 1.05, 1],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        repeatType: 'reverse' as const
-      }
-    }
-  };
-
   const floatingVariants = {
     animate: {
-      y: [-5, 5, -5],
+      y: [-8, 8, -8],
       transition: {
         duration: 4,
         repeat: Infinity,
@@ -84,422 +50,385 @@ const ElitePlan: React.FC = () => {
     }
   };
 
-  // Nova variante para flutuação mais intensa do card principal
-  const premiumFloatingVariants = {
+  const glowVariants = {
     animate: {
-      y: [-8, 8, -8],
-      rotateZ: [-1, 1, -1],
+      opacity: [0.5, 1, 0.5],
+      scale: [1, 1.05, 1],
       transition: {
-        duration: 6,
+        duration: 3,
         repeat: Infinity,
         ease: "easeInOut"
       }
     }
   };
 
-  // Variante para partículas flutuantes de fundo
-  const particleVariants = {
-    animate: {
-      y: [-20, 20, -20],
-      x: [-10, 10, -10],
-      opacity: [0.3, 0.7, 0.3],
-      transition: {
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
+  // Estrutura dos planos principais (XPRO e XELITE)
+  const planosComparacao = [
+    {
+      id: 'xpro',
+      name: 'XPRO',
+      tagline: 'Execução sob medida, com eficiência.',
+      backgroundColorClass: 'bg-dark-lighter',
+      textColorClass: 'text-white',
+      buttonColorClass: 'bg-white text-dark hover:bg-gray-100',
+      icon: <Shield className="w-8 h-8" />,
+      whatsappText: 'Olá! Quero solicitar acesso ao plano XPRO da ScarFit.',
+      features: [
+        { text: 'X-Assessment completo', included: true },
+        { text: 'Blueprint personalizado', included: true },
+        { text: 'Ajustes semanais', included: true },
+        { text: 'Painel de controle', included: true },
+        { text: 'Suporte app/WhatsApp (SLA padrão)', included: true },
+        { text: 'Check-ins quinzenais', included: true },
+        { text: 'Gerente dedicado', included: false },
+        { text: 'Check-ins semanais', included: false },
+        { text: 'SLA acelerado', included: false },
+        { text: 'Video-calls mensais', included: false },
+        { text: 'Onboarding assistido', included: false },
+        { text: 'Welcome kit exclusivo', included: false },
+        { text: 'Revisão manual pelo João', included: false },
+        { text: 'Calls on-demand', included: false },
+        { text: 'Confidencialidade reforçada', included: false }
+      ]
+    },
+    {
+      id: 'xelite',
+      name: 'XELITE',
+      tagline: 'Prioridade e gerente de relacionamento.',
+      backgroundColorClass: 'bg-blue-100',
+      textColorClass: 'text-dark',
+      buttonColorClass: 'bg-dark text-blue-100 hover:bg-dark-lighter',
+      icon: <Star className="w-8 h-8" />,
+      featured: true,
+      whatsappText: 'Olá! Quero solicitar acesso ao plano XELITE da ScarFit.',
+      features: [
+        { text: 'X-Assessment completo', included: true },
+        { text: 'Blueprint personalizado', included: true },
+        { text: 'Ajustes semanais', included: true },
+        { text: 'Painel de controle', included: true },
+        { text: 'Suporte app/WhatsApp (SLA padrão)', included: true },
+        { text: 'Check-ins quinzenais', included: true },
+        { text: 'Gerente dedicado', included: true },
+        { text: 'Check-ins semanais', included: true },
+        { text: 'SLA acelerado', included: true },
+        { text: 'Video-calls mensais', included: true },
+        { text: 'Onboarding assistido', included: true },
+        { text: 'Welcome kit exclusivo', included: true },
+        { text: 'Revisão manual pelo João', included: false },
+        { text: 'Calls on-demand', included: false },
+        { text: 'Confidencialidade reforçada', included: false }
+      ]
+    },
+    {
+      id: 'xprivate',
+      name: 'XPRIVATE',
+      tagline: 'Direto com o fundador. Discrição e disponibilidade ampliadas.',
+      backgroundColorClass: 'bg-primary',
+      textColorClass: 'text-dark',
+      buttonColorClass: 'bg-dark text-primary hover:bg-dark-lighter',
+      icon: <Crown className="w-8 h-8" />,
+      whatsappText: 'Olá! Quero solicitar acesso ao plano XPRIVATE da ScarFit. Gostaria de saber sobre a elegibilidade e o processo de aprovação.',
+      features: [
+        { text: 'X-Assessment completo', included: true },
+        { text: 'Blueprint personalizado', included: true },
+        { text: 'Ajustes semanais', included: true },
+        { text: 'Painel de controle', included: true },
+        { text: 'Suporte app/WhatsApp (SLA padrão)', included: true },
+        { text: 'Check-ins quinzenais', included: true },
+        { text: 'Gerente dedicado', included: true },
+        { text: 'Check-ins semanais', included: true },
+        { text: 'SLA acelerado', included: true },
+        { text: 'Video-calls mensais', included: true },
+        { text: 'Onboarding assistido', included: true },
+        { text: 'Welcome kit exclusivo', included: true },
+        { text: 'Revisão manual pelo João', included: true },
+        { text: 'Calls on-demand', included: true },
+        { text: 'Confidencialidade reforçada', included: true }
+      ]
     }
-  };
-  // Estados para animações
-  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
-  const cardRef = React.useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (cardRef.current) {
-      const rect = cardRef.current.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      setMousePosition({ x, y });
-    }
-  };
-
-  const beneficios = [
-    {
-      emoji: beneficioEmojis.engenharia,
-      titulo: "Engenharia de performance com base científica",
-      descricao: "Protocolos baseados em estudos científicos para máxima eficiência"
-    },
-    {
-      emoji: beneficioEmojis.app,
-      titulo: "App integrado para treinos e alimentação",
-      descricao: "Tecnologia de ponta para acompanhar sua evolução em tempo real"
-    },
-    {
-      emoji: beneficioEmojis.ajustes,
-      titulo: "Ajustes quinzenais de treino e dieta",
-      descricao: "Adaptação constante para resultados acelerados e sustentáveis"
-    },
-    {
-      emoji: beneficioEmojis.check,
-      titulo: "Check-ins com métricas reais",
-      descricao: "Acompanhamento preciso da sua composição corporal"
-    },
-    {
-      emoji: beneficioEmojis.suporte,
-      titulo: "Suporte via WhatsApp (resposta em até 2h)",
-      descricao: "Atendimento prioritário quando você mais precisar"
-    },
-    {
-      emoji: beneficioEmojis.balanca,
-      titulo: "Balança de bioimpedância enviada para casa",
-      descricao: "Tecnologia profissional para monitoramento preciso"
-    },
-    {
-      emoji: beneficioEmojis.treino,
-      titulo: "Treino 100% individualizado",
-      descricao: "Protocolo único criado especificamente para você"
-    },
-    {
-      emoji: beneficioEmojis.plano,
-      titulo: "Plano alimentar sob medida",
-      descricao: "Nutrição estratégica adaptada ao seu estilo de vida"
-    },
-    {
-      emoji: beneficioEmojis.revisao,
-      titulo: "Revisão estratégica com João Scar",
-      descricao: "Mentoria direta com o fundador da metodologia"
-    }
-  ];
-
-  const equipe = [
-    { nome: "João Scar", foto: "images/joao.jpeg", cargo: "Fundador" },
-    { nome: "Personal Trainer", foto: "images/daniel.jpeg", cargo: "Especialista" },
-    { nome: "Nutricionista", foto: "images/gabrielasemfundo.png", cargo: "Especialista" },
-    { nome: "Fisioterapeuta", foto: "images/Luiz.jpeg", cargo: "Especialista" }
   ];
 
   return (
-    <section id="elite-plan" className="relative py-20 md:py-32 overflow-hidden" ref={ref}>
+    <section id="plans" className="relative py-20 md:py-32 overflow-hidden font-neue-haas" ref={ref}>
       {/* Background Premium Effects */}
       <div className="absolute inset-0">
-        {/* Gradiente de fundo mais intenso */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-dark to-primary/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-dark via-dark-lighter to-dark" />
         
-        {/* Spotlight effect central */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-primary/20 via-primary/5 to-transparent rounded-full blur-3xl" />
+        {/* Spotlight central */}
+        <motion.div 
+          variants={glowVariants}
+          animate="animate"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/15 via-primary/5 to-transparent rounded-full blur-3xl"
+        />
         
         {/* Partículas flutuantes */}
         <motion.div 
-          variants={particleVariants}
+          variants={floatingVariants}
           animate="animate"
           className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/10 rounded-full blur-2xl"
         />
         <motion.div 
-          variants={particleVariants}
+          variants={floatingVariants}
           animate="animate"
           className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-primary/8 rounded-full blur-3xl"
           style={{ animationDelay: '2s' }}
         />
-        <motion.div 
-          variants={particleVariants}
-          animate="animate"
-          className="absolute top-1/2 right-1/3 w-24 h-24 bg-primary/12 rounded-full blur-xl"
-          style={{ animationDelay: '4s' }}
-        />
         
         {/* Linhas de energia */}
-        <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-          <div className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-        </div>
+        <div className="absolute top-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        <div className="absolute bottom-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
       </div>
       
-      <div className="container-custom">
+      <div className="container-custom relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="max-w-7xl mx-auto relative z-10"
+          className="max-w-7xl mx-auto"
         >
-          {/* Header Premium */}
-          <motion.div variants={itemVariants} className="text-center mb-12">
-            <div className="relative inline-block mb-6 w-full">
-              <div className="mx-auto mb-4 bg-primary text-dark px-4 md:px-6 py-2 rounded-full font-bold text-xs md:text-sm shadow-lg w-max">
-                <div className="flex items-center gap-2 justify-center">
-                  <Crown className="w-3 md:w-4 h-3 md:h-4" />
-                  MAIS VENDIDO
-                </div>
-              </div>
-              
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gradient leading-tight">
-                ELITE
-              </h2>
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mt-2">
-                TRANSFORMAÇÃO 360º
-              </h3>
-            </div>
+          {/* Header Premium com Efeitos */}
+          <motion.div variants={itemVariants} className="text-center mb-20">
+
             
-            <p className="text-lg md:text-xl text-light-muted max-w-4xl mx-auto leading-relaxed mb-6">
-              12 meses de suporte científico com ajustes quinzenais e balança de bioimpedância profissional entregue em casa
-            </p>
+            <motion.h2 
+              variants={itemVariants}
+              className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight text-primary"
+            >
+              Escolha o nível
+              <br />
+              de atenção
+            </motion.h2>
+            
+            <motion.h3 
+              variants={itemVariants}
+              className="text-2xl md:text-3xl font-bold text-light-muted mb-8"
+            >
+              O método é o mesmo — a gestão muda.
+            </motion.h3>
+            
+            <motion.p 
+              variants={itemVariants}
+              className="text-xl md:text-2xl text-light-gray max-w-4xl mx-auto leading-relaxed"
+            >
+              Sob medida em todos os níveis. Diferença está em{' '}
+              <span className="text-primary font-semibold">prioridade</span>,{' '}
+              <span className="text-primary font-semibold">acesso</span> e{' '}
+              <span className="text-primary font-semibold">concierge</span>.
+            </motion.p>
           </motion.div>
 
-          {/* Main Content Grid */}
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-stretch mb-16">
-            
-            {/* Right Side - Bioimpedance Scale (Mobile First) */}
-            <motion.div variants={itemVariants} className="relative flex flex-col order-1 xl:order-2">
-              <div className="relative bg-gradient-to-br from-dark-lighter/95 to-dark/95 backdrop-blur-xl rounded-3xl p-6 md:p-8 border-2 border-primary/40 overflow-hidden flex-1 shadow-2xl shadow-primary/30">
-                {/* Glow interno */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 rounded-3xl pointer-events-none" />
-                
-                <div className="relative z-10">
-                  <div className="text-center mb-6">
-                    <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 md:px-6 py-2 mb-4 md:mb-6">
-                      <Zap className="w-4 md:w-5 h-4 md:h-5 text-primary" />
-                      <span className="text-primary font-semibold text-xs md:text-sm uppercase tracking-wider">
-                        Tecnologia Exclusiva
-                      </span>
-                    </div>
-                    
-                    <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 text-gradient select-text">
-                      Receba a inteligência do seu corpo direto na sua casa
-                    </h3>
-                  </div>
-
-                  {/* Scale Image with Effects */}
-                  <div className="relative mb-6">
-                    <motion.div 
-                      variants={floatingVariants}
-                      animate="animate"
-                      className="relative glass-effect rounded-2xl p-6 md:p-8 border border-primary/20 shadow-xl shadow-primary/10"
-                    >
-                      <img
-                        src="/images/balanca.png"
-                        alt="Balança de Bioimpedância ScarFit"
-                        className="w-full max-w-xs md:max-w-sm mx-auto drop-shadow-2xl"
-                      />
-                      
-                      {/* Floating Data Points */}
-                      <motion.div 
-                        className="absolute top-2 md:top-4 left-2 md:left-4 bg-primary text-dark px-2 md:px-3 py-1 rounded-full text-xs font-bold"
-                        animate={{ y: [-5, 5, -5] }}
-                        transition={{ duration: 3, repeat: Infinity }}
-                      >
-                        Gordura: 12.5%
-                      </motion.div>
-                      
-                      <motion.div 
-                        className="absolute top-1/2 right-2 md:right-4 bg-primary text-dark px-2 md:px-3 py-1 rounded-full text-xs font-bold"
-                        animate={{ y: [5, -5, 5] }}
-                        transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-                      >
-                        Massa Magra: 65kg
-                      </motion.div>
-                      
-                      <motion.div 
-                        className="absolute bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 bg-primary text-dark px-2 md:px-3 py-1 rounded-full text-xs font-bold"
-                        animate={{ y: [-3, 3, -3] }}
-                        transition={{ duration: 3, repeat: Infinity, delay: 2 }}
-                      >
-                        TMB: 1850 kcal
-                      </motion.div>
-                    </motion.div>
-                  </div>
-
-                  {/* Metrics List */}
-                  <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-4 md:p-6 border border-primary/20">
-                    <h4 className="text-lg md:text-xl font-bold text-center mb-3 md:mb-4 text-light select-text">
-                      Obtenha leitura avançada de +17 métricas:
-                    </h4>
-                    
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 text-xs md:text-sm">
-                      {[
-                        "Gordura corporal", "Massa magra", "Água corporal", "Metabolismo basal",
-                        "Massa óssea", "Gordura visceral", "Idade metabólica", "Proteína corporal",
-                        "Músculo esquelético", "Taxa metabólica", "Impedância", "Peso corporal",
-                        "IMC automático", "Gordura subcutânea", "Massa livre de gordura", "Densidade óssea",
-                        "Análise segmentar"
-                      ].map((metrica, index) => (
-                        <motion.div
-                          key={index}
-                          variants={itemVariants}
-                          className="flex items-center gap-2 text-light-muted"
-                        >
-                          <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-primary rounded-full" />
-                          <span className="select-text">{metrica}</span>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Other Plans Section */}
-                  <div className="mt-8">
-                    <div className="flex flex-col items-center justify-center gap-4 mb-4 text-center">
-                      <div className="flex items-center gap-2">
-                        <Star className="w-5 md:w-6 h-5 md:h-6 text-primary" />
-                        <span className="text-primary font-semibold text-sm md:text-base">OUTROS PLANOS DISPONÍVEIS</span>
-                        <Star className="w-5 md:w-6 h-5 md:h-6 text-primary" />
-                      </div>
-                    </div>
-                    
-                    <p className="text-light-muted leading-relaxed mb-4 text-sm md:text-base text-center">
-                      Temos outros planos que podem se adequar melhor ao seu perfil.
-                    </p>
-                    
-                    <div className="text-center">
-                      <a
-                        href="https://wa.me/5541984961012?text=Olá! Gostaria de conhecer todos os planos disponíveis da ScarFit. Quero saber qual se adequa melhor ao meu perfil e orçamento."
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-secondary text-sm md:text-base inline-flex items-center justify-center w-full md:w-auto"
-                      >
-                        <MessageSquare className="w-4 md:w-5 h-4 md:h-5 mr-2" />
-                        Conhecer Todos os Planos
-                        <ArrowRight className="w-4 md:w-5 h-4 md:h-5 ml-2" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Left Side - Benefits (Mobile Second) */}
-            <motion.div variants={itemVariants} className="space-y-6 order-2 xl:order-1">
-              <div className="relative">
-                <div className="bg-gradient-to-br from-dark-lighter/95 to-dark/95 backdrop-blur-xl rounded-3xl p-6 md:p-8 border-2 border-primary/30 shadow-2xl shadow-primary/20">
-                  {/* Glow interno */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 rounded-3xl pointer-events-none" />
-                  
-                  <div className="flex items-center gap-3 mb-6 relative z-10">
-                    <div className="p-2 md:p-3 bg-primary rounded-xl">
-                      <Shield className="h-6 md:h-8 w-6 md:w-8 text-dark" />
-                    </div>
-                    <h4 className="text-xl md:text-2xl font-bold text-light select-text">O que está incluído</h4>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 gap-4 relative z-10">
-                    {beneficios.map((beneficio, index) => (
-                      <motion.div
-                        key={index} 
-                        variants={itemVariants}
-                        className="group relative flex items-start gap-3 p-3 rounded-xl hover:bg-primary/10 transition-all duration-300 border border-transparent hover:border-primary/20 cursor-pointer"
-                      >
-                        <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center relative z-10">
-                          <img 
-                            src={beneficio.emoji} 
-                            alt={beneficio.titulo}
-                            className="w-8 h-8"
-                          />
-                        </div>
-                        <div className="flex-1 relative z-10">
-                          <h5 className="font-bold text-light mb-1 group-hover:text-primary transition-colors text-sm md:text-base select-text">
-                            {beneficio.titulo}
-                          </h5>
-                          <p className="text-xs md:text-sm text-light-muted leading-relaxed select-text">
-                            {beneficio.descricao}
-                          </p>
-                        </div>
-                        <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity relative z-10" />
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Team Section */}
-              <motion.div variants={itemVariants} className="relative">
-                <div className="bg-gradient-to-br from-dark-lighter/95 to-dark/95 backdrop-blur-xl rounded-3xl p-6 md:p-8 border-2 border-primary/30 shadow-2xl shadow-primary/20">
-                  {/* Glow interno */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 rounded-3xl pointer-events-none" />
-                  
-                  <h4 className="text-xl md:text-2xl font-bold text-center mb-6 text-light select-text relative z-10">
-                    Sua Equipe de Especialistas
-                  </h4>
-                  
-                  <div className="flex justify-center items-center gap-4 md:gap-6 flex-wrap relative z-10">
-                    {equipe.map((membro, index) => (
-                      <motion.div
-                        key={index}
-                        variants={itemVariants}
-                        className="text-center group"
-                      >
-                        <div className="relative mb-3">
-                          <img
-                            src={membro.foto}
-                            alt={membro.nome}
-                            className="relative w-16 h-16 rounded-full object-cover mx-auto border-2 border-neutral-700 group-hover:border-primary transition-colors"
-                          />
-                        </div>
-                        <h5 className="font-bold text-light text-xs md:text-sm mb-1 select-text">{membro.nome}</h5>
-                        <p className="text-light-muted text-xs select-text">{membro.cargo}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-
-          {/* Card ÚLTIMAS VAGAS DISPONÍVEIS - Movido para baixo */}
-          <motion.div 
-            variants={itemVariants} 
-            className="text-center mb-8 relative"
+          {/* Grid de Planos Principais (XPRO, XELITE e XPRIVATE) */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-16 max-w-7xl mx-auto"
           >
-            <motion.div 
-              className="relative max-w-md mx-auto"
-              variants={premiumFloatingVariants}
-              animate="animate"
-            >
-              {/* Glow effect externo */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/20 to-primary/30 rounded-3xl blur-2xl scale-110" />
-              
-              <motion.div 
-                className="relative glass-effect rounded-3xl p-6 md:p-8 border-2 border-primary/40 overflow-hidden shadow-2xl shadow-primary/30"
-                ref={cardRef}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
-                custom={mousePosition}
-                variants={card3DHover}
-                initial="initial"
-                whileHover="hover"
-                style={{
-                  transformStyle: 'preserve-3d',
-                  transform: 'perspective(1000px)'
-                }}
+            {planosComparacao.map((plano, index) => (
+              <motion.div
+                key={plano.id}
+                variants={itemVariants}
+                className="relative group"
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-              {/* Efeito de brilho no hover */}
-              <div 
-                className="absolute inset-0 bg-gradient-to-br from-primary/40 to-transparent opacity-0 group-hover:opacity-90 transition-all duration-500 pointer-events-none blur-sm"
-                style={{
-                  transform: `translate(${mousePosition.x * 50}px, ${mousePosition.y * 50}px)`,
-                }}
+
+
+                {/* Glow Effect Dinâmico */}
+                <motion.div 
+                  className={`absolute inset-0 ${
+                    plano.id === 'xelite' 
+                      ? 'bg-gradient-to-br from-primary/30 to-primary/15' 
+                      : 'bg-gradient-to-br from-blue-500/20 to-blue-600/10'
+                  } rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500`}
+                  animate={{
+                    opacity: [0.3, 0.6, 0.3],
+                    scale: [1, 1.02, 1],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    delay: index * 0.5,
+                    ease: "easeInOut"
+                  }}
+                />
+                
+                {/* Card Principal */}
+                <motion.div 
+                  className={`relative ${plano.backgroundColorClass} rounded-3xl p-8 shadow-xl hover:scale-[1.02] transition-all duration-300 ease-in-out flex flex-col h-full min-h-[600px] ${
+                    plano.id === 'xelite' ? 'border-2 border-primary/40' : 'border border-gray-600'
+                  }`}
+                >
+                  {/* Header do Card */}
+                  <div className="text-center mb-8">
+                    <motion.div 
+                      className={`inline-flex items-center justify-center w-20 h-20 ${
+                        plano.id === 'xelite' ? 'bg-dark' : 
+                        plano.id === 'xprivate' ? 'bg-dark' : 'bg-primary'
+                      } rounded-2xl mb-6 shadow-lg ${
+                        plano.id === 'xelite' ? 'text-blue-100' : 
+                        plano.id === 'xprivate' ? 'text-primary' : 'text-dark'
+                      }`}
+                      whileHover={{ rotate: 5, scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
+                      {plano.icon}
+                    </motion.div>
+                    
+                    {/* Nome do Plano */}
+                    <motion.h3 
+                      className={`text-3xl font-extrabold mb-4 ${plano.textColorClass} group-hover:scale-105 transition-transform duration-300`}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      {plano.name}
+                    </motion.h3>
+                    
+                    <p className={`text-lg leading-relaxed ${
+                      plano.id === 'xelite' ? 'text-dark/80' : 
+                      plano.id === 'xprivate' ? 'text-dark' : 'text-light-gray'
+                    }`}>
+                      {plano.tagline}
+                    </p>
+                  </div>
+
+                  {/* Features List */}
+                  <div className="flex-grow mb-8">
+                    <ul className={`space-y-4 ${plano.id === 'xpro' ? 'pt-8' : ''}`}>
+                      {plano.features.map((feature, featureIndex) => (
+                        <motion.li
+                          key={featureIndex}
+                          className="flex items-start gap-3 group/item h-8"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 + featureIndex * 0.05 }}
+                        >
+                          <motion.div
+                            className="mt-1 flex-shrink-0"
+                            whileHover={{ scale: 1.2, rotate: 5 }}
+                          >
+                            {feature.included ? (
+                              <CheckCircle className={`w-5 h-5 ${
+                                plano.id === 'xelite' ? 'text-green-500' : 
+                                plano.id === 'xprivate' ? 'text-white' : 'text-green-500'
+                              }`} />
+                            ) : (
+                              <X className="w-5 h-5 text-gray-500" />
+                            )}
+                          </motion.div>
+                          <span className={`leading-relaxed group-hover/item:scale-105 transition-transform duration-200 ${
+                            feature.included 
+                              ? plano.textColorClass
+                              : plano.id === 'xelite' ? 'text-dark/60' : 'text-gray-500'
+                          }`}>
+                            {feature.text}
+                          </span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* CTA Button */}
+                  <motion.div className="mt-auto mb-4">
+                    <motion.a
+                      href={`https://wa.me/5541984961012?text=${encodeURIComponent(plano.whatsappText)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-full ${plano.buttonColorClass} font-bold py-3 px-4 rounded-xl text-sm flex items-center justify-center gap-2 transition-all duration-300 shadow-lg group/cta`}
+                      whileHover={{ y: -2, scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <MessageSquare className="w-4 h-4" />
+                      QUERO COMEÇAR AGORA
+                      <ArrowRight className="w-4 h-4 group-hover/cta:translate-x-1 transition-transform" />
+                    </motion.a>
+                  </motion.div>
+
+                  {/* Imagens de Pagamento */}
+                  <div className="flex flex-col items-center justify-center gap-3">
+                    <motion.img 
+                      src="/images/pagamento.png" 
+                      alt="Formas de Pagamento" 
+                      className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    />
+                    <motion.img 
+                      src="/images/comprasegura.png" 
+                      alt="Compra Segura" 
+                      className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    />
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+
+
+          {/* Seção de Garantia e Confiança */}
+          <motion.div
+            variants={itemVariants}
+            className="text-center mb-16"
+          >
+            <div className="relative max-w-4xl mx-auto">
+              {/* Glow effect de fundo */}
+              <motion.div 
+                variants={glowVariants}
+                animate="animate"
+                className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-3xl blur-xl"
               />
               
-              <div className="relative z-10">
-                <div className="text-center mb-6">
-                  <div className="text-2xl md:text-3xl font-bold text-primary mb-2">
-                    ÚLTIMAS VAGAS
-                  </div>
-                  <div className="text-xl md:text-2xl font-bold text-primary">
-                    DISPONÍVEIS
-                  </div>
+              <div className="relative bg-gradient-to-br from-dark-lighter/95 to-dark/95 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-primary/20 shadow-2xl">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                  <motion.div 
+                    className="text-center"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-2xl mb-4">
+                      <Shield className="w-8 h-8 text-primary" />
+                    </div>
+                    <div className="text-3xl font-bold text-primary mb-2">100%</div>
+                    <div className="text-light-muted">Garantia de Resultados</div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="text-center"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-2xl mb-4">
+                      <Users className="w-8 h-8 text-primary" />
+                    </div>
+                    <div className="text-3xl font-bold text-primary mb-2">1200+</div>
+                    <div className="text-light-muted">Vidas Transformadas</div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="text-center"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-2xl mb-4">
+                      <Zap className="w-8 h-8 text-primary" />
+                    </div>
+                    <div className="text-3xl font-bold text-primary mb-2">98%</div>
+                    <div className="text-light-muted">Taxa de Sucesso</div>
+                  </motion.div>
                 </div>
-                
-                <a
-                  href="https://wa.me/5541984961012?text=Olá! Quero contratar o Plano ELITE - Transformação 360º da ScarFit. Estou interessado na experiência completa de 12 meses."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary w-full text-lg group"
-                >
-                  <MessageSquare className="w-5 md:w-6 h-5 md:h-6 mr-3" />
-                  QUERO O PLANO ELITE
-                  <ArrowRight className="w-5 md:w-6 h-5 md:h-6 ml-3 group-hover:translate-x-1 transition-transform" />
-                </a>
+
+                <div className="text-center">
+                  <h4 className="text-2xl font-bold text-light mb-4">
+                    Metodologia Comprovada, Atenção Personalizada
+                  </h4>
+                  <p className="text-xl text-light-gray max-w-3xl mx-auto leading-relaxed">
+                    Independente do plano escolhido, você terá acesso à nossa metodologia exclusiva. 
+                    A diferença está no nível de atenção e suporte que você receberá.
+                  </p>
+                </div>
               </div>
-            </motion.div>
-            </motion.div>
+            </div>
           </motion.div>
+
         </motion.div>
       </div>
     </section>

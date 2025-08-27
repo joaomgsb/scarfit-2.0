@@ -185,7 +185,7 @@ const CalculadorasIndividuaisPage: React.FC = () => {
       titulo: 'Calculadora Premium',
       descricao: 'IMC inteligente com recomendações personalizadas',
       icon: <Crown className="h-8 w-8" />,
-      cor: 'from-yellow-500 to-yellow-600',
+              cor: 'from-primary to-primary-dark',
       premium: true
     }
   ];

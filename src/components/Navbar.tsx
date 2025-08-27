@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="container-custom">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-1">
           {/* Logo */}
           <div className="flex items-center">
             <ScrollLink
@@ -94,9 +94,9 @@ const Navbar: React.FC = () => {
               aria-label="ScarX - Ir para o início"
             >
               <img 
-                src="/images/logo.png" 
+                src="/images/scarx.png" 
                 alt="ScarX" 
-                className="h-8 md:h-10"
+                className="h-16 md:h-20 lg:h-24 object-contain"
               />
             </ScrollLink>
           </div>
@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
                 {item.type === 'dropdown' ? (
                   <>
                     <button
-                      className="text-white hover:text-primary transition-colors cursor-pointer font-medium text-sm py-5 flex items-center gap-1"
+                      className="text-white hover:text-primary transition-colors cursor-pointer font-medium text-sm py-2 flex items-center gap-1"
                       onMouseEnter={() => setOpenDropdown(item.name)}
                       onMouseLeave={() => setOpenDropdown(null)}
                     >
@@ -156,17 +156,19 @@ const Navbar: React.FC = () => {
                     </AnimatePresence>
                   </>
                 ) : (
-                  <ScrollLink
-                    to={item.to}
-                    spy={true}
-                    smooth={true}
-                    offset={-100}
-                    duration={500}
-                    className="text-white hover:text-primary transition-colors cursor-pointer font-medium text-sm py-5"
-                    onClick={closeMenu}
-                  >
-                    {item.name}
-                  </ScrollLink>
+                  item.to && (
+                    <ScrollLink
+                      to={item.to}
+                      spy={true}
+                      smooth={true}
+                      offset={-100}
+                      duration={500}
+                      className="text-white hover:text-primary transition-colors cursor-pointer font-medium text-sm py-2"
+                      onClick={closeMenu}
+                    >
+                      {item.name}
+                    </ScrollLink>
+                  )
                 )}
               </div>
             ))}
@@ -252,17 +254,19 @@ const Navbar: React.FC = () => {
                         </AnimatePresence>
                       </>
                     ) : (
-                      <ScrollLink
-                        to={item.to}
-                        spy={true}
-                        smooth={true}
-                        offset={-100}
-                        duration={500}
-                        className="block text-white hover:text-primary transition-colors cursor-pointer font-medium py-3 px-4 rounded-lg hover:bg-neutral-800/50"
-                        onClick={closeMenu}
-                      >
-                        {item.name}
-                      </ScrollLink>
+                      item.to && (
+                        <ScrollLink
+                          to={item.to}
+                          spy={true}
+                          smooth={true}
+                          offset={-100}
+                          duration={500}
+                          className="block text-white hover:text-primary transition-colors cursor-pointer font-medium py-3 px-4 rounded-lg hover:bg-neutral-800/50"
+                          onClick={closeMenu}
+                        >
+                          {item.name}
+                        </ScrollLink>
+                      )
                     )}
                   </motion.div>
                 ))}

@@ -194,7 +194,7 @@ const TransformationJourney: React.FC = () => {
             <div className="inline-flex items-center gap-4 glass-effect rounded-2xl px-6 py-4 border border-primary/20 bg-primary/5">
               <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
               <span className="text-light font-medium text-base">
-                Pronto para experimentar a diferença da metodologia ScarX?
+              Entre performance e estilo de vida, prefira os dois.
               </span>
             </div>
             <p className="text-light-muted mt-3 text-base">

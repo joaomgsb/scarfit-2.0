@@ -89,7 +89,7 @@ const HeroVideo: React.FC = () => {
           </motion.div>
 
           {/* Lista de características */}
-          <motion.div variants={itemVariants} className="mb-12">
+          <motion.div variants={itemVariants} className="mb-0">
             <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-light text-sm md:text-base font-medium">
               {features.map((feature, index) => (
                 <React.Fragment key={feature}>
@@ -104,25 +104,6 @@ const HeroVideo: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Call to Action */}
-          <motion.div variants={itemVariants} className="mb-8">
-            <button 
-              onClick={scrollToElitePlan}
-              className="bg-primary text-dark px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-light hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
-            >
-              SABER MAIS
-            </button>
-          </motion.div>
-
-          {/* Textos de rodapé */}
-          <motion.div variants={itemVariants} className="absolute bottom-8 left-4 right-4 flex justify-between items-center text-light text-sm md:text-base font-medium">
-            <span className="hover:text-primary transition-colors duration-300 cursor-pointer">
-              VER NOSSOS RESULTADOS
-            </span>
-            <span className="hover:text-primary transition-colors duration-300 cursor-pointer">
-              TREINAMENTO PERSONALIZADO
-            </span>
-          </motion.div>
         </motion.div>
       </div>
     </section>

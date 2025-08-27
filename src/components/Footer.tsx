@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           
           {/* Brand */}
           <div>
-            <img src="/images/logo.png" alt="ScarX" className="h-10 mb-6" />
+            <img src="/images/scarx.png" alt="ScarX" className="h-20 mb-6 -mt-4" />
             <p className="text-light-muted mb-6 leading-relaxed">
               Metodologia exclusiva de transformação corporal com base científica 
               e acompanhamento personalizado.

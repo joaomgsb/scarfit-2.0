@@ -65,25 +65,25 @@ const Hero: React.FC = () => {
           {/* Headline principal */}
           <motion.h1 
             variants={itemVariants}
-            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium mb-4 leading-tight"
           >
             <span className="text-white">Você é </span>
-            <span className="text-yellow-400">único</span>
+            <span className="text-primary">único</span>
             <span className="text-white">. Seu </span>
-            <span className="text-yellow-400">plano</span>
+            <span className="text-primary">plano</span>
             <span className="text-white"> também precisa ser.</span>
           </motion.h1>
           
           {/* Subtítulo */}
           <motion.p 
             variants={itemVariants}
-            className="text-base sm:text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed"
+            className="text-base sm:text-xl md:text-2xl text-gray-200 mb-6 leading-relaxed"
           >
             Você não falhou. O que faltava era um método feito para você. Transformar o corpo exige estratégia, ciência e apoio profissional diário. Bem-vindo à ScarX.
           </motion.p>
 
           {/* Country Flags */}
-          <motion.div variants={itemVariants} className="flex items-center gap-2 mb-8">
+          <motion.div variants={itemVariants} className="flex items-center gap-2 mb-6">
             <img src="/svg/brasil.svg" alt="Brasil" className="w-5 h-4 opacity-80 hover:opacity-100 transition-opacity" />
             <img src="/svg/uruguai.svg" alt="Uruguai" className="w-5 h-4 opacity-80 hover:opacity-100 transition-opacity" />
             <img src="/svg/chile.svg" alt="Chile" className="w-5 h-4 opacity-80 hover:opacity-100 transition-opacity" />
@@ -92,14 +92,14 @@ const Hero: React.FC = () => {
           </motion.div>
           
           {/* CTAs */}
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 mb-8">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 mb-6">
             <Link
               to="plans"
               spy={true}
               smooth={true}
               offset={-100}
               duration={500}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 border-2 border-primary text-primary hover:scale-105 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl text-base sm:text-lg transition-all duration-300 group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 border-2 border-primary text-primary hover:scale-105 font-medium py-3 sm:py-4 px-6 sm:px-8 rounded-xl text-base sm:text-lg transition-all duration-300 group cursor-pointer"
             >
               Comece Sua Transformação Agora!
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -109,15 +109,15 @@ const Hero: React.FC = () => {
           {/* Indicadores de qualidade - mais discretos */}
           <motion.div variants={itemVariants} className="flex flex-row gap-2 sm:gap-8 text-white/80">
             <div>
-              <div className="text-xl sm:text-2xl font-bold text-primary">1200+</div>
+              <div className="text-xl sm:text-2xl font-medium text-primary">1200+</div>
               <div className="text-xs sm:text-sm">Vidas Transformadas</div>
             </div>
             <div>
-              <div className="text-xl sm:text-2xl font-bold text-primary">10 anos</div>
+              <div className="text-xl sm:text-2xl font-medium text-primary">10 anos</div>
               <div className="text-xs sm:text-sm">De Experiência</div>
             </div>
             <div>
-              <div className="text-xl sm:text-2xl font-bold text-primary">98%</div>
+              <div className="text-xl sm:text-2xl font-medium text-primary">98%</div>
               <div className="text-xs sm:text-sm">Taxa de Sucesso</div>
             </div>
           </motion.div>

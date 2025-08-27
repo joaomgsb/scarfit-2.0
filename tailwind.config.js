@@ -4,11 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Nova paleta premium e minimalista
+        // Nova paleta premium com azul
         primary: {
-          DEFAULT: '#D4AF37', // Dourado elegante (menos vibrante)
-          light: '#E6C866',   // Dourado claro
-          dark: '#B8941F',    // Dourado escuro
+          DEFAULT: '#3B82F6', // Azul principal
+          light: '#60A5FA',   // Azul claro
+          dark: '#1D4ED8',    // Azul escuro
         },
         dark: {
           DEFAULT: '#0A0A0A', // Preto profundo
@@ -35,7 +35,7 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Poppins', 'system-ui', 'sans-serif'],
+        display: ['Neue Haas Grotesk Display Pro', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'xs': ['0.75rem', { lineHeight: '1rem' }],

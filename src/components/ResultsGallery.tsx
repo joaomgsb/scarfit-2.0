@@ -3,6 +3,101 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Star } from 'lucide-react';
 
+// Componente para as estatísticas com animação lenta
+const AnimatedStats: React.FC = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const [stats, setStats] = useState({
+    lives: 0,
+    years: 0,
+    success: 0
+  });
+
+  useEffect(() => {
+    if (!inView) return;
+
+    // Animação bem lenta dos valores
+    const duration = 4000; // 4 segundos para completar
+    const steps = 120; // 120 passos para suavidade
+    const stepDuration = duration / steps;
+
+    let currentStep = 0;
+    const interval = setInterval(() => {
+      currentStep++;
+      const progress = currentStep / steps;
+
+      setStats({
+        lives: Math.floor(1200 * progress),
+        years: Math.floor(10 * progress),
+        success: Math.floor(98 * progress)
+      });
+
+      if (currentStep >= steps) {
+        clearInterval(interval);
+        // Garantir que os valores finais sejam exatos
+        setStats({
+          lives: 1200,
+          years: 10,
+          success: 98
+        });
+      }
+    }, stepDuration);
+
+    return () => clearInterval(interval);
+  }, [inView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      className="mt-20 pt-16 border-t border-neutral-800"
+    >
+      <div className="text-center mb-8">
+        <h3 className="text-xl md:text-2xl font-bold text-light mb-3">
+          Números que Comprometem
+        </h3>
+        <p className="text-base text-light-muted max-w-2xl mx-auto">
+          Resultados reais de uma metodologia que transforma vidas todos os dias
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="text-center">
+          <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-2">
+            {stats.lives}+
+          </div>
+          <div className="text-sm text-light-muted">
+            Vidas Transformadas
+          </div>
+        </div>
+        
+        <div className="text-center">
+          <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-2">
+            {stats.years} anos
+          </div>
+          <div className="text-sm text-light-muted">
+            De Experiência
+          </div>
+        </div>
+        
+        <div className="text-center">
+          <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-2">
+            {stats.success}%
+          </div>
+          <div className="text-sm text-light-muted">
+            Taxa de Sucesso
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const ResultsGallery: React.FC = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -198,6 +293,8 @@ const ResultsGallery: React.FC = () => {
             </div>
           </motion.div>
 
+          {/* Estatísticas com animação lenta */}
+          <AnimatedStats />
 
         </motion.div>
       </div>
