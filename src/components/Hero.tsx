@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
           {/* Headline principal */}
           <motion.h1 
             variants={itemVariants}
-            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium mb-4 leading-tight"
+            className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-medium mb-4 leading-tight"
           >
             <span className="text-white">Você é </span>
             <span className="text-primary">único</span>
