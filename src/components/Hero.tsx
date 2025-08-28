@@ -79,7 +79,7 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="text-base sm:text-xl md:text-2xl text-gray-200 mb-6 leading-relaxed"
           >
-            Você não falhou. O que faltava era um método feito para você. Transformar o corpo exige estratégia, ciência e apoio profissional diário. Bem-vindo à ScarX.
+            A fórmula feita para o seu corpo, calibrada ao ritmo da sua vida.
           </motion.p>
 
           {/* Country Flags */}
@@ -99,9 +99,9 @@ const Hero: React.FC = () => {
               smooth={true}
               offset={-100}
               duration={500}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 border-2 border-primary text-primary hover:scale-105 font-medium py-3 sm:py-4 px-6 sm:px-8 rounded-xl text-base sm:text-lg transition-all duration-300 group cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 border-2 border-yellow-500 text-yellow-500 hover:scale-105 font-medium py-3 sm:py-4 px-6 sm:px-8 rounded-xl text-base sm:text-lg transition-all duration-300 group cursor-pointer"
             >
-              Comece Sua Transformação Agora!
+              Ver Resultados Reais
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
