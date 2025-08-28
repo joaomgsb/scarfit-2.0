@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { 
@@ -18,8 +18,6 @@ const ElitePlan: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  const [currentPlan, setCurrentPlan] = useState(0);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -62,32 +60,6 @@ const ElitePlan: React.FC = () => {
         ease: "easeInOut"
       }
     }
-  };
-
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1
-    },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0
-    })
-  };
-
-  const swipeConfidenceThreshold = 10000;
-  const swipePower = (offset: number, velocity: number) => {
-    return Math.abs(offset) * velocity;
-  };
-
-  const paginate = (newDirection: number) => {
-    setCurrentPlan((prev) => (prev + newDirection + 3) % 3);
   };
 
   // Estrutura dos planos principais (XPRO, XELITE e XPRIVATE)
@@ -314,7 +286,7 @@ const ElitePlan: React.FC = () => {
   );
 
   return (
-    <section id="plans" className="relative py-20 md:py-32 overflow-hidden font-neue-haas" ref={ref}>
+    <section id="plans" className="relative py-12 md:py-16 overflow-hidden font-neue-haas" ref={ref}>
       {/* Background Premium Effects */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-dark via-dark-lighter to-dark" />
@@ -352,7 +324,7 @@ const ElitePlan: React.FC = () => {
           className="max-w-7xl mx-auto"
         >
           {/* Header Premium com Efeitos */}
-          <motion.div variants={itemVariants} className="text-center mb-20">
+          <motion.div variants={itemVariants} className="text-center mb-8">
 
             
             <motion.h2 
@@ -366,7 +338,7 @@ const ElitePlan: React.FC = () => {
             
             <motion.h3 
               variants={itemVariants}
-              className="text-2xl md:text-3xl font-bold text-light-muted mb-8"
+              className="text-2xl md:text-3xl font-bold text-light-muted mb-6"
             >
               O método é o mesmo — a gestão muda.
             </motion.h3>
@@ -387,124 +359,13 @@ const ElitePlan: React.FC = () => {
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            className="hidden lg:grid lg:grid-cols-3 gap-4 mb-16 max-w-7xl mx-auto"
+            className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4 max-w-7xl mx-auto"
           >
             {planosComparacao.map((plano, index) => (
               <motion.div key={plano.id} variants={itemVariants}>
                 {renderPlanCard(plano, index)}
               </motion.div>
             ))}
-          </motion.div>
-
-          {/* Mobile Layout - Carousel */}
-          <div className="lg:hidden mb-16">
-            <div className="relative">
-              {/* Carousel Container */}
-              <div className="relative overflow-hidden rounded-3xl">
-                <motion.div
-                  key={currentPlan}
-                  custom={currentPlan}
-                  variants={slideVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{
-                    x: { type: "spring", stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.2 }
-                  }}
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={1}
-                  onDragEnd={(e, { offset, velocity }) => {
-                    const swipe = swipePower(offset.x, velocity.x);
-                    if (swipe < -swipeConfidenceThreshold) {
-                      paginate(1);
-                    } else if (swipe > swipeConfidenceThreshold) {
-                      paginate(-1);
-                    }
-                  }}
-                  className="w-full"
-                >
-                  {renderPlanCard(planosComparacao[currentPlan], currentPlan)}
-                </motion.div>
-              </div>
-
-              {/* Dots Indicator */}
-              <div className="flex justify-center mt-6 gap-3">
-                {planosComparacao.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentPlan(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      currentPlan === index ? 'bg-primary w-8' : 'bg-neutral-600'
-                    }`}
-                    aria-label={`Ir para plano ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Seção de Garantia e Confiança */}
-          <motion.div
-            variants={itemVariants}
-            className="text-center mb-16"
-          >
-            <div className="relative max-w-4xl mx-auto">
-              {/* Glow effect de fundo */}
-              <motion.div 
-                variants={glowVariants}
-                animate="animate"
-                className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-3xl blur-xl"
-              />
-              
-              <div className="relative bg-gradient-to-br from-dark-lighter/95 to-dark/95 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-primary/20 shadow-2xl">
-                <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-8 mb-8">
-                  <motion.div 
-                    className="text-center"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-2xl mb-2 sm:mb-4">
-                      <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
-                    </div>
-                    <div className="text-lg sm:text-xl md:text-3xl font-bold text-primary mb-1 sm:mb-2">100%</div>
-                    <div className="text-xs sm:text-sm text-light-muted">Garantia de Resultados</div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    className="text-center"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-2xl mb-2 sm:mb-4">
-                      <Users className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
-                    </div>
-                    <div className="text-lg sm:text-xl md:text-3xl font-bold text-primary mb-1 sm:mb-2">1200+</div>
-                    <div className="text-xs sm:text-sm text-light-muted">Vidas Transformadas</div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    className="text-center"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-2xl mb-2 sm:mb-4">
-                      <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
-                    </div>
-                    <div className="text-lg sm:text-xl md:text-3xl font-bold text-primary mb-1 sm:mb-2">98%</div>
-                    <div className="text-xs sm:text-sm text-light-muted">Taxa de Sucesso</div>
-                  </motion.div>
-                </div>
-
-                <div className="text-center">
-                  <h4 className="text-2xl font-bold text-light mb-4">
-                    Metodologia Comprovada, Atenção Personalizada
-                  </h4>
-                  <p className="text-xl text-light-gray max-w-3xl mx-auto leading-relaxed">
-                    Independente do plano escolhido, você terá acesso à nossa metodologia exclusiva. 
-                    A diferença está no nível de atenção e suporte que você receberá.
-                  </p>
-                </div>
-              </div>
-            </div>
           </motion.div>
 
         </motion.div>
