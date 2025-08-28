@@ -66,30 +66,30 @@ const AnimatedStats: React.FC = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-8">
         <div className="text-center">
-          <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-2">
+          <div className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-bold text-primary mb-1 sm:mb-2">
             {stats.lives}+
           </div>
-          <div className="text-sm text-light-muted">
+          <div className="text-xs sm:text-sm text-light-muted">
             Vidas Transformadas
           </div>
         </div>
         
         <div className="text-center">
-          <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-2">
+          <div className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-bold text-primary mb-1 sm:mb-2">
             {stats.years} anos
           </div>
-          <div className="text-sm text-light-muted">
+          <div className="text-xs sm:text-sm text-light-muted">
             De Experiência
           </div>
         </div>
         
         <div className="text-center">
-          <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-2">
+          <div className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-bold text-primary mb-1 sm:mb-2">
             {stats.success}%
           </div>
-          <div className="text-sm text-light-muted">
+          <div className="text-xs sm:text-sm text-light-muted">
             Taxa de Sucesso
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { 
@@ -18,6 +18,8 @@ const ElitePlan: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const [currentPlan, setCurrentPlan] = useState(0);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -62,7 +64,33 @@ const ElitePlan: React.FC = () => {
     }
   };
 
-  // Estrutura dos planos principais (XPRO e XELITE)
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+    })
+  };
+
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
+  };
+
+  const paginate = (newDirection: number) => {
+    setCurrentPlan((prev) => (prev + newDirection + 3) % 3);
+  };
+
+  // Estrutura dos planos principais (XPRO, XELITE e XPRIVATE)
   const planosComparacao = [
     {
       id: 'xpro',
@@ -148,6 +176,143 @@ const ElitePlan: React.FC = () => {
     }
   ];
 
+  const renderPlanCard = (plano: typeof planosComparacao[0], index: number) => (
+    <motion.div
+      key={plano.id}
+      className="relative group"
+      whileHover={{ y: -5 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    >
+      {/* Glow Effect Dinâmico */}
+      <motion.div 
+        className={`absolute inset-0 ${
+          plano.id === 'xelite' 
+            ? 'bg-gradient-to-br from-primary/30 to-primary/15' 
+            : 'bg-gradient-to-br from-blue-500/20 to-blue-600/10'
+        } rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500`}
+        animate={{
+          opacity: [0.3, 0.6, 0.3],
+          scale: [1, 1.02, 1],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          delay: index * 0.5,
+          ease: "easeInOut"
+        }}
+      />
+      
+      {/* Card Principal */}
+      <motion.div 
+        className={`relative ${plano.backgroundColorClass} rounded-3xl p-8 shadow-xl hover:scale-[1.02] transition-all duration-300 ease-in-out flex flex-col h-full min-h-[600px] ${
+          plano.id === 'xelite' ? 'border-2 border-primary/40' : 'border border-gray-600'
+        }`}
+      >
+        {/* Header do Card */}
+        <div className="text-center mb-8">
+          <motion.div 
+            className={`inline-flex items-center justify-center w-20 h-20 ${
+              plano.id === 'xelite' ? 'bg-dark' : 
+              plano.id === 'xprivate' ? 'bg-dark' : 'bg-primary'
+            } rounded-2xl mb-6 shadow-lg ${
+              plano.id === 'xelite' ? 'text-blue-100' : 
+              plano.id === 'xprivate' ? 'text-primary' : 'text-dark'
+            }`}
+            whileHover={{ rotate: 5, scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            {plano.icon}
+          </motion.div>
+          
+          {/* Nome do Plano */}
+          <motion.h3 
+            className={`text-3xl font-extrabold mb-4 ${plano.textColorClass} group-hover:scale-105 transition-transform duration-300`}
+            whileHover={{ scale: 1.05 }}
+          >
+            {plano.name}
+          </motion.h3>
+          
+          <p className={`text-lg leading-relaxed ${
+            plano.id === 'xelite' ? 'text-dark/80' : 
+            plano.id === 'xprivate' ? 'text-dark' : 'text-light-gray'
+          }`}>
+            {plano.tagline}
+          </p>
+        </div>
+
+        {/* Features List */}
+        <div className="flex-grow mb-8">
+          <ul className={`space-y-4 ${plano.id === 'xpro' ? 'pt-8' : ''}`}>
+            {plano.features.map((feature, featureIndex) => (
+              <motion.li
+                key={featureIndex}
+                className="flex items-start gap-3 group/item h-8"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 + featureIndex * 0.05 }}
+              >
+                <motion.div
+                  className="mt-1 flex-shrink-0"
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                >
+                  {feature.included ? (
+                    <CheckCircle className={`w-5 h-5 ${
+                      plano.id === 'xelite' ? 'text-green-500' : 
+                      plano.id === 'xprivate' ? 'text-white' : 'text-green-500'
+                    }`} />
+                  ) : (
+                    <X className="w-5 h-5 text-gray-500" />
+                  )}
+                </motion.div>
+                <span className={`leading-relaxed group-hover/item:scale-105 transition-transform duration-200 ${
+                  feature.included 
+                    ? plano.textColorClass
+                    : plano.id === 'xelite' ? 'text-dark/60' : 'text-gray-500'
+                }`}>
+                  {feature.text}
+                </span>
+              </motion.li>
+            ))}
+          </ul>
+        </div>
+
+        {/* CTA Button */}
+        <motion.div className="mt-auto mb-4">
+          <motion.a
+            href={`https://wa.me/5541984961012?text=${encodeURIComponent(plano.whatsappText)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`w-full ${plano.buttonColorClass} font-bold py-3 px-4 rounded-xl text-sm flex items-center justify-center gap-2 transition-all duration-300 shadow-lg group/cta`}
+            whileHover={{ y: -2, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <MessageSquare className="w-4 h-4" />
+            QUERO COMEÇAR AGORA
+            <ArrowRight className="w-4 h-4 group-hover/cta:translate-x-1 transition-transform" />
+          </motion.a>
+        </motion.div>
+
+        {/* Imagens de Pagamento */}
+        <div className="flex flex-col items-center justify-center gap-3">
+          <motion.img 
+            src="/images/pagamento.png" 
+            alt="Formas de Pagamento" 
+            className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          />
+          <motion.img 
+            src="/images/comprasegura.png" 
+            alt="Compra Segura" 
+            className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          />
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+
   return (
     <section id="plans" className="relative py-20 md:py-32 overflow-hidden font-neue-haas" ref={ref}>
       {/* Background Premium Effects */}
@@ -217,155 +382,68 @@ const ElitePlan: React.FC = () => {
             </motion.p>
           </motion.div>
 
-          {/* Grid de Planos Principais (XPRO, XELITE e XPRIVATE) */}
+          {/* Desktop Layout - Grid */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-16 max-w-7xl mx-auto"
+            className="hidden lg:grid lg:grid-cols-3 gap-4 mb-16 max-w-7xl mx-auto"
           >
             {planosComparacao.map((plano, index) => (
-              <motion.div
-                key={plano.id}
-                variants={itemVariants}
-                className="relative group"
-                whileHover={{ y: -5 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-
-
-                {/* Glow Effect Dinâmico */}
-                <motion.div 
-                  className={`absolute inset-0 ${
-                    plano.id === 'xelite' 
-                      ? 'bg-gradient-to-br from-primary/30 to-primary/15' 
-                      : 'bg-gradient-to-br from-blue-500/20 to-blue-600/10'
-                  } rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500`}
-                  animate={{
-                    opacity: [0.3, 0.6, 0.3],
-                    scale: [1, 1.02, 1],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    delay: index * 0.5,
-                    ease: "easeInOut"
-                  }}
-                />
-                
-                {/* Card Principal */}
-                <motion.div 
-                  className={`relative ${plano.backgroundColorClass} rounded-3xl p-8 shadow-xl hover:scale-[1.02] transition-all duration-300 ease-in-out flex flex-col h-full min-h-[600px] ${
-                    plano.id === 'xelite' ? 'border-2 border-primary/40' : 'border border-gray-600'
-                  }`}
-                >
-                  {/* Header do Card */}
-                  <div className="text-center mb-8">
-                    <motion.div 
-                      className={`inline-flex items-center justify-center w-20 h-20 ${
-                        plano.id === 'xelite' ? 'bg-dark' : 
-                        plano.id === 'xprivate' ? 'bg-dark' : 'bg-primary'
-                      } rounded-2xl mb-6 shadow-lg ${
-                        plano.id === 'xelite' ? 'text-blue-100' : 
-                        plano.id === 'xprivate' ? 'text-primary' : 'text-dark'
-                      }`}
-                      whileHover={{ rotate: 5, scale: 1.1 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    >
-                      {plano.icon}
-                    </motion.div>
-                    
-                    {/* Nome do Plano */}
-                    <motion.h3 
-                      className={`text-3xl font-extrabold mb-4 ${plano.textColorClass} group-hover:scale-105 transition-transform duration-300`}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {plano.name}
-                    </motion.h3>
-                    
-                    <p className={`text-lg leading-relaxed ${
-                      plano.id === 'xelite' ? 'text-dark/80' : 
-                      plano.id === 'xprivate' ? 'text-dark' : 'text-light-gray'
-                    }`}>
-                      {plano.tagline}
-                    </p>
-                  </div>
-
-                  {/* Features List */}
-                  <div className="flex-grow mb-8">
-                    <ul className={`space-y-4 ${plano.id === 'xpro' ? 'pt-8' : ''}`}>
-                      {plano.features.map((feature, featureIndex) => (
-                        <motion.li
-                          key={featureIndex}
-                          className="flex items-start gap-3 group/item h-8"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.1 + featureIndex * 0.05 }}
-                        >
-                          <motion.div
-                            className="mt-1 flex-shrink-0"
-                            whileHover={{ scale: 1.2, rotate: 5 }}
-                          >
-                            {feature.included ? (
-                              <CheckCircle className={`w-5 h-5 ${
-                                plano.id === 'xelite' ? 'text-green-500' : 
-                                plano.id === 'xprivate' ? 'text-white' : 'text-green-500'
-                              }`} />
-                            ) : (
-                              <X className="w-5 h-5 text-gray-500" />
-                            )}
-                          </motion.div>
-                          <span className={`leading-relaxed group-hover/item:scale-105 transition-transform duration-200 ${
-                            feature.included 
-                              ? plano.textColorClass
-                              : plano.id === 'xelite' ? 'text-dark/60' : 'text-gray-500'
-                          }`}>
-                            {feature.text}
-                          </span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* CTA Button */}
-                  <motion.div className="mt-auto mb-4">
-                    <motion.a
-                      href={`https://wa.me/5541984961012?text=${encodeURIComponent(plano.whatsappText)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`w-full ${plano.buttonColorClass} font-bold py-3 px-4 rounded-xl text-sm flex items-center justify-center gap-2 transition-all duration-300 shadow-lg group/cta`}
-                      whileHover={{ y: -2, scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <MessageSquare className="w-4 h-4" />
-                      QUERO COMEÇAR AGORA
-                      <ArrowRight className="w-4 h-4 group-hover/cta:translate-x-1 transition-transform" />
-                    </motion.a>
-                  </motion.div>
-
-                  {/* Imagens de Pagamento */}
-                  <div className="flex flex-col items-center justify-center gap-3">
-                    <motion.img 
-                      src="/images/pagamento.png" 
-                      alt="Formas de Pagamento" 
-                      className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    />
-                    <motion.img 
-                      src="/images/comprasegura.png" 
-                      alt="Compra Segura" 
-                      className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    />
-                  </div>
-                </motion.div>
+              <motion.div key={plano.id} variants={itemVariants}>
+                {renderPlanCard(plano, index)}
               </motion.div>
             ))}
           </motion.div>
 
+          {/* Mobile Layout - Carousel */}
+          <div className="lg:hidden mb-16">
+            <div className="relative">
+              {/* Carousel Container */}
+              <div className="relative overflow-hidden rounded-3xl">
+                <motion.div
+                  key={currentPlan}
+                  custom={currentPlan}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: "spring", stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.2 }
+                  }}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={1}
+                  onDragEnd={(e, { offset, velocity }) => {
+                    const swipe = swipePower(offset.x, velocity.x);
+                    if (swipe < -swipeConfidenceThreshold) {
+                      paginate(1);
+                    } else if (swipe > swipeConfidenceThreshold) {
+                      paginate(-1);
+                    }
+                  }}
+                  className="w-full"
+                >
+                  {renderPlanCard(planosComparacao[currentPlan], currentPlan)}
+                </motion.div>
+              </div>
 
+              {/* Dots Indicator */}
+              <div className="flex justify-center mt-6 gap-3">
+                {planosComparacao.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentPlan(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      currentPlan === index ? 'bg-primary w-8' : 'bg-neutral-600'
+                    }`}
+                    aria-label={`Ir para plano ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
 
           {/* Seção de Garantia e Confiança */}
           <motion.div
@@ -381,38 +459,38 @@ const ElitePlan: React.FC = () => {
               />
               
               <div className="relative bg-gradient-to-br from-dark-lighter/95 to-dark/95 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-primary/20 shadow-2xl">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-8 mb-8">
                   <motion.div 
                     className="text-center"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-2xl mb-4">
-                      <Shield className="w-8 h-8 text-primary" />
+                    <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-2xl mb-2 sm:mb-4">
+                      <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                     </div>
-                    <div className="text-3xl font-bold text-primary mb-2">100%</div>
-                    <div className="text-light-muted">Garantia de Resultados</div>
+                    <div className="text-lg sm:text-xl md:text-3xl font-bold text-primary mb-1 sm:mb-2">100%</div>
+                    <div className="text-xs sm:text-sm text-light-muted">Garantia de Resultados</div>
                   </motion.div>
                   
                   <motion.div 
                     className="text-center"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-2xl mb-4">
-                      <Users className="w-8 h-8 text-primary" />
+                    <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-2xl mb-2 sm:mb-4">
+                      <Users className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                     </div>
-                    <div className="text-3xl font-bold text-primary mb-2">1200+</div>
-                    <div className="text-light-muted">Vidas Transformadas</div>
+                    <div className="text-lg sm:text-xl md:text-3xl font-bold text-primary mb-1 sm:mb-2">1200+</div>
+                    <div className="text-xs sm:text-sm text-light-muted">Vidas Transformadas</div>
                   </motion.div>
                   
                   <motion.div 
                     className="text-center"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-2xl mb-4">
-                      <Zap className="w-8 h-8 text-primary" />
+                    <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-2xl mb-2 sm:mb-4">
+                      <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                     </div>
-                    <div className="text-3xl font-bold text-primary mb-2">98%</div>
-                    <div className="text-light-muted">Taxa de Sucesso</div>
+                    <div className="text-lg sm:text-xl md:text-3xl font-bold text-primary mb-1 sm:mb-2">98%</div>
+                    <div className="text-xs sm:text-sm text-light-muted">Taxa de Sucesso</div>
                   </motion.div>
                 </div>
 
